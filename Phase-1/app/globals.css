@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #FFFEFB;
+  --color-rose: #E8546F;
+  --color-rose-dark: #C93F58;
+  --color-rose-light: #F3A9B6;
+  --color-botanical: #2F5233;
+  --color-botanical-light: #4A7A50;
+  --color-blush: #FBE4E7;
+  --color-charcoal: #2B2420;
+  --color-gold: #C9A15A;
+
+  --font-display: var(--font-fraunces), serif;
+  --font-sans: var(--font-manrope), sans-serif;
+}
+
+body {
+  @apply bg-ivory text-charcoal antialiased;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
