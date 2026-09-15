@@ -1,23 +1,33 @@
-import Header from '@/components/Header';
-import CategoryNav from '@/components/CategoryNav';
-import HeroBanner from '@/components/HeroBanner';
-import CategoryGrid from '@/components/CategoryGrid';
-import BestsellersSection from '@/components/BestsellersSection';
+import Header from "@/components/Header";
+import CategoryNav from "@/components/CategoryNav";
+import IconStrip from "@/components/IconStrip";
+import OccasionStrip from "@/components/OccasionStrip";
+import HeroBanner from "@/components/HeroBanner";
+import CategoryGrid from "@/components/CategoryGrid";
+import BestsellersSection from "@/components/BestsellersSection";
+import FlowersCollection from "@/components/FlowersCollection";
+import GiftsForEveryone from "@/components/GiftsForEveryone";
+import FreshlyBakedCakes from "@/components/FreshlyBakedCakes";
+import GiftsForFeeling from "@/components/GiftsForFeeling";
+import PlantsSection from "@/components/PlantsSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen bg-ivory">
       <Header />
       <CategoryNav />
+      <IconStrip />
+      <OccasionStrip />
       <HeroBanner />
       <CategoryGrid />
       <BestsellersSection />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-center text-charcoal/40 font-display text-lg">
-          Next: Full Featured Product Grid → Footer
-        </p>
-      </div>
+      <FlowersCollection />
+      <GiftsForEveryone />
+      <FreshlyBakedCakes />
+      <GiftsForFeeling />
+      <PlantsSection />
+      <Footer />
     </main>
   );
 }

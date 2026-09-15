@@ -12,39 +12,25 @@ const categories: string[] = [
 
 export default function CategoryNav() {
   return (
-    <>
-      <nav className="border-t border-charcoal/10 hidden md:block bg-ivory">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ul className="flex items-center justify-center gap-8 py-3 text-sm font-semibold">
-            {categories.map((cat, i) => (
-              <li key={cat}>
-                <a
-                  href="#"
-                  className={
-                    i === 0
-                      ? 'text-rose border-b-2 border-rose pb-3 -mb-3'
-                      : 'hover:text-rose transition-colors'
-                  }
-                >
-                  {cat}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
-
-      <nav className="border-t border-charcoal/10 md:hidden overflow-x-auto bg-ivory">
-        <ul className="flex items-center gap-5 px-4 py-2.5 text-sm font-semibold whitespace-nowrap w-max">
+    <nav className="border-b border-charcoal/10 bg-ivory overflow-x-auto sticky top-[53px] z-40">
+      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14">
+        <ul className="flex items-center gap-6 md:gap-8 py-2.5 text-[13px] font-semibold whitespace-nowrap">
           {categories.map((cat, i) => (
             <li key={cat}>
-              <a href="#" className={i === 0 ? 'text-rose' : 'text-charcoal/70'}>
+              <a
+                href="#"
+                className={
+                  i === 0
+                    ? 'text-rose border-b-2 border-rose pb-2.5 -mb-2.5'
+                    : 'text-charcoal/70 hover:text-rose transition-colors'
+                }
+              >
                 {cat}
               </a>
             </li>
           ))}
         </ul>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 }
