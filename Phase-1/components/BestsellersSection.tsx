@@ -1,110 +1,128 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import React, { useState } from "react";
 
-const tabs = ['Flowers', 'Cakes', 'Personalised', 'Hampers', 'Chocolates'];
+interface Product {
+  id: string;
+  name: string;
+  price: string;
+  rating: string;
+  image: string;
+  tag?: string;
+}
 
-const productsByTab: Record<string, { name: string; price: string; rating: string; emoji: string }[]> = {
+const bestsellersData: Record<string, Product[]> = {
   Flowers: [
-    { name: 'Red Rose Bouquet', price: '\u20B9699', rating: '4.6', emoji: '\u{1F339}' },
-    { name: 'Orchid Delight', price: '\u20B91,299', rating: '4.8', emoji: '\u{1F4AE}' },
-    { name: 'Sunflower Basket', price: '\u20B9899', rating: '4.5', emoji: '\u{1F33B}' },
-    { name: 'Mixed Flower Vase', price: '\u20B91,099', rating: '4.7', emoji: '\u{1F490}' },
-    { name: 'Dried Flower Bunch', price: '\u20B9799', rating: '4.4', emoji: '\u{1F33E}' },
-    { name: 'Lily Arrangement', price: '\u20B9949', rating: '4.6', emoji: '\u{1F337}' },
+    { id: "f1", name: "Red Rose Bouquet", price: "₹699", rating: "4.9 ★", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80", tag: "Bestseller" },
+    { id: "f2", name: "Orchid Delight", price: "₹1,299", rating: "4.8 ★", image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "f3", name: "Sunflower Basket", price: "₹899", rating: "4.7 ★", image: "https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "f4", name: "Mixed Flower Vase", price: "₹1,099", rating: "4.9 ★", image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=400", tag: "Trending" },
+    { id: "f5", name: "Pink Lily Bunch", price: "₹1,149", rating: "4.8 ★", image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "f6", name: "Carnation Box", price: "₹799", rating: "4.6 ★", image: "https://images.pexels.com/photos/1158783/pexels-photo-1158783.jpeg?auto=compress&cs=tinysrgb&w=400" },
   ],
   Cakes: [
-    { name: 'Chocolate Truffle Cake', price: '\u20B9599', rating: '4.7', emoji: '\u{1F370}' },
-    { name: 'Red Velvet Cake', price: '\u20B9749', rating: '4.6', emoji: '\u{1F9C1}' },
-    { name: 'Butterscotch Cake', price: '\u20B9549', rating: '4.5', emoji: '\u{1F382}' },
-    { name: 'Pineapple Cake', price: '\u20B9499', rating: '4.4', emoji: '\u{1F34D}' },
-    { name: 'Black Forest Cake', price: '\u20B9649', rating: '4.6', emoji: '\u{1F370}' },
-    { name: 'Fresh Fruit Cake', price: '\u20B9849', rating: '4.7', emoji: '\u{1F353}' },
+    { id: "c1", name: "Truffle Chocolate Cake", price: "₹599", rating: "4.9 ★", image: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=400", tag: "Top Rated" },
+    { id: "c2", name: "Fresh Fruit Delight", price: "₹699", rating: "4.8 ★", image: "https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "c3", name: "Red Velvet Heart", price: "₹799", rating: "4.9 ★", image: "https://images.pexels.com/photos/1407305/pexels-photo-1407305.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "c4", name: "Butterscotch Crunch", price: "₹549", rating: "4.7 ★", image: "https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "c5", name: "Black Forest Classic", price: "₹599", rating: "4.8 ★", image: "https://images.pexels.com/photos/2144112/pexels-photo-2144112.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "c6", name: "Pineapple Cream Cake", price: "₹499", rating: "4.6 ★", image: "https://images.pexels.com/photos/1070850/pexels-photo-1070850.jpeg?auto=compress&cs=tinysrgb&w=400" },
   ],
   Personalised: [
-    { name: 'Photo Mug', price: '\u20B9399', rating: '4.5', emoji: '\u2615' },
-    { name: 'Engraved Frame', price: '\u20B9899', rating: '4.6', emoji: '\u{1F5BC}\uFE0F' },
-    { name: 'Custom Cushion', price: '\u20B9699', rating: '4.4', emoji: '\u{1F6CB}\uFE0F' },
-    { name: 'Name Keychain', price: '\u20B9249', rating: '4.3', emoji: '\u{1F511}' },
-    { name: 'Photo Collage Frame', price: '\u20B91,199', rating: '4.7', emoji: '\u{1F4F8}' },
-    { name: 'Custom T-Shirt', price: '\u20B9599', rating: '4.4', emoji: '\u{1F455}' },
+    { id: "p1", name: "Custom LED Photo Frame", price: "₹899", rating: "4.9 ★", image: "https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "p2", name: "Engraved Wooden Mug", price: "₹499", rating: "4.7 ★", image: "https://images.pexels.com/photos/1207918/pexels-photo-1207918.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "p3", name: "Personalised Cushion", price: "₹399", rating: "4.8 ★", image: "https://images.pexels.com/photos/1248583/pexels-photo-1248583.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "p4", name: "Customized Keychain", price: "₹299", rating: "4.6 ★", image: "https://images.pexels.com/photos/1194036/pexels-photo-1194036.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "p5", name: "Magic Mug", price: "₹449", rating: "4.8 ★", image: "https://images.pexels.com/photos/1566308/pexels-photo-1566308.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "p6", name: "Custom Calendar", price: "₹599", rating: "4.7 ★", image: "https://images.pexels.com/photos/2730883/pexels-photo-2730883.jpeg?auto=compress&cs=tinysrgb&w=400" },
   ],
   Hampers: [
-    { name: 'Chocolate Hamper', price: '\u20B91,499', rating: '4.8', emoji: '\u{1F36B}' },
-    { name: 'Fruit & Nut Hamper', price: '\u20B91,299', rating: '4.6', emoji: '\u{1F34E}' },
-    { name: 'Spa & Wellness Kit', price: '\u20B91,799', rating: '4.7', emoji: '\u{1F9F4}' },
-    { name: 'Tea & Cookies Hamper', price: '\u20B9999', rating: '4.5', emoji: '\u{1F375}' },
-    { name: 'Festive Gift Hamper', price: '\u20B92,199', rating: '4.9', emoji: '\u{1F9FA}' },
-    { name: 'Snack Box Hamper', price: '\u20B9899', rating: '4.4', emoji: '\u{1F36A}' },
+    { id: "h1", name: "Luxury Gourmet Box", price: "₹2,499", rating: "4.9 ★", image: "https://images.pexels.com/photos/264771/pexels-photo-264771.jpeg?auto=compress&cs=tinysrgb&w=400", tag: "Luxury" },
+    { id: "h2", name: "Spa & Wellness Kit", price: "₹1,899", rating: "4.8 ★", image: "https://images.pexels.com/photos/6621472/pexels-photo-6621472.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "h3", name: "Chocolate Basket", price: "₹1,299", rating: "4.7 ★", image: "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "h4", name: "Dry Fruits Celebration", price: "₹1,599", rating: "4.9 ★", image: "https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "h5", name: "Self Care Luxury Box", price: "₹2,199", rating: "4.8 ★", image: "https://images.pexels.com/photos/3735657/pexels-photo-3735657.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "h6", name: "Coffee Connoisseur Set", price: "₹1,799", rating: "4.9 ★", image: "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=400" },
   ],
   Chocolates: [
-    { name: 'Assorted Chocolate Box', price: '\u20B9599', rating: '4.6', emoji: '\u{1F36B}' },
-    { name: 'Premium Truffle Box', price: '\u20B9799', rating: '4.8', emoji: '\u{1F36C}' },
-    { name: 'Dark Chocolate Bars', price: '\u20B9449', rating: '4.5', emoji: '\u{1F36B}' },
-    { name: 'Belgian Truffle Box', price: '\u20B91,099', rating: '4.7', emoji: '\u{1F36B}' },
-    { name: 'Chocolate Gift Set', price: '\u20B9899', rating: '4.6', emoji: '\u{1F381}' },
-    { name: 'Handmade Chocolates', price: '\u20B9699', rating: '4.5', emoji: '\u{1F36C}' },
+    { id: "ch1", name: "Ferrero Rocher Tower", price: "₹1,199", rating: "4.9 ★", image: "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "ch2", name: "Handcrafted Truffles", price: "₹899", rating: "4.8 ★", image: "https://images.pexels.com/photos/65882/chocolate-dark-coffee-confiserie-65882.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "ch3", name: "Cadbury Celebrations", price: "₹499", rating: "4.7 ★", image: "https://images.pexels.com/photos/4110004/pexels-photo-4110004.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "ch4", name: "Belgian Dark Chocolate", price: "₹999", rating: "4.9 ★", image: "https://images.pexels.com/photos/3735657/pexels-photo-3735657.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "ch5", name: "Assorted Chocolate Bouquet", price: "₹1,099", rating: "4.8 ★", image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=400" },
+    { id: "ch6", name: "Imported Chocolate Tray", price: "₹1,499", rating: "4.9 ★", image: "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&w=400" },
   ],
 };
 
 export default function BestsellersSection() {
-  const [activeTab, setActiveTab] = useState('Flowers');
-  const products = productsByTab[activeTab];
+  const [activeTab, setActiveTab] = useState<string>("Flowers");
+  const categories = ["Flowers", "Cakes", "Personalised", "Hampers", "Chocolates"];
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6">
-      <h2 className="font-display text-xl md:text-2xl font-semibold text-charcoal mb-1">
-        Shop By Bestsellers
-      </h2>
-      <p className="text-xs text-charcoal/60 mb-4">
-        Discover India&apos;s favourite gifting options, curated bestsellers that make every celebration extra special.
-      </p>
+    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+        <div>
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical">
+            Shop By Bestsellers
+          </h2>
+          <p className="text-xs sm:text-sm text-charcoal/70 mt-1">
+            Handpicked favorites loved by thousands across Lucknow
+          </p>
+        </div>
 
-      <div className="flex items-center gap-5 border-b border-charcoal/10 mb-5 overflow-x-auto whitespace-nowrap">
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`pb-2.5 text-[13px] font-semibold transition-colors ${
-              activeTab === tab
-                ? 'text-rose border-b-2 border-rose'
-                : 'text-charcoal/50 hover:text-charcoal'
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveTab(cat)}
+              className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                activeTab === cat
+                  ? "bg-rose text-ivory shadow-xs"
+                  : "bg-blush/40 text-charcoal/80 hover:bg-blush"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
-        {products.map((p) => (
-          <div key={p.name} className="group border border-charcoal/10 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
-            <div className="aspect-square bg-blush/40 flex items-center justify-center">
-              <span className="text-3xl">{p.emoji}</span>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        {bestsellersData[activeTab]?.map((item) => (
+          <div key={item.id} className="group bg-white rounded-xl overflow-hidden border border-rose-light/20 shadow-xs hover:shadow-md transition-all flex flex-col">
+            <div className="relative w-full h-40 bg-blush/20 overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              {item.tag && (
+                <span className="absolute top-2 left-2 bg-gold text-botanical font-bold text-[10px] px-2 py-0.5 rounded-full shadow-xs">
+                  {item.tag}
+                </span>
+              )}
             </div>
-            <div className="p-2.5">
-              <h3 className="text-xs md:text-[13px] font-semibold text-charcoal leading-snug line-clamp-2">
-                {p.name}
-              </h3>
-              <div className="flex items-center gap-1 mt-1">
-                <span className="text-gold text-[10px]">{'\u2605'}</span>
-                <span className="text-[11px] text-charcoal/60">{p.rating}</span>
+            
+            <div className="p-3 flex flex-col flex-1 justify-between">
+              <div>
+                <div className="flex items-center justify-between text-[11px] text-charcoal/60 mb-1">
+                  <span>In Stock</span>
+                  <span className="font-semibold text-rose">{item.rating}</span>
+                </div>
+                <h3 className="font-medium text-xs sm:text-sm text-botanical line-clamp-1">
+                  {item.name}
+                </h3>
               </div>
-              <div className="flex items-center justify-between mt-1">
-                <span className="text-sm font-semibold text-charcoal">{p.price}</span>
-                <button className="text-[11px] font-semibold text-rose hover:text-rose-dark transition-colors">
+
+              <div className="mt-3 flex items-center justify-between">
+                <span className="font-bold text-xs sm:text-sm text-botanical">{item.price}</span>
+                <button className="px-2.5 py-1 bg-rose text-ivory rounded text-[11px] font-medium hover:bg-rose-dark transition-colors">
                   Order Now
                 </button>
               </div>
             </div>
           </div>
         ))}
-      </div>
-
-      <div className="flex justify-center mt-6">
-        <button className="text-sm font-semibold text-charcoal border border-charcoal/20 rounded-full px-6 py-2.5 hover:border-rose hover:text-rose transition-colors">
-          View All {activeTab}
-        </button>
       </div>
     </section>
   );

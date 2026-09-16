@@ -1,11 +1,11 @@
 import React from "react";
 
 const flowerItems = [
-  { name: "Orchids", emoji: "🪻", price: "₹1,299" },
-  { name: "Crochet", emoji: "🌻", price: "₹899" },
-  { name: "Centerpiece", emoji: "💐", price: "₹1,599" },
-  { name: "Sunny Blooms", emoji: "🌻", price: "₹999" },
-  { name: "Dried Flowers", emoji: "🌾", price: "₹799" },
+  { name: "Orchids", image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=400", price: "₹1,299" },
+  { name: "Crochet", image: "https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg?auto=compress&cs=tinysrgb&w=400", price: "₹899" },
+  { name: "Centerpiece", image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=400", price: "₹1,599" },
+  { name: "Sunny Blooms", image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=400", price: "₹999" },
+  { name: "Dried Flowers", image: "https://images.pexels.com/photos/1158783/pexels-photo-1158783.jpeg?auto=compress&cs=tinysrgb&w=400", price: "₹799" },
 ];
 
 export default function FlowersCollection() {
@@ -27,11 +27,11 @@ export default function FlowersCollection() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {flowerItems.map((item) => (
-          <div key={item.name} className="bg-white rounded-xl p-4 border border-rose-light/20 shadow-xs flex flex-col items-center text-center">
-            <div className="w-full h-32 rounded-lg bg-blush/30 flex items-center justify-center text-4xl mb-3">
-              {item.emoji}
+          <div key={item.name} className="bg-white rounded-xl overflow-hidden p-3 border border-rose-light/20 shadow-xs flex flex-col items-center text-center">
+            <div className="w-full h-36 rounded-lg overflow-hidden bg-blush/30 mb-3">
+              <img src={item.image} alt={item.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
             </div>
-            <h3 className="font-medium text-sm text-botanical">
+            <h3 className="font-semibold text-sm text-botanical">
               {item.name}
             </h3>
             <span className="text-xs font-bold text-rose mt-1 mb-3">

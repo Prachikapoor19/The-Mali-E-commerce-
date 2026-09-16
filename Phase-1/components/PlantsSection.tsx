@@ -1,11 +1,11 @@
 import React from "react";
 
 const plants = [
-  { title: "Indoor Plants", desc: "Purify your air", emoji: "🪴", price: "₹399" },
-  { title: "Money Plants", desc: "Bring good fortune", emoji: "🌿", price: "₹299" },
-  { title: "Lucky Bamboo", desc: "Positivity & harmony", emoji: "🎋", price: "₹499" },
-  { title: "Peace Lily", desc: "Elegant & serene", emoji: "🌺", price: "₹599" },
-  { title: "All Plants", desc: "Explore entire range", emoji: "🌱", price: "From ₹249" },
+  { title: "Indoor Plants", desc: "Purify your air", image: "https://images.pexels.com/photos/305821/pexels-photo-305821.jpeg?auto=compress&cs=tinysrgb&w=400", price: "₹399" },
+  { title: "Money Plants", desc: "Bring good fortune", image: "https://images.pexels.com/photos/1084199/pexels-photo-1084199.jpeg?auto=compress&cs=tinysrgb&w=400", price: "₹299" },
+  { title: "Lucky Bamboo", desc: "Positivity & harmony", image: "https://images.pexels.com/photos/7084337/pexels-photo-7084337.jpeg?auto=compress&cs=tinysrgb&w=400", price: "₹499" },
+  { title: "Peace Lily", desc: "Elegant & serene", image: "https://images.pexels.com/photos/4505161/pexels-photo-4505161.jpeg?auto=compress&cs=tinysrgb&w=400", price: "₹599" },
+  { title: "All Plants", desc: "Explore entire range", image: "https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=400", price: "From ₹249" },
 ];
 
 export default function PlantsSection() {
@@ -27,9 +27,9 @@ export default function PlantsSection() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {plants.map((plant) => (
-          <a key={plant.title} href="#" className="group bg-white rounded-xl p-4 border border-rose-light/30 shadow-xs hover:shadow-md transition-all flex flex-col items-center text-center">
-            <div className="w-full h-28 rounded-lg bg-blush/50 flex items-center justify-center text-4xl mb-3 group-hover:scale-105 transition-transform">
-              {plant.emoji}
+          <a key={plant.title} href="#" className="group bg-white rounded-xl p-3 border border-rose-light/30 shadow-xs hover:shadow-md transition-all flex flex-col items-center text-center overflow-hidden">
+            <div className="w-full h-32 rounded-lg overflow-hidden bg-blush/50 mb-3">
+              <img src={plant.image} alt={plant.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
             <h3 className="font-semibold text-sm text-botanical">
               {plant.title}

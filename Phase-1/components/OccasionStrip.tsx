@@ -1,27 +1,30 @@
-'use client';
+// components/OccasionStrip.tsx
+import React from "react";
 
 const occasions = [
-  { title: 'Birthday', bg: 'bg-[#FDEBD3]', emoji: '\u{1F382}' },
-  { title: 'Congratulations', bg: 'bg-[#DCE9F5]', emoji: '\u{1F389}' },
-  { title: 'Anniversary', bg: 'bg-[#FBE4E7]', emoji: '\u{1F490}' },
-  { title: 'Festive Special', bg: 'bg-[#F4EDE1]', emoji: '\u{1FA94}' },
-  { title: 'Wife Appreciation', bg: 'bg-[#F7D9DE]', emoji: '\u{1F49D}' },
-  { title: 'Thank You', bg: 'bg-[#E7EFE4]', emoji: '\u{1F64F}' },
+  { label: "Birthday", image: "https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg?auto=compress&cs=tinysrgb&w=300", bg: "bg-[#FFF8EE]" },
+  { label: "Congratulations", image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=300", bg: "bg-[#F0F6FF]" },
+  { label: "Anniversary", image: "https://images.pexels.com/photos/56866/rose-rose-blooms-roses-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=300", bg: "bg-[#FFF0F3]" },
+  { label: "Festive Special", image: "https://images.pexels.com/photos/264771/pexels-photo-264771.jpeg?auto=compress&cs=tinysrgb&w=300", bg: "bg-[#F5FDF7]" },
+  { label: "Wife Appreciation", image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=300", bg: "bg-[#FFF0F5]" },
+  { label: "Thank You", image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=300", bg: "bg-[#FDF8EE]" },
 ];
 
 export default function OccasionStrip() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6">
-      <h2 className="font-display text-xl md:text-2xl font-semibold text-charcoal mb-4">
+    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-4">
+      <h2 className="font-display text-base sm:text-lg font-bold text-botanical mb-3">
         Gifts For Every Occasion
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
-        {occasions.map((occ) => (
-          <a key={occ.title} href="#" className={`${occ.bg} rounded-xl h-24 md:h-28 flex items-center justify-between px-4 hover:-translate-y-0.5 transition-transform`}>
-            <span className="text-sm md:text-base font-semibold text-charcoal leading-tight">
-              {occ.title}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+        {occasions.map((item) => (
+          <a key={item.label} href="#" className={`flex items-center justify-between p-2.5 rounded-xl border border-rose-light/20 ${item.bg} hover:shadow-xs transition-all group`}>
+            <span className="font-medium text-xs text-botanical group-hover:text-rose transition-colors">
+              {item.label}
             </span>
-            <span className="text-3xl md:text-4xl shrink-0">{occ.emoji}</span>
+            <div className="w-9 h-9 rounded-lg overflow-hidden shrink-0">
+              <img src={item.image} alt={item.label} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+            </div>
           </a>
         ))}
       </div>
