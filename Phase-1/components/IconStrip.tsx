@@ -1,34 +1,138 @@
-import React from "react";
+'use client';
 
-const categoryIcons = [
-  { label: "Same Day", image: "https://images.pexels.com/photos/56866/rose-rose-blooms-roses-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Flowers", image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Cakes", image: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Personalised", image: "https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Plants", image: "https://images.pexels.com/photos/305821/pexels-photo-305821.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Chocolates", image: "https://images.pexels.com/photos/65882/chocolate-dark-coffee-confiserie-65882.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Hampers", image: "https://images.pexels.com/photos/264771/pexels-photo-264771.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Spiritual", image: "https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Balloon Decor", image: "https://images.pexels.com/photos/341970/pexels-photo-341970.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Trendy Gifts", image: "https://images.pexels.com/photos/1207918/pexels-photo-1207918.jpeg?auto=compress&cs=tinysrgb&w=150" },
-  { label: "Combos", image: "https://images.pexels.com/photos/1407305/pexels-photo-1407305.jpeg?auto=compress&cs=tinysrgb&w=150" },
+function IconWrap({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="w-14 h-14 rounded-full bg-blush flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1F2E20" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        {children}
+      </svg>
+    </span>
+  );
+}
+
+const items = [
+  {
+    label: 'Same Day',
+    icon: (
+      <>
+        <circle cx="6" cy="18" r="2" /><circle cx="17" cy="18" r="2" />
+        <path d="M2 18h2m2 0h6V7H4v11" /><path d="M10 10h5l3 3v5h-2" />
+      </>
+    ),
+  },
+  {
+    label: 'Flowers',
+    icon: (
+      <>
+        <circle cx="12" cy="7" r="2.5" /><circle cx="8" cy="9" r="2.5" /><circle cx="16" cy="9" r="2.5" />
+        <path d="M12 12v8" /><path d="M9 20h6" />
+      </>
+    ),
+  },
+  {
+    label: 'Cakes',
+    icon: (
+      <>
+        <path d="M4 21V13a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8" />
+        <path d="M2 21h20" /><path d="M4 17h16" />
+        <path d="M12 11V6" /><path d="M12 3v1" />
+      </>
+    ),
+  },
+  {
+    label: 'Personalised',
+    icon: (
+      <>
+        <rect x="4" y="3" width="16" height="18" rx="1.5" />
+        <path d="M12 9c-1-1.5-3-1.5-3.5 0-0.5 1.5 1.5 3 3.5 4.5 2-1.5 4-3 3.5-4.5-0.5-1.5-2.5-1.5-3.5 0z" fill="#1F2E20" />
+      </>
+    ),
+  },
+  {
+    label: 'Plants',
+    icon: (
+      <>
+        <path d="M12 21V11" />
+        <path d="M12 11c0-3-2-5-5-5 0 3 2 5 5 5z" />
+        <path d="M12 11c0-3 2-5 5-5 0 3-2 5-5 5z" />
+        <path d="M8 21h8" />
+      </>
+    ),
+  },
+  {
+    label: 'Chocolates',
+    icon: (
+      <>
+        <rect x="4" y="8" width="16" height="12" rx="1.5" />
+        <path d="M4 12h16" /><path d="M12 8v12" />
+        <path d="M9 4l3 4 3-4" />
+      </>
+    ),
+  },
+  {
+    label: 'Hampers',
+    icon: (
+      <>
+        <path d="M4 10h16l-1.5 10a1.5 1.5 0 0 1-1.5 1.3H7A1.5 1.5 0 0 1 5.5 20L4 10z" />
+        <path d="M2 10h20" />
+        <path d="M12 3c-2 0-4 2-4 4h8c0-2-2-4-4-4z" />
+      </>
+    ),
+  },
+  {
+    label: 'Spiritual',
+    icon: (
+      <>
+        <path d="M12 2v4" /><path d="M8 6c0 3-4 4-4 8a8 8 0 0 0 16 0c0-4-4-5-4-8" />
+        <circle cx="12" cy="14" r="2.5" />
+      </>
+    ),
+  },
+  {
+    label: 'Balloon Decor',
+    icon: (
+      <>
+        <path d="M9 8a3 3 0 1 1 6 0c0 3-1.5 5-3 6-1.5-1-3-3-3-6z" />
+        <path d="M12 14v5" /><path d="M10 22h4" />
+        <path d="M12 19l-1 1 1 1 1-1z" />
+      </>
+    ),
+  },
+  {
+    label: 'Trendy Gifts',
+    icon: (
+      <>
+        <path d="M5 3l1.5 3.5L10 8l-3.5 1.5L5 13l-1.5-3.5L0 8l3.5-1.5z" fill="#C9A15A" stroke="none" transform="translate(5,2) scale(0.9)" />
+        <path d="M14 12l1 2.3 2.3 1-2.3 1-1 2.3-1-2.3-2.3-1 2.3-1z" fill="#C9A15A" stroke="none" />
+        <circle cx="18" cy="6" r="1.3" fill="#C9A15A" stroke="none" />
+      </>
+    ),
+  },
+  {
+    label: 'Combos',
+    icon: (
+      <>
+        <rect x="3" y="9" width="8" height="12" rx="1" />
+        <rect x="13" y="6" width="8" height="15" rx="1" />
+        <path d="M3 13h8" /><path d="M13 11h8" />
+      </>
+    ),
+  },
 ];
 
 export default function IconStrip() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-4 border-b border-rose-light/20 bg-ivory">
-      <div className="flex items-center justify-between gap-4 overflow-x-auto pb-2 scrollbar-none">
-        {categoryIcons.map((item) => (
-          <a key={item.label} href="#" className="flex flex-col items-center group shrink-0">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-blush p-0.5 border border-rose-light/40 group-hover:border-rose transition-colors shadow-xs">
-              <img src={item.image} alt={item.label} className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" />
-            </div>
-            <span className="text-[11px] font-medium text-botanical mt-1.5 text-center whitespace-nowrap group-hover:text-rose transition-colors">
+    <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-4 overflow-x-auto border-b border-charcoal/10">
+      <div className="flex items-start gap-5 md:gap-8 min-w-max">
+        {items.map((item) => (
+          <a key={item.label} href="#" className="flex flex-col items-center gap-1.5 group w-16">
+            <IconWrap>{item.icon}</IconWrap>
+            <span className="text-[11px] text-charcoal/70 text-center leading-tight font-medium">
               {item.label}
             </span>
           </a>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
