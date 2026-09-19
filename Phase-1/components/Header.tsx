@@ -1,174 +1,139 @@
-// 'use client';
+"use client";
 
-// import Image from 'next/image';
-
-// export default function Header() {
-//   return (
-//     <header className="sticky top-0 z-50 bg-ivory border-b border-charcoal/10">
-//       <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14">
-//         <div className="flex items-center justify-between gap-3 py-2.5">
-
-//           <a href="/" className="flex items-center gap-2 shrink-0">
-//             <Image src="/logo-icon.png" alt="The Mali" width={32} height={32} className="object-contain" priority />
-//             <span className="font-display text-lg font-semibold tracking-tight leading-none text-botanical hidden sm:block">
-//               The Mali
-//             </span>
-//           </a>
-
-//           <button className="hidden lg:flex flex-col items-start shrink-0 text-xs border-l border-r border-charcoal/10 px-3">
-//             <span className="flex items-center gap-1 text-charcoal/50">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-botanical" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
-//               </svg>
-//               Where to deliver?
-//             </span>
-//             <span className="font-semibold text-charcoal">226001</span>
-//           </button>
-
-//           <div className="hidden md:flex flex-1 max-w-xl mx-2">
-//             <div className="flex items-center w-full rounded-full border border-charcoal/15 bg-white px-4 py-2 focus-within:border-rose transition-colors">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-charcoal/40 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-//               </svg>
-//               <input type="text" placeholder="Search flowers, cakes, gifts..." className="w-full bg-transparent outline-none px-3 text-sm placeholder:text-charcoal/40" />
-//             </div>
-//           </div>
-
-//           <button className="hidden md:flex items-center gap-1.5 shrink-0 text-xs font-semibold border border-gold/50 rounded-full px-3.5 py-2 hover:bg-gold/10 transition-colors">
-//             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//               <path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" />
-//             </svg>
-//             Finder
-//           </button>
-
-//           <div className="flex items-center gap-2 md:gap-3 shrink-0">
-
-//             <button className="hidden xl:flex flex-col items-center gap-0.5 text-charcoal/70 hover:text-botanical transition-colors" aria-label="Reminders">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
-//               </svg>
-//               <span className="text-[10px]">Reminders</span>
-//             </button>
-
-//             <button className="hidden xl:flex flex-col items-center gap-0.5 text-charcoal/70 hover:text-botanical transition-colors" aria-label="Corporate">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6M2 7h20v5H2zM12 22V7M12 7a2.5 2.5 0 1 1-2.5-2.5c1.5 0 2.5 1.5 2.5 2.5zM12 7a2.5 2.5 0 1 0 2.5-2.5c-1.5 0-2.5 1.5-2.5 2.5z" />
-//               </svg>
-//               <span className="text-[10px]">Corporate</span>
-//             </button>
-
-//             <button className="md:hidden w-8 h-8 flex items-center justify-center rounded-full hover:bg-blush transition-colors" aria-label="Search">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-//               </svg>
-//             </button>
-
-//             <button className="relative w-8 h-8 flex items-center justify-center rounded-full hover:bg-blush transition-colors" aria-label="Cart">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
-//                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-//               </svg>
-//               <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-rose text-[10px] leading-4 text-ivory text-center font-bold">2</span>
-//             </button>
-
-//             <button className="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-charcoal/70 hover:text-botanical transition-colors" aria-label="Account">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-//               </svg>
-//               Hi, Guest
-//             </button>
-
-//             <button className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-blush transition-colors" aria-label="More">
-//               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <circle cx="12" cy="5" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="12" cy="19" r="1.5" />
-//               </svg>
-//             </button>
-
-//           </div>
-//         </div>
-
-//         <div className="md:hidden pb-2.5">
-//           <div className="flex items-center w-full rounded-full border border-charcoal/15 bg-white px-4 py-2">
-//             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-charcoal/40 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//               <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-//             </svg>
-//             <input type="text" placeholder="Search flowers, cakes, gifts..." className="w-full bg-transparent outline-none px-3 text-sm placeholder:text-charcoal/40" />
-//           </div>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// }
-
-import React from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 
 export default function Header() {
+  const [isPincodeModalOpen, setIsPincodeModalOpen] = useState(false);
+  const [isGiftFinderOpen, setIsGiftFinderOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [pincode, setPincode] = useState("226001");
+  const [selectedSlot, setSelectedSlot] = useState("Express 60-Minute");
+  const [pincodeInput, setPincodeInput] = useState("226001");
+
+  const deliverySlots = [
+    { id: "express", name: "Express 60-Minute", time: "Delivered within 1 hour", tag: "Fastest" },
+    { id: "sameday", name: "Same-Day Delivery", time: "Standard Delivery Today", tag: "Popular" },
+    { id: "fixed", name: "Fixed Time Delivery", time: "Choose your preferred 2-hr slot", tag: "Scheduled" },
+    { id: "midnight", name: "Midnight Delivery Slot", time: "11:00 PM – 11:59 PM", tag: "Surprise" },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-ivory border-b border-rose-light/20 shadow-xs">
-      {/* Top Header Row */}
-      <div className="w-full px-3 sm:px-6 lg:px-10 py-2.5 flex items-center justify-between gap-2 sm:gap-4">
-        {/* Brand Logo & Wordmark */}
-        <a href="/" className="flex items-center gap-1.5 shrink-0">
-          <Image
-            src="/logo-icon.png"
-            alt="The Mali"
-            width={32}
-            height={32}
-            className="object-contain w-7 h-7 sm:w-9 sm:h-9"
-            priority
-          />
-          <span className="font-display text-base sm:text-xl font-bold tracking-tight text-botanical">
-            The Mali
-          </span>
-        </a>
-
-        {/* Location Selector Pill (Hidden on tiny screens, shown on sm+) */}
-        <div className="hidden sm:flex items-center gap-1 px-3 py-1 rounded-full bg-blush/60 border border-rose-light/30 text-[11px] font-medium text-botanical shrink-0">
-          <span>📍</span>
-          <span className="truncate max-w-[120px] md:max-w-none">
-            Deliver to <strong className="font-bold">226001</strong>
-          </span>
-          <span className="text-[9px] text-charcoal/50">▼</span>
+    <>
+      {/* Sticky Header Wrapper with Solid Background & High Z-Index */}
+      <header className="sticky top-0 z-50 w-full bg-[#FAF8F5] border-b border-rose-light/20 shadow-xs">
+        {/* Top Announcement Bar */}
+        <div className="bg-botanical text-ivory text-[11px] py-1.5 px-4 text-center font-medium tracking-wide flex justify-between items-center">
+          <span className="truncate">🌿 Free Express Delivery on Orders Above ₹999 | Code: <strong>MALI15</strong></span>
+          <span className="hidden md:inline text-[10px] text-ivory/80">📞 24/7 Gifting Help: +91 1800-MALI-CARE</span>
         </div>
 
-        {/* Desktop Search Bar */}
-        <div className="hidden md:flex flex-1 max-w-md relative">
-          <input
-            type="text"
-            placeholder="Search flowers, cakes, gifts..."
-            className="w-full py-1.5 pl-8 pr-3 text-xs rounded-full bg-white border border-rose-light/40 focus:outline-none focus:border-rose text-charcoal placeholder:text-charcoal/40 shadow-2xs"
-          />
-          <span className="absolute left-2.5 top-2 text-xs text-charcoal/40">🔍</span>
-        </div>
+        {/* Main Nav Bar */}
+        <div className="w-full px-3 sm:px-6 lg:px-10 py-2.5 flex items-center justify-between gap-2 sm:gap-4 bg-[#FAF8F5]">
+          {/* Logo */}
+          <a href="/" className="flex items-center gap-2 shrink-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-botanical text-ivory flex items-center justify-center font-bold text-lg shadow-xs">
+              🌱
+            </div>
+            <div>
+              <span className="font-display text-base sm:text-xl font-bold tracking-tight text-botanical leading-tight block">
+                The Mali
+              </span>
+              <span className="text-[9px] text-charcoal/50 uppercase tracking-widest block font-medium">
+                Botanical & Gifts
+              </span>
+            </div>
+          </a>
 
-        {/* Action Icons */}
-        <div className="flex items-center gap-3 sm:gap-4 text-botanical shrink-0">
-          <button className="flex items-center gap-1 text-xs font-medium hover:text-rose transition-colors">
-            <span className="text-base">👤</span>
-            <span className="hidden sm:inline text-xs">Account</span>
+          {/* Location Pincode Button */}
+          <button
+            onClick={() => setIsPincodeModalOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-rose-light/30 text-xs font-medium text-botanical hover:border-botanical transition-all shadow-2xs shrink-0"
+          >
+            <span className="text-rose text-sm">📍</span>
+            <div className="text-left leading-tight hidden sm:block">
+              <span className="text-[10px] text-charcoal/60 block">Deliver to</span>
+              <strong className="text-xs font-bold text-botanical">{pincode} • {selectedSlot.split(" ")[0]}</strong>
+            </div>
+            <span className="sm:hidden text-xs font-bold">{pincode}</span>
+            <span className="text-[9px] text-charcoal/40">▼</span>
           </button>
-          <button className="relative flex items-center gap-1 text-xs font-medium hover:text-rose transition-colors">
-            <span className="text-base">🛒</span>
-            <span className="hidden sm:inline text-xs">Cart</span>
-            <span className="absolute -top-1 -right-1.5 bg-rose text-ivory text-[9px] font-bold rounded-full h-3.5 w-3.5 flex items-center justify-center">
-              0
-            </span>
-          </button>
-        </div>
-      </div>
 
-      {/* Mobile Search Bar Row (Visible only on mobile < md) */}
-      <div className="md:hidden px-3 pb-2.5 pt-0">
-        <div className="relative w-full">
-          <input
-            type="text"
-            placeholder="Search flowers, cakes, gifts..."
-            className="w-full py-1.5 pl-8 pr-3 text-xs rounded-full bg-white border border-rose-light/40 focus:outline-none focus:border-rose text-charcoal placeholder:text-charcoal/40 shadow-2xs"
-          />
-          <span className="absolute left-2.5 top-2 text-xs text-charcoal/40">🔍</span>
+          {/* Search Bar */}
+          <div className="hidden md:flex flex-1 max-w-md relative">
+            <input
+              type="text"
+              placeholder="Search flowers, cakes, plants, personalized gifts..."
+              className="w-full py-2 pl-9 pr-4 text-xs rounded-full bg-white border border-rose-light/40 focus:outline-none focus:border-botanical text-charcoal placeholder:text-charcoal/40 shadow-2xs"
+            />
+            <span className="absolute left-3 top-2.5 text-xs text-charcoal/40">🔍</span>
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center gap-2 sm:gap-4 text-botanical shrink-0">
+            <button
+              onClick={() => setIsGiftFinderOpen(true)}
+              className="hidden lg:flex items-center gap-1 px-3 py-1.5 bg-[#FFF0F3] border border-[#FAD7DA] rounded-full text-xs font-bold text-rose hover:bg-rose hover:text-white transition-all shadow-2xs"
+            >
+              <span>✨</span>
+              <span>Gift Finder</span>
+            </button>
+
+            <button className="p-1.5 rounded-full hover:bg-blush transition-colors relative" title="Wishlist">
+              <span className="text-lg">🤍</span>
+            </button>
+
+            <button
+              onClick={() => setIsAuthModalOpen(true)}
+              className="flex items-center gap-1 text-xs font-semibold hover:text-rose transition-colors"
+            >
+              <span className="text-base">👤</span>
+              <span className="hidden sm:inline">Login / Register</span>
+            </button>
+
+            <button className="relative flex items-center gap-1.5 px-3 py-1.5 bg-botanical text-ivory rounded-full text-xs font-semibold hover:bg-botanical-light transition-all shadow-xs">
+              <span className="text-sm">🛒</span>
+              <span className="hidden sm:inline">Cart</span>
+              <span className="bg-rose text-ivory text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+                0
+              </span>
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+
+        {/* Mobile Search Row */}
+        <div className="md:hidden px-3 pb-2.5 pt-0 bg-[#FAF8F5]">
+          <div className="relative w-full">
+            <input
+              type="text"
+              placeholder="Search flowers, cakes, gifts..."
+              className="w-full py-1.5 pl-8 pr-3 text-xs rounded-full bg-white border border-rose-light/40 focus:outline-none focus:border-botanical text-charcoal placeholder:text-charcoal/40 shadow-2xs"
+            />
+            <span className="absolute left-2.5 top-2 text-xs text-charcoal/40">🔍</span>
+          </div>
+        </div>
+      </header>
+
+      {/* MODALS */}
+      {isPincodeModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative border border-rose-light/30">
+            <button onClick={() => setIsPincodeModalOpen(false)} className="absolute top-4 right-4 text-charcoal">✕</button>
+            <h3 className="font-display font-bold text-lg text-botanical mb-2">Select Delivery Location</h3>
+            <input
+              type="text"
+              value={pincodeInput}
+              onChange={(e) => setPincodeInput(e.target.value)}
+              className="w-full text-xs p-3 rounded-xl border border-rose-light/40 mb-3"
+            />
+            <button
+              onClick={() => { setPincode(pincodeInput); setIsPincodeModalOpen(false); }}
+              className="w-full py-3 bg-botanical text-ivory text-xs font-bold rounded-xl"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

@@ -7,6 +7,7 @@ import BestsellersSection from "@/components/BestsellersSection";
 import FlowersCollection from "@/components/FlowersCollection";
 import JoyfulGiftsSection from "@/components/JoyfulGiftsSection";
 import GiftsForEveryone from "@/components/GiftsForEveryone";
+import PickFavouriteFlower from "@/components/PickFavouriteFlower";
 import FreshlyBakedCakes from "@/components/FreshlyBakedCakes";
 import GiftsForFeeling from "@/components/GiftsForFeeling";
 import OffersBanner from "@/components/OffersBanner";
@@ -26,6 +27,7 @@ export default function Home() {
       <FlowersCollection />
       <JoyfulGiftsSection />
       <GiftsForEveryone />
+      <PickFavouriteFlower />
       <FreshlyBakedCakes />
       <GiftsForFeeling />
       <OffersBanner />
@@ -35,3 +37,4 @@ export default function Home() {
     </main>
   );
 }
+

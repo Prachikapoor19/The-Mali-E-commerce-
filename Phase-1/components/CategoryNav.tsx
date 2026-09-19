@@ -19,7 +19,7 @@ const categories: string[] = [
 
 export default function CategoryNav() {
   return (
-    <nav className="border-b border-charcoal/10 bg-ivory overflow-x-auto sticky top-[53px] z-40">
+    <nav className="w-full bg-[#FAF8F5] border-b border-rose-light/20 relative z-40 hidden md:block">
       <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14">
         <ul className="flex items-center gap-5 md:gap-7 py-2.5 text-[13px] font-semibold whitespace-nowrap">
           {categories.map((cat, i) => (
