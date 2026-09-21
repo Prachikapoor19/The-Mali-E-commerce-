@@ -373,6 +373,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useCart } from "./CartContext";
 
 interface Product {
   id: string;
@@ -652,6 +653,7 @@ const tabIcons: Record<string, string> = {
 
 export default function BestsellersSection() {
   const [activeTab, setActiveTab] = useState<string>("Flowers");
+  const { addToCart } = useCart();
   const categories = ["Flowers", "Cakes", "Personalised", "Hampers", "Chocolates"];
 
   return (
@@ -688,10 +690,9 @@ export default function BestsellersSection() {
 
       {/* Responsive Grid/Carousel Container */}
       <div className="flex md:grid md:grid-cols-5 gap-3 sm:gap-4 overflow-x-auto md:overflow-visible pb-3 md:pb-0 scrollbar-none snap-x snap-mandatory">
-        {bestsellersData[activeTab]?.map((item) => (
-          <a
+                {bestsellersData[activeTab]?.map((item) => (
+          <div
             key={item.id}
-            href="#"
             className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs hover:shadow-md transition-all flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"
           >
             <div>
@@ -729,7 +730,23 @@ export default function BestsellersSection() {
                 </div>
               </div>
             </div>
-          </a>
+
+            <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3">
+              <button
+                onClick={() =>
+                  addToCart({
+                    id: item.id,
+                    name: item.name,
+                    price: Number(item.price.replace(/[^0-9]/g, "")),
+                    image: item.image,
+                  })
+                }
+                className="w-full text-[10px] sm:text-xs font-semibold py-1.5 rounded-lg bg-rose text-ivory hover:bg-rose-dark transition-colors"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
         ))}
       </div>
 

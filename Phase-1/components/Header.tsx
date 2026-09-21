@@ -141,12 +141,14 @@
 "use client";
 
 import React, { useState } from "react";
+import { useCart } from "./CartContext";
 
 export default function Header() {
   const [isPincodeModalOpen, setIsPincodeModalOpen] = useState(false);
   const [isGiftFinderOpen, setIsGiftFinderOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [pincode, setPincode] = useState("226001");
+  const { itemCount, openCart } = useCart();
   const [selectedSlot, setSelectedSlot] = useState("Express 60-Minute");
   const [pincodeInput, setPincodeInput] = useState("226001");
 
@@ -239,11 +241,14 @@ export default function Header() {
               <span className="hidden sm:inline">Login / Register</span>
             </button>
 
-            <button className="relative flex items-center gap-1.5 px-3 py-1.5 bg-[#1B3B2B] text-[#FAF8F5] rounded-full text-xs font-semibold hover:bg-emerald-900 transition-all shadow-xs">
+            <button
+              onClick={openCart}
+              className="relative flex items-center gap-1.5 px-3 py-1.5 bg-botanical text-ivory rounded-full text-xs font-semibold hover:bg-botanical-light transition-all shadow-xs"
+            >
               <span className="text-sm">🛒</span>
               <span className="hidden sm:inline">Cart</span>
-              <span className="bg-[#C86D51] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
-                0
+              <span className="bg-rose text-ivory text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+                {itemCount}
               </span>
             </button>
           </div>
