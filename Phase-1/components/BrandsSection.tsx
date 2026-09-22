@@ -15,22 +15,6 @@ export default function BrandsSection() {
           </div>
         ))}
       </div>
-
-      {/* Trust Counters */}
-      <div className="mt-10 grid grid-cols-3 gap-4 text-center border-t border-rose-light/20 pt-8">
-        <div>
-          <span className="font-display text-xl sm:text-3xl font-bold text-botanical">30+</span>
-          <p className="text-xs text-charcoal/60 mt-1">Years of Spreading Joy</p>
-        </div>
-        <div>
-          <span className="font-display text-xl sm:text-3xl font-bold text-botanical">50M+</span>
-          <p className="text-xs text-charcoal/60 mt-1">Happy Customers</p>
-        </div>
-        <div>
-          <span className="font-display text-xl sm:text-3xl font-bold text-botanical">100+</span>
-          <p className="text-xs text-charcoal/60 mt-1">Cities Covered</p>
-        </div>
-      </div>
     </section>
   );
 }

@@ -22,19 +22,20 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-gold mb-3">Quick Links</h4>
           <ul className="space-y-2 text-ivory/80">
-            <li><a href="#" className="hover:text-gold transition-colors">About Us</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Contact Us</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Track Order</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Corporate Gifts</a></li>
+                        <li><a href="/about-us" className="hover:text-gold transition-colors">About Us</a></li>
+            <li><a href="/contact-us" className="hover:text-gold transition-colors">Contact Us</a></li>
+            <li><a href="/track-order" className="hover:text-gold transition-colors">Track Order</a></li>
+            <li><a href="/corporate-gifts" className="hover:text-gold transition-colors">Corporate Gifts</a></li>
           </ul>
         </div>
         <div>
           <h4 className="font-semibold text-gold mb-3">Customer Support</h4>
           <ul className="space-y-2 text-ivory/80">
-            <li><a href="#" className="hover:text-gold transition-colors">FAQ & Help</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Terms & Conditions</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Refund & Return Policy</a></li>
+                      <li><a href="/faq" className="hover:text-gold transition-colors">FAQ & Help</a></li>
+            <li><a href="/terms-and-conditions" className="hover:text-gold transition-colors">Terms & Conditions</a></li>
+            <li><a href="/privacy-policy" className="hover:text-gold transition-colors">Privacy Policy</a></li>
+            <li><a href="/refund-policy" className="hover:text-gold transition-colors">Refund & Return Policy</a></li>
+
           </ul>
         </div>
         <div>
@@ -51,3 +52,14 @@ export default function Footer() {
     </footer>
   );
 }
+
+
+
+
+
+
+
+
+
+
+

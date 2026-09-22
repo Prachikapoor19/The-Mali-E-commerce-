@@ -56,8 +56,6 @@ import NewlyLaunched from "@/components/NewlyLaunched";
 import OffersBanner from "@/components/OffersBanner";
 import PlantsSection from "@/components/PlantsSection";
 import BrandsSection from "@/components/BrandsSection";
-import GiftingStories from "@/components/GiftingStories";
-import TrustBanner from "@/components/TrustBanner";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -81,8 +79,6 @@ export default function Home() {
       <OffersBanner />
       <PlantsSection />
       <BrandsSection />
-      <GiftingStories />
-      <TrustBanner />
       <Footer />
     </main>
   );
