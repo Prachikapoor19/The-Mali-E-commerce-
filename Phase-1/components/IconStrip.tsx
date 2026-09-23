@@ -143,7 +143,7 @@ import React from 'react';
 
 function IconWrap({ children }: { children: React.ReactNode }) {
   return (
-    <span className="w-11 h-11 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-full bg-[#EAF0E4] border border-[#1B3B2B]/10 flex items-center justify-center group-hover:bg-[#1B3B2B] transition-all duration-300 shadow-2xs group-hover:shadow-md">
+    <span className="w-11 h-11 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-full bg-[#EAF0E4] border border-botanical/10 flex items-center justify-center group-hover:bg-botanical transition-all duration-300 shadow-2xs group-hover:shadow-md">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -152,7 +152,7 @@ function IconWrap({ children }: { children: React.ReactNode }) {
         strokeWidth="1.6"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-5 h-5 sm:w-6 sm:h-6 text-[#1B3B2B] group-hover:text-[#FAF8F5] transition-colors"
+        className="w-5 h-5 sm:w-6 sm:h-6 text-botanical group-hover:text-ivory transition-colors"
       >
         {children}
       </svg>
@@ -295,7 +295,7 @@ const items = [
 
 export default function IconStrip() {
   return (
-    <section className="w-full bg-[#FAF8F5] border-b border-[#1B3B2B]/10 py-4 px-3 sm:px-6 lg:px-10">
+    <section className="w-full bg-ivory border-b border-botanical/10 py-4 px-3 sm:px-6 lg:px-10">
       <div className="w-full flex items-center justify-between gap-2 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory">
         {items.map((item) => (
           <a
@@ -304,7 +304,7 @@ export default function IconStrip() {
             className="flex flex-col items-center group shrink-0 flex-1 min-w-[70px] sm:min-w-[85px] lg:min-w-0 snap-start"
           >
             <IconWrap>{item.icon}</IconWrap>
-            <span className="text-[10px] sm:text-[11px] font-bold text-[#1B3B2B] mt-2 text-center whitespace-nowrap group-hover:text-[#C86D51] transition-colors">
+            <span className="text-[10px] sm:text-[11px] font-bold text-botanical mt-2 text-center whitespace-nowrap group-hover:text-rose transition-colors">
               {item.label}
             </span>
           </a>

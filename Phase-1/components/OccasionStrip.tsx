@@ -346,7 +346,7 @@ export default function OccasionStrip() {
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6 relative">
-      <h2 className="font-display text-xl sm:text-2xl font-bold text-[#1B3B2B] mb-4">
+      <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical mb-4">
         Gifts For Every Occasion
       </h2>
 
@@ -354,7 +354,7 @@ export default function OccasionStrip() {
         {/* Permanent Visible Floating Scroll Arrows */}
         <button
           onClick={() => handleScroll("left")}
-          className="absolute -left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white shadow-lg border border-black/10 flex items-center justify-center text-[#1B3B2B] font-bold text-sm hover:scale-110 hover:bg-[#1B3B2B] hover:text-white transition-all"
+          className="absolute -left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white shadow-lg border border-black/10 flex items-center justify-center text-botanical font-bold text-sm hover:scale-110 hover:bg-botanical hover:text-white transition-all"
           aria-label="Scroll Left"
         >
           ❮
@@ -369,7 +369,7 @@ export default function OccasionStrip() {
           <div
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className="group/first relative w-64 sm:w-72 h-36 rounded-2xl overflow-hidden shrink-0 snap-start shadow-2xs hover:shadow-md transition-all cursor-pointer border border-[#1B3B2B]/10"
+            className="group/first relative w-64 sm:w-72 h-36 rounded-2xl overflow-hidden shrink-0 snap-start shadow-2xs hover:shadow-md transition-all cursor-pointer border border-botanical/10"
           >
             {birthdaySlides.map((slide, index) => (
               <div
@@ -388,7 +388,7 @@ export default function OccasionStrip() {
 
                 <div className="absolute inset-0 p-4 flex flex-col justify-between text-white z-20">
                   <div className="flex justify-between items-start">
-                    <span className="text-[9px] font-extrabold bg-[#1B3B2B]/90 text-white backdrop-blur-xs px-2 py-0.5 rounded-md uppercase tracking-wider border border-white/20">
+                    <span className="text-[9px] font-extrabold bg-botanical/90 text-white backdrop-blur-xs px-2 py-0.5 rounded-md uppercase tracking-wider border border-white/20">
                       {slide.badge}
                     </span>
                   </div>
@@ -408,7 +408,7 @@ export default function OccasionStrip() {
 
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20 z-30">
               <div
-                className="h-full bg-[#C86D51] transition-all duration-200 ease-linear"
+                className="h-full bg-rose transition-all duration-200 ease-linear"
                 style={{
                   width: `${((currentSlideIndex + 1) / birthdaySlides.length) * 100}%`,
                 }}
@@ -425,18 +425,18 @@ export default function OccasionStrip() {
             >
               <div className="flex flex-col justify-between z-10 max-w-[55%]">
                 <div>
-                  <h3 className="font-display font-bold text-base sm:text-lg text-[#1B3B2B] leading-tight flex items-center gap-1">
+                  <h3 className="font-display font-bold text-base sm:text-lg text-botanical leading-tight flex items-center gap-1">
                     {item.title} <span className="text-xs">❯</span>
                   </h3>
                   {item.subTag && (
-                    <span className="text-[9px] font-bold text-[#1B3B2B]/60 uppercase tracking-wider block mt-1">
+                    <span className="text-[9px] font-bold text-botanical/60 uppercase tracking-wider block mt-1">
                       {item.subTag}
                     </span>
                   )}
                 </div>
 
                 {item.tag && (
-                  <span className="inline-block self-start text-[9px] font-extrabold bg-white/80 backdrop-blur-xs text-[#1B3B2B] px-2 py-0.5 rounded-md border border-black/5">
+                  <span className="inline-block self-start text-[9px] font-extrabold bg-white/80 backdrop-blur-xs text-botanical px-2 py-0.5 rounded-md border border-black/5">
                     {item.tag}
                   </span>
                 )}
@@ -455,7 +455,7 @@ export default function OccasionStrip() {
 
         <button
           onClick={() => handleScroll("right")}
-          className="absolute -right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white shadow-lg border border-black/10 flex items-center justify-center text-[#1B3B2B] font-bold text-sm hover:scale-110 hover:bg-[#1B3B2B] hover:text-white transition-all"
+          className="absolute -right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white shadow-lg border border-black/10 flex items-center justify-center text-botanical font-bold text-sm hover:scale-110 hover:bg-botanical hover:text-white transition-all"
           aria-label="Scroll Right"
         >
           ❯

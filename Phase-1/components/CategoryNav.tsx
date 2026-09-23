@@ -94,9 +94,9 @@
 //   const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
 //   return (
-//     <nav className="w-full bg-white border-b border-[#1B3B2B]/10 relative z-40 shadow-2xs">
+//     <nav className="w-full bg-white border-b border-botanical/10 relative z-40 shadow-2xs">
 //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex items-center gap-6 overflow-x-auto scrollbar-none py-2.5 text-xs font-semibold text-[#1B3B2B]">
+//         <div className="flex items-center gap-6 overflow-x-auto scrollbar-none py-2.5 text-xs font-semibold text-botanical">
 //           {NAV_ITEMS.map((item) => (
 //             <div
 //               key={item.id}
@@ -109,8 +109,8 @@
 //                   item.hasMenu &&
 //                   setActiveMenu(activeMenu === item.id ? null : item.id)
 //                 }
-//                 className={`flex items-center gap-1 py-1 px-1 transition-colors hover:text-[#C86D51] ${
-//                   activeMenu === item.id ? "text-[#C86D51] font-bold" : ""
+//                 className={`flex items-center gap-1 py-1 px-1 transition-colors hover:text-rose ${
+//                   activeMenu === item.id ? "text-rose font-bold" : ""
 //                 }`}
 //               >
 //                 <span>{item.label}</span>
@@ -119,18 +119,18 @@
 
 //               {/* --- BIRTHDAY MEGA MENU FLYOUT --- */}
 //               {item.hasMenu && activeMenu === item.id && (
-//                 <div className="fixed left-0 right-0 top-[112px] w-full bg-white/95 backdrop-blur-md shadow-2xl border-b border-[#1B3B2B]/10 py-6 px-4 sm:px-8 lg:px-16 z-50 text-gray-700 font-sans transition-all">
+//                 <div className="fixed left-0 right-0 top-[112px] w-full bg-white/95 backdrop-blur-md shadow-2xl border-b border-botanical/10 py-6 px-4 sm:px-8 lg:px-16 z-50 text-gray-700 font-sans transition-all">
 //                   <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-6 text-[11px]">
                     
 //                     {/* Col 1: Must Haves */}
 //                     <div>
-//                       <h4 className="font-bold text-[#1B3B2B] mb-3 text-xs border-b pb-1 border-gray-100">
+//                       <h4 className="font-bold text-botanical mb-3 text-xs border-b pb-1 border-gray-100">
 //                         Must Haves
 //                       </h4>
 //                       <ul className="space-y-1.5">
 //                         {BIRTHDAY_MEGA_MENU.mustHaves.map((sub) => (
 //                           <li key={sub}>
-//                             <a href="#" className="hover:text-[#C86D51] transition-colors">
+//                             <a href="#" className="hover:text-rose transition-colors">
 //                               {sub}
 //                             </a>
 //                           </li>
@@ -140,13 +140,13 @@
 
 //                     {/* Col 2: Prime Picks */}
 //                     <div>
-//                       <h4 className="font-bold text-[#1B3B2B] mb-3 text-xs border-b pb-1 border-gray-100">
+//                       <h4 className="font-bold text-botanical mb-3 text-xs border-b pb-1 border-gray-100">
 //                         Prime Picks
 //                       </h4>
 //                       <ul className="space-y-1.5">
 //                         {BIRTHDAY_MEGA_MENU.primePicks.map((sub) => (
 //                           <li key={sub.name} className="flex items-center gap-1.5">
-//                             <a href="#" className="hover:text-[#C86D51] transition-colors">
+//                             <a href="#" className="hover:text-rose transition-colors">
 //                               {sub.name}
 //                             </a>
 //                             {sub.isNew && (
@@ -161,13 +161,13 @@
 
 //                     {/* Col 3: Personal Picks */}
 //                     <div>
-//                       <h4 className="font-bold text-[#1B3B2B] mb-3 text-xs border-b pb-1 border-gray-100">
+//                       <h4 className="font-bold text-botanical mb-3 text-xs border-b pb-1 border-gray-100">
 //                         Personal Picks
 //                       </h4>
 //                       <ul className="space-y-1.5">
 //                         {BIRTHDAY_MEGA_MENU.personalPicks.map((sub) => (
 //                           <li key={sub}>
-//                             <a href="#" className="hover:text-[#C86D51] transition-colors">
+//                             <a href="#" className="hover:text-rose transition-colors">
 //                               {sub}
 //                             </a>
 //                           </li>
@@ -177,13 +177,13 @@
 
 //                     {/* Col 4: Birthday Gifts For */}
 //                     <div>
-//                       <h4 className="font-bold text-[#1B3B2B] mb-3 text-xs border-b pb-1 border-gray-100">
+//                       <h4 className="font-bold text-botanical mb-3 text-xs border-b pb-1 border-gray-100">
 //                         Birthday Gifts For
 //                       </h4>
 //                       <ul className="space-y-1.5">
 //                         {BIRTHDAY_MEGA_MENU.birthdayGiftsFor.map((sub) => (
 //                           <li key={sub}>
-//                             <a href="#" className="hover:text-[#C86D51] transition-colors">
+//                             <a href="#" className="hover:text-rose transition-colors">
 //                               {sub}
 //                             </a>
 //                           </li>
@@ -193,13 +193,13 @@
 
 //                     {/* Col 5: Age Perfect Gifts */}
 //                     <div>
-//                       <h4 className="font-bold text-[#1B3B2B] mb-3 text-xs border-b pb-1 border-gray-100">
+//                       <h4 className="font-bold text-botanical mb-3 text-xs border-b pb-1 border-gray-100">
 //                         Age Perfect Gifts
 //                       </h4>
 //                       <ul className="space-y-1.5">
 //                         {BIRTHDAY_MEGA_MENU.agePerfect.map((sub) => (
 //                           <li key={sub}>
-//                             <a href="#" className="hover:text-[#C86D51] transition-colors">
+//                             <a href="#" className="hover:text-rose transition-colors">
 //                               {sub}
 //                             </a>
 //                           </li>
@@ -209,13 +209,13 @@
 
 //                     {/* Col 6: Unique Gifting */}
 //                     <div>
-//                       <h4 className="font-bold text-[#1B3B2B] mb-3 text-xs border-b pb-1 border-gray-100">
+//                       <h4 className="font-bold text-botanical mb-3 text-xs border-b pb-1 border-gray-100">
 //                         Unique Gifting
 //                       </h4>
 //                       <ul className="space-y-1.5">
 //                         {BIRTHDAY_MEGA_MENU.uniqueGifting.map((sub) => (
 //                           <li key={sub}>
-//                             <a href="#" className="hover:text-[#C86D51] transition-colors">
+//                             <a href="#" className="hover:text-rose transition-colors">
 //                               {sub}
 //                             </a>
 //                           </li>
@@ -225,13 +225,13 @@
 
 //                     {/* Col 7: Price Wise Gifts */}
 //                     <div>
-//                       <h4 className="font-bold text-[#1B3B2B] mb-3 text-xs border-b pb-1 border-gray-100">
+//                       <h4 className="font-bold text-botanical mb-3 text-xs border-b pb-1 border-gray-100">
 //                         Price Wise Gifts
 //                       </h4>
 //                       <ul className="space-y-1.5">
 //                         {BIRTHDAY_MEGA_MENU.priceWise.map((sub) => (
 //                           <li key={sub}>
-//                             <a href="#" className="hover:text-[#C86D51] transition-colors">
+//                             <a href="#" className="hover:text-rose transition-colors">
 //                               {sub}
 //                             </a>
 //                           </li>
@@ -379,7 +379,7 @@ export default function CategoryNav() {
 
   const renderSection = (title: string, items: any[]) => (
     <div>
-      <h4 className="font-bold text-[#1B3B2B] mb-2 text-xs border-b pb-1 border-gray-100 uppercase tracking-wider">
+      <h4 className="font-bold text-botanical mb-2 text-xs border-b pb-1 border-gray-100 uppercase tracking-wider">
         {title}
       </h4>
       <ul className="space-y-1">
@@ -388,7 +388,7 @@ export default function CategoryNav() {
           const isNew = typeof sub === "object" && sub.isNew;
           return (
             <li key={name} className="flex items-center gap-1">
-              <a href="#" className="hover:text-[#C86D51] transition-colors">
+              <a href="#" className="hover:text-rose transition-colors">
                 {name}
               </a>
               {isNew && (
@@ -404,9 +404,9 @@ export default function CategoryNav() {
   );
 
   return (
-    <nav className="w-full bg-white border-b border-[#1B3B2B]/10 relative z-40 shadow-2xs">
+    <nav className="w-full bg-white border-b border-botanical/10 relative z-40 shadow-2xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-5 overflow-x-auto scrollbar-none py-2.5 text-xs font-semibold text-[#1B3B2B]">
+        <div className="flex items-center gap-5 overflow-x-auto scrollbar-none py-2.5 text-xs font-semibold text-botanical">
           {NAV_ITEMS.map((item) => (
             <div
               key={item.id}
@@ -416,8 +416,8 @@ export default function CategoryNav() {
             >
               <button
                 onClick={() => setActiveMenu(activeMenu === item.id ? null : item.id)}
-                className={`flex items-center gap-1 py-1 px-1 transition-colors hover:text-[#C86D51] ${
-                  activeMenu === item.id ? "text-[#C86D51] font-bold" : ""
+                className={`flex items-center gap-1 py-1 px-1 transition-colors hover:text-rose ${
+                  activeMenu === item.id ? "text-rose font-bold" : ""
                 }`}
               >
                 <span>{item.label}</span>
@@ -426,7 +426,7 @@ export default function CategoryNav() {
 
               {/* DYNAMIC FLYOUT MEGA MENU */}
               {activeMenu === item.id && (
-                                <div className="absolute left-0 right-0 top-full w-full bg-white/98 backdrop-blur-md shadow-2xl border-b border-[#1B3B2B]/10 py-6 px-4 sm:px-8 lg:px-16 z-50 text-gray-700 font-sans transition-all max-h-[80vh] overflow-y-auto">
+                                <div className="absolute left-0 right-0 top-full w-full bg-white/98 backdrop-blur-md shadow-2xl border-b border-botanical/10 py-6 px-4 sm:px-8 lg:px-16 z-50 text-gray-700 font-sans transition-all max-h-[80vh] overflow-y-auto">
                   <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-6 text-[11px]">
                     {Object.entries(item.data).map(([key, list]) => {
                       const title = key
