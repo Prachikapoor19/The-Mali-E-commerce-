@@ -410,7 +410,7 @@ export default function CategoryNav() {
           {NAV_ITEMS.map((item) => (
             <div
               key={item.id}
-              className="relative shrink-0"
+              className="shrink-0"
               onMouseEnter={() => setActiveMenu(item.id)}
               onMouseLeave={() => setActiveMenu(null)}
             >
@@ -426,7 +426,7 @@ export default function CategoryNav() {
 
               {/* DYNAMIC FLYOUT MEGA MENU */}
               {activeMenu === item.id && (
-                <div className="fixed left-0 right-0 top-[112px] w-full bg-white/98 backdrop-blur-md shadow-2xl border-b border-[#1B3B2B]/10 py-6 px-4 sm:px-8 lg:px-16 z-50 text-gray-700 font-sans transition-all max-h-[80vh] overflow-y-auto">
+                                <div className="absolute left-0 right-0 top-full w-full bg-white/98 backdrop-blur-md shadow-2xl border-b border-[#1B3B2B]/10 py-6 px-4 sm:px-8 lg:px-16 z-50 text-gray-700 font-sans transition-all max-h-[80vh] overflow-y-auto">
                   <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-6 text-[11px]">
                     {Object.entries(item.data).map(([key, list]) => {
                       const title = key

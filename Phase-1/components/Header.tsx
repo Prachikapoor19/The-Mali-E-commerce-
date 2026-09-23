@@ -142,6 +142,7 @@
 
 import React, { useState } from "react";
 import { useCart } from "./CartContext";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [isPincodeModalOpen, setIsPincodeModalOpen] = useState(false);
@@ -149,6 +150,8 @@ export default function Header() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [pincode, setPincode] = useState("226001");
   const { itemCount, openCart } = useCart();
+    const router = useRouter();
+    const [searchQuery, setSearchQuery] = useState("");
   const [selectedSlot, setSelectedSlot] = useState("Express 60-Minute");
   const [pincodeInput, setPincodeInput] = useState("226001");
 
@@ -209,15 +212,31 @@ export default function Header() {
             <span className="text-[9px] text-charcoal/40">▼</span>
           </button>
 
-          {/* Search Bar */}
+
+                    {/* Search Bar */}
           <div className="hidden md:flex flex-1 max-w-md relative">
             <input
               type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && searchQuery.trim()) {
+                  router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+                }
+              }}
               placeholder="Search flowers, cakes, plants, personalized gifts..."
               className="w-full py-2 pl-9 pr-4 text-xs rounded-full bg-white border border-[#1B3B2B]/20 focus:outline-none focus:border-[#1B3B2B] text-charcoal placeholder:text-charcoal/40 shadow-2xs"
             />
-            <span className="absolute left-3 top-2.5 text-xs text-charcoal/40">🔍</span>
+            <button
+              onClick={() => searchQuery.trim() && router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)}
+              className="absolute left-3 top-2.5 text-xs text-charcoal/40"
+              aria-label="Search"
+            >
+              🔍
+            </button>
           </div>
+
+
 
           {/* Actions */}
           <div className="flex items-center gap-2 sm:gap-4 text-[#1B3B2B] shrink-0">
