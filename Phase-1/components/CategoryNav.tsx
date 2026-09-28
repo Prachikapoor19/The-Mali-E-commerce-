@@ -1,4 +1,4 @@
-// "use client";
+﻿// "use client";
 
 // import React, { useState } from "react";
 
@@ -114,7 +114,7 @@
 //                 }`}
 //               >
 //                 <span>{item.label}</span>
-//                 <span className="text-[9px] opacity-60">▼</span>
+//                 <span className="text-[9px] opacity-60">â–¼</span>
 //               </button>
 
 //               {/* --- BIRTHDAY MEGA MENU FLYOUT --- */}
@@ -296,7 +296,7 @@ const CAKES_MEGA_MENU = {
   forOccasions: ["Birthday Cakes", "Boys Birthday Cakes", "Girls Birthday Cakes", "Kids Birthday Cakes", "Anniversary Cakes", "Engagement Cakes", "Wedding Cakes", "Congratulations Cakes", "Baby Shower Cakes"],
   byType: ["Bento Cakes", "Jar Cakes", "Cup Cakes", "Brownies", "Cream Cakes", "Fondant Cakes", "Eggless Cakes", "Photo Cakes", "Designer Cakes", "Fusion Cakes", "Healthy Cakes", "Dry Cakes", "Heart Shaped Cakes", "Luxe Cakes"],
   byFlavour: ["Chocolate Cakes", "Mango Cakes", "Fresh Fruit Cakes", "Butterscotch Cakes", "Truffle Cakes", "Red Velvet Cakes", "Pineapple Cakes", "Cheesecakes", "Black Forest Cakes", "Vanilla Cakes", "Blueberry Cakes", "Tiramisu Cakes", "Walnut Cakes", "Coffee Cakes", "Caramel Cakes"],
-  byTheme: ["Animal Cakes", "Barbie Cakes", "Unicorn Cakes"],
+  byTheme: ["Animal Cakes", "Princess Cakes", "Unicorn Cakes"],
   curatedCombos: ["Flowers n Cakes", "Cake Combos", "Cake with Plants", "Cake with Chocolates", "Cakes n Guitarist"],
   milestoneCakes: ["1st Birthday", "10th Birthday", "18th Birthday", "50th Birthday", "1st Anniversary", "25th Anniversary", "50th Anniversary"],
   byRecipient: ["Him", "Her", "Father", "Mother", "Husband", "Wife"],
@@ -324,7 +324,7 @@ const PLANTS_MEGA_MENU = {
 const CHOCOLATES_MEGA_MENU = {
   featured: ["All Chocolates", "Best Sellers", "Premium Gourmet Gifts", "Same Day Chocolates", "New Arrivals", "Premium Chocolates", "Gourmet Gifts", "Milk Chocolates", "Dark Chocolates", "Personalised Chocolates", "Sugar Free Chocolates", "Handmade Chocolates"],
   choices: ["Chocolate Bouquets", "Chocolate Hampers", "Chocolate Combos", "Flowers n Chocolates", "Imported Chocolates", "Dubai Chocolates"],
-  brands: ["Ferrero Rocher", "Cadbury", "Artisanal Chocolates", "FNP Premium Chocolates", "Lindt Chocolates", "Toblerone", "Hershey Chocolates", "Kitkat Chocolates"],
+  brands: ["Ferrero Rocher", "Cadbury", "Artisanal Chocolates", "The Mali Signature", "Lindt Chocolates", "Toblerone", "Hershey Chocolates", "Kitkat Chocolates"],
   byOccasions: ["Birthday", "Anniversary", "Thank You", "Wedding"],
   byPrices: ["Gifts Rs 500 - Rs 1000", "Gifts Rs 1000 - Rs 2000", "Gifts above Rs 2000"],
   byCities: ["Delhi NCR", "Bengaluru", "Mumbai", "Pune", "Hyderabad", "Kolkata", "Chennai", "Lucknow", "All Other Cities"],
@@ -421,7 +421,7 @@ export default function CategoryNav() {
                 }`}
               >
                 <span>{item.label}</span>
-                <span className="text-[9px] opacity-60">▼</span>
+                <span className="text-[9px] opacity-60">â–¼</span>
               </button>
 
               {/* DYNAMIC FLYOUT MEGA MENU */}
