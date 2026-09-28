@@ -47,7 +47,7 @@ export default function PersonalizationModal({ product, onClose, onSave }: Perso
               />
             </label>
             {imageName && (
-              <p className="text-[11px] font-bold text-emerald-600 mt-1">✓ Attached: {imageName}</p>
+              <p className="text-[11px] font-bold text-rose mt-1">✓ Attached: {imageName}</p>
             )}
           </div>
 

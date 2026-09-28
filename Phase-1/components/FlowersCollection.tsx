@@ -17,7 +17,7 @@ export default function FlowersCollection() {
       </h2>
 
       {/* Premium Floral Blush Tint Banner */}
-      <div className="w-full bg-[#FCEEEF] border border-[#FAD7DA] relative py-8 px-4 sm:px-8 rounded-3xl">
+      <div className="w-full bg-petal border border-petal-dark relative py-8 px-4 sm:px-8 rounded-3xl">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
           {flowerItems.map((item) => (
             <div key={item.name} className="flex flex-col items-center group">

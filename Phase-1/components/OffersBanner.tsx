@@ -1,9 +1,9 @@
 import React from "react";
 
 const offers = [
-  { provider: "HDFC Bank", title: "Flat 10% OFF", desc: "On orders above ₹999 | Code: HDFC10", bg: "bg-[#FFF8E7]", border: "border-[#FBE3B5]" },
-  { provider: "Mobikwik", title: "₹300 Cashback", desc: "Pay via Mobikwik wallet", bg: "bg-[#EBF5FF]", border: "border-[#C5E1FF]" },
-  { provider: "Paytm", title: "₹100 Cashback", desc: "Assured cashback on UPI", bg: "bg-[#FFF3F5]", border: "border-[#FFD0D8]" },
+  { provider: "HDFC Bank", title: "Flat 10% OFF", desc: "On orders above ₹999 | Code: HDFC10", bg: "bg-sand", border: "border-gold/30" },
+  { provider: "Mobikwik", title: "₹300 Cashback", desc: "Pay via Mobikwik wallet", bg: "bg-blush", border: "border-rose-light/60" },
+  { provider: "Paytm", title: "₹100 Cashback", desc: "Assured cashback on UPI", bg: "bg-petal", border: "border-petal-dark" },
 ];
 
 export default function OffersBanner() {

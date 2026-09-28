@@ -25,7 +25,7 @@
 // //       rating: "4.9 ★",
 // //       image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80",
 // //       badge: "Wifey Wants This",
-// //       tagColor: "bg-[#7A1C4B]",
+// //       tagColor: "bg-rose-dark",
 // //     },
 // //     {
 // //       id: "f2",
@@ -36,7 +36,7 @@
 // //       rating: "4.8 ★",
 // //       image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=400",
 // //       badge: "Wifey Wants This",
-// //       tagColor: "bg-[#7A1C4B]",
+// //       tagColor: "bg-rose-dark",
 // //     },
 // //     {
 // //       id: "f3",
@@ -58,7 +58,7 @@
 // //       rating: "4.9 ★",
 // //       image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=400",
 // //       badge: "Wifey Wants This",
-// //       tagColor: "bg-[#7A1C4B]",
+// //       tagColor: "bg-rose-dark",
 // //     },
 // //     {
 // //       id: "f5",
@@ -323,7 +323,7 @@
 // //             className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
 // //           >
 // //             <div>
-// //               <div className="relative w-full h-64 bg-[#F8F8F8] overflow-hidden flex items-center justify-center p-2">
+// //               <div className="relative w-full h-64 bg-sand overflow-hidden flex items-center justify-center p-2">
 // //                 <img
 // //                   src={item.image}
 // //                   alt={item.name}
@@ -351,7 +351,7 @@
 // //                   <span className="text-xs text-charcoal/40 line-through">
 // //                     {item.originalPrice}
 // //                   </span>
-// //                   <span className="text-[10px] font-bold text-emerald-600">
+// //                   <span className="text-[10px] font-bold text-rose">
 // //                     {item.discount}
 // //                   </span>
 // //                 </div>
@@ -398,7 +398,7 @@
 //       rating: "4.9 ★",
 //       image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80",
 //       badge: "Wifey Wants This",
-//       tagColor: "bg-[#7A1C4B]",
+//       tagColor: "bg-rose-dark",
 //     },
 //     {
 //       id: "f2",
@@ -409,7 +409,7 @@
 //       rating: "4.8 ★",
 //       image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=400",
 //       badge: "Wifey Wants This",
-//       tagColor: "bg-[#7A1C4B]",
+//       tagColor: "bg-rose-dark",
 //     },
 //     {
 //       id: "f3",
@@ -431,7 +431,7 @@
 //       rating: "4.9 ★",
 //       image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=400",
 //       badge: "Wifey Wants This",
-//       tagColor: "bg-[#7A1C4B]",
+//       tagColor: "bg-rose-dark",
 //     },
 //     {
 //       id: "f5",
@@ -696,7 +696,7 @@
 //             className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs hover:shadow-md transition-all flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"
 //           >
 //             <div>
-//               <div className="relative w-full h-52 sm:h-60 md:h-64 bg-[#F8F8F8] overflow-hidden flex items-center justify-center p-2">
+//               <div className="relative w-full h-52 sm:h-60 md:h-64 bg-sand overflow-hidden flex items-center justify-center p-2">
 //                 <img
 //                   src={item.image}
 //                   alt={item.name}
@@ -724,7 +724,7 @@
 //                   <span className="text-[10px] sm:text-xs text-charcoal/40 line-through">
 //                     {item.originalPrice}
 //                   </span>
-//                   <span className="text-[9px] sm:text-[10px] font-bold text-emerald-600">
+//                   <span className="text-[9px] sm:text-[10px] font-bold text-rose">
 //                     {item.discount}
 //                   </span>
 //                 </div>
@@ -779,10 +779,10 @@ interface Product {
 
 const bestsellersData: Record<string, Product[]> = {
   Flowers: [
-    { id: "f1", name: "The Classic Red Rose Delight", price: "₹549", originalPrice: "₹649", discount: "15% OFF", rating: "4.9 ★", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80", badge: "Wifey Wants This", tagColor: "bg-[#7A1C4B]" },
-    { id: "f2", name: "Hot Girl Bouquet", price: "₹899", originalPrice: "₹999", discount: "10% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/30891127/pexels-photo-30891127.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Wifey Wants This", tagColor: "bg-[#7A1C4B]" },
+    { id: "f1", name: "The Classic Red Rose Delight", price: "₹549", originalPrice: "₹649", discount: "15% OFF", rating: "4.9 ★", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80", badge: "Wifey Wants This", tagColor: "bg-rose-dark" },
+    { id: "f2", name: "Hot Girl Bouquet", price: "₹899", originalPrice: "₹999", discount: "10% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/30891127/pexels-photo-30891127.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Wifey Wants This", tagColor: "bg-rose-dark" },
     { id: "f3", name: "Blue Horizon Blooms", price: "₹2,199", originalPrice: "₹2,449", discount: "10% OFF", rating: "4.7 ★", image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Bestseller", tagColor: "bg-gold text-botanical" },
-    { id: "f4", name: "For My Better Half", price: "₹499", originalPrice: "₹599", discount: "16% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Wifey Wants This", tagColor: "bg-[#7A1C4B]" },
+    { id: "f4", name: "For My Better Half", price: "₹499", originalPrice: "₹599", discount: "16% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Wifey Wants This", tagColor: "bg-rose-dark" },
     { id: "f5", name: "Sunlit Charm Sunflower", price: "₹2,399", originalPrice: "₹2,799", discount: "14% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Bestseller", tagColor: "bg-gold text-botanical" },
   ],
   Cakes: [
@@ -877,7 +877,7 @@ export default function BestsellersSection() {
             className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs hover:shadow-md transition-all flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"
           >
             <div>
-              <div className="relative w-full h-52 sm:h-60 md:h-64 bg-[#F8F8F8] overflow-hidden flex items-center justify-center p-2">
+              <div className="relative w-full h-52 sm:h-60 md:h-64 bg-sand overflow-hidden flex items-center justify-center p-2">
                 <img
                   src={item.image}
                   alt={item.name}
@@ -899,7 +899,7 @@ export default function BestsellersSection() {
                 <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
                   <span className="font-bold text-xs sm:text-sm text-botanical">{item.price}</span>
                   <span className="text-[10px] sm:text-xs text-charcoal/40 line-through">{item.originalPrice}</span>
-                  <span className="text-[9px] sm:text-[10px] font-bold text-emerald-600">{item.discount}</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold text-rose">{item.discount}</span>
                 </div>
               </div>
             </div>

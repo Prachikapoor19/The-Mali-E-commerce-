@@ -1,10 +1,10 @@
 import React from "react";
 
 const categories = [
-  { title: "Fresh Flowers", subtitle: "Express delivery", image: "https://images.pexels.com/photos/56866/rose-rose-blooms-roses-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=400", bg: "bg-[#FDF5F2]" },
-  { title: "Yummy Cakes", subtitle: "Baked fresh daily", image: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=400", bg: "bg-[#FDF9F0]" },
-  { title: "Custom Gifts", subtitle: "Personalised for you", image: "https://images.pexels.com/photos/9451328/pexels-photo-9451328.jpeg?auto=compress&cs=tinysrgb&w=400", bg: "bg-[#F2F7FD]" },
-  { title: "Combos", subtitle: "Multiply the joy", image: "https://images.pexels.com/photos/34263114/pexels-photo-34263114.jpeg?auto=compress&cs=tinysrgb&w=400", bg: "bg-[#FFF5F7]" },
+  { title: "Fresh Flowers", subtitle: "Express delivery", image: "https://images.pexels.com/photos/56866/rose-rose-blooms-roses-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=400", bg: "bg-petal" },
+  { title: "Yummy Cakes", subtitle: "Baked fresh daily", image: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=400", bg: "bg-sand" },
+  { title: "Custom Gifts", subtitle: "Personalised for you", image: "https://images.pexels.com/photos/9451328/pexels-photo-9451328.jpeg?auto=compress&cs=tinysrgb&w=400", bg: "bg-blush" },
+  { title: "Combos", subtitle: "Multiply the joy", image: "https://images.pexels.com/photos/34263114/pexels-photo-34263114.jpeg?auto=compress&cs=tinysrgb&w=400", bg: "bg-petal" },
 ];
 
 export default function CategoryGrid() {

@@ -72,7 +72,7 @@
 //           <div className="flex items-center gap-2 sm:gap-4 text-botanical shrink-0">
 //             <button
 //               onClick={() => setIsGiftFinderOpen(true)}
-//               className="hidden lg:flex items-center gap-1 px-3 py-1.5 bg-[#FFF0F3] border border-[#FAD7DA] rounded-full text-xs font-bold text-rose hover:bg-rose hover:text-white transition-all shadow-2xs"
+//               className="hidden lg:flex items-center gap-1 px-3 py-1.5 bg-petal border border-petal-dark rounded-full text-xs font-bold text-rose hover:bg-rose hover:text-white transition-all shadow-2xs"
 //             >
 //               <span>✨</span>
 //               <span>Gift Finder</span>
@@ -192,7 +192,7 @@
 //               {/* Luxury Subtitle Line */}
 //               <span
 //                 style={{ fontFamily: "'Cinzel', serif" }}
-//                 className="text-[7.5px] sm:text-[9px] text-[#8C6D3B] uppercase tracking-[0.22em] block font-semibold mt-1.5 leading-tight"
+//                 className="text-[7.5px] sm:text-[9px] text-gold-dark uppercase tracking-[0.22em] block font-semibold mt-1.5 leading-tight"
 //               >
 //                 WE DELIVER YOU LUXURY. WE EMBELLISH YOUR JUBILANT.
 //               </span>
@@ -243,7 +243,7 @@
 //           <div className="flex items-center gap-2 sm:gap-4 text-botanical shrink-0">
 //             <button
 //               onClick={() => setIsGiftFinderOpen(true)}
-//               className="hidden lg:flex items-center gap-1 px-3 py-1.5 bg-[#FFF0F3] border border-[#FAD7DA] rounded-full text-xs font-bold text-rose hover:bg-rose hover:text-white transition-all shadow-2xs"
+//               className="hidden lg:flex items-center gap-1 px-3 py-1.5 bg-petal border border-petal-dark rounded-full text-xs font-bold text-rose hover:bg-rose hover:text-white transition-all shadow-2xs"
 //             >
 //               <span>✨</span>
 //               <span>Gift Finder</span>
@@ -451,7 +451,7 @@ export default function Header() {
               <span className="font-bold text-xl sm:text-2xl md:text-3xl tracking-[0.25em] text-botanical uppercase leading-none block">
                 THE MALI
               </span>
-              <span className="text-[7.5px] sm:text-[9px] text-[#8C6D3B] uppercase tracking-[0.22em] block font-semibold mt-1.5 leading-tight">
+              <span className="text-[7.5px] sm:text-[9px] text-gold-dark uppercase tracking-[0.22em] block font-semibold mt-1.5 leading-tight">
                 WE DELIVER YOU LUXURY. WE EMBELLISH YOUR JUBILANT.
               </span>
             </div>

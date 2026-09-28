@@ -4,27 +4,27 @@ const feelings = [
   {
     label: "Love & Romance",
     image: "https://images.pexels.com/photos/56866/rose-rose-blooms-roses-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#FDE2E4]", // Soft Pink
+    bg: "bg-petal", // Soft Pink
   },
   {
     label: "Thinking of You",
     image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#E2E2F5]", // Lavender
+    bg: "bg-blush", // Lavender
   },
   {
     label: "Miss You",
     image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#FFE5D9]", // Soft Peach
+    bg: "bg-petal", // Soft Peach
   },
   {
     label: "I am Sorry",
     image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#E8F0E6]", // Sage Mint
+    bg: "bg-blush", // Sage Mint
   },
   {
     label: "Sympathy",
     image: "https://images.pexels.com/photos/1158783/pexels-photo-1158783.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#F5EBE0]", // Warm Beige
+    bg: "bg-sand", // Warm Beige
   },
 ];
 

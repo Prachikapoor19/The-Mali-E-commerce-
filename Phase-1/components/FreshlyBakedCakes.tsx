@@ -10,7 +10,7 @@
 
 // export default function FreshlyBakedCakes() {
 //   return (
-//     <section className="w-full bg-[#FDF0E3] py-8 px-4 sm:px-6 lg:px-10 xl:px-14 my-6">
+//     <section className="w-full bg-sand py-8 px-4 sm:px-6 lg:px-10 xl:px-14 my-6">
 //       <div className="mb-6 flex items-center justify-between">
 //         <div>
 //           <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical">
@@ -29,7 +29,7 @@
 //         {cakeItems.map((item) => (
 //           <div key={item.name} className="bg-white rounded-2xl overflow-hidden p-2.5 border border-rose-light/20 shadow-xs flex flex-col justify-between group">
 //             <div>
-//               <div className="w-full h-56 rounded-xl overflow-hidden bg-[#F8F8F8] mb-3">
+//               <div className="w-full h-56 rounded-xl overflow-hidden bg-sand mb-3">
 //                 <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
 //               </div>
 //               <div className="text-center pb-2">
@@ -63,7 +63,7 @@ const cakeItems = [
 
 export default function FreshlyBakedCakes() {
   return (
-    <section className="w-full bg-[#FDF0E3] py-8 px-4 sm:px-6 lg:px-10 xl:px-14 my-6">
+    <section className="w-full bg-sand py-8 px-4 sm:px-6 lg:px-10 xl:px-14 my-6">
       <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical mb-6">
         Freshly Baked Cakes
       </h2>

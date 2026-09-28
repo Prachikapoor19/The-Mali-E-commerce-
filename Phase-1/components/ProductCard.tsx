@@ -45,7 +45,7 @@ export default function ProductCard({
         {/* Content Section */}
         <div className="p-3">
           <div className="flex items-center justify-between text-[11px] mb-1">
-            <span className="bg-emerald-100 text-emerald-800 font-semibold px-1.5 py-0.5 rounded">
+            <span className="bg-blush text-rose-dark font-semibold px-1.5 py-0.5 rounded">
               {rating}
             </span>
           </div>

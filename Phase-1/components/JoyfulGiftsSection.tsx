@@ -4,27 +4,27 @@ const categoryItems = [
   {
     title: "Flowers",
     image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80",
-    bg: "bg-[#FFF8E7]",
+    bg: "bg-sand",
   },
   {
     title: "Cakes",
     image: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#FDF0E3]",
+    bg: "bg-sand",
   },
   {
     title: "Personalised",
     image: "https://images.pexels.com/photos/9451803/pexels-photo-9451803.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#FFF0F3]",
+    bg: "bg-petal",
   },
   {
     title: "Plants",
     image: "https://images.pexels.com/photos/305821/pexels-photo-305821.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#EAF0E4]",
+    bg: "bg-blush",
   },
   {
     title: "Hampers",
     image: "https://images.pexels.com/photos/264771/pexels-photo-264771.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#E2E2F5]",
+    bg: "bg-blush",
   },
 ];
 
@@ -32,7 +32,7 @@ export default function JoyfulGiftsSection() {
   return (
     <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6 my-4">
       {/* Top Gradient Promo Banner */}
-      <div className="w-full rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#FF7B54] via-[#FFB26B] to-[#FF8E9E] p-6 sm:p-8 flex items-center justify-between shadow-xs overflow-hidden relative mb-6 text-white">
+      <div className="w-full rounded-2xl sm:rounded-3xl bg-gradient-to-r from-rose-dark via-rose to-botanical-light p-6 sm:p-8 flex items-center justify-between shadow-xs overflow-hidden relative mb-6 text-white">
         <div className="z-10 max-w-md">
           <h2 className="font-display text-2xl sm:text-4xl font-extrabold tracking-tight drop-shadow-xs">
             Joyful Gifts To <br />

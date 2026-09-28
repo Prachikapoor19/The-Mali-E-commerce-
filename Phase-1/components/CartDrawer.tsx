@@ -96,7 +96,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, on
                 <span>₹{subtotal}</span>
               </div>
               {discount > 0 && (
-                <div className="flex justify-between text-emerald-600 font-bold">
+                <div className="flex justify-between text-rose font-bold">
                   <span>Coupon Discount</span>
                   <span>-₹{discount}</span>
                 </div>

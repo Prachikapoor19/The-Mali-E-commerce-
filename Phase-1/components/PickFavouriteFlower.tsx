@@ -36,7 +36,7 @@ export default function PickFavouriteFlower() {
         {flowerItems.map((item) => (
           <a key={item.name} href="#" className="flex flex-col items-center group">
             {/* Tall Vertical Portrait Studio Frame */}
-            <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden bg-[#F5EBE0]/60 p-2 border border-black/5 shadow-2xs group-hover:shadow-md transition-all">
+            <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden bg-sand/60 p-2 border border-black/5 shadow-2xs group-hover:shadow-md transition-all">
               <img
                 src={item.image}
                 alt={item.name}

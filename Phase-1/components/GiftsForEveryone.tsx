@@ -37,7 +37,7 @@
 //               className="group flex flex-col items-center shrink-0 w-36 sm:w-40"
 //             >
 //               {/* Soft Pink Tint Illustration Container */}
-//               <div className="w-full h-28 rounded-2xl bg-gradient-to-br from-[#FFF0F3] to-[#FCEEEF] border border-[#FAD7DA]/60 p-2 overflow-hidden flex items-end justify-center relative shadow-2xs transition-all">
+//               <div className="w-full h-28 rounded-2xl bg-gradient-to-br from-[#FFF0F3] to-[#FCEEEF] border border-petal-dark/60 p-2 overflow-hidden flex items-end justify-center relative shadow-2xs transition-all">
 //                 <img
 //                   src={item.image}
 //                   alt={item.label}
@@ -120,7 +120,7 @@ export default function GiftsForEveryone() {
               className="group/card flex flex-col items-center w-full snap-start"
             >
               {/* Card Frame with Soft Pink/Peach Backdrop */}
-              <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-[#FFF0F3] via-[#FCEEEF] to-[#FAD7DA]/40 border border-[#FAD7DA]/60 p-2 overflow-hidden flex items-end justify-center shadow-2xs group-hover/card:shadow-md transition-all">
+              <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-petal via-ivory to-blush border border-petal-dark/60 p-2 overflow-hidden flex items-end justify-center shadow-2xs group-hover/card:shadow-md transition-all">
                 <img
                   src={item.image}
                   alt={item.label}

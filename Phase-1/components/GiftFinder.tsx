@@ -9,7 +9,7 @@ export default function GiftFinder() {
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-4 my-2">
-      <div className="bg-[#FAF8F5] border border-rose-light/30 rounded-2xl p-4 sm:p-5 shadow-2xs">
+      <div className="bg-sand border border-rose-light/30 rounded-2xl p-4 sm:p-5 shadow-2xs">
         <div className="flex items-center gap-2 mb-3">
           <span className="text-rose text-base">✨</span>
           <h2 className="font-display font-bold text-sm sm:text-base text-botanical">

@@ -11,6 +11,10 @@
   --color-charcoal: #2B2A20;
   --color-gold: #C9A15A;
   --color-sage: #829B88;
+  --color-petal: #F7ECE8;
+  --color-petal-dark: #E9D3CB;
+  --color-sand: #F6EFE2;
+  --color-gold-dark: #8C6D3B;
 
   --font-display: var(--font-fraunces), serif;
   --font-sans: var(--font-manrope), sans-serif;
@@ -60,4 +64,18 @@ img {
 .lift-on-hover:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px -8px rgba(31, 46, 32, 0.18);
+}
+
+/* Slim themed scrollbar on the main page */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sage) transparent;
+}
+html::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: var(--color-sage);
+  border-radius: 8px;
 }

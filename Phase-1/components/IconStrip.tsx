@@ -143,7 +143,7 @@ import React from 'react';
 
 function IconWrap({ children }: { children: React.ReactNode }) {
   return (
-    <span className="w-11 h-11 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-full bg-[#EAF0E4] border border-botanical/10 flex items-center justify-center group-hover:bg-botanical transition-all duration-300 shadow-2xs group-hover:shadow-md">
+    <span className="w-11 h-11 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-full bg-blush border border-botanical/10 flex items-center justify-center group-hover:bg-botanical transition-all duration-300 shadow-2xs group-hover:shadow-md">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

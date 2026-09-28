@@ -29,7 +29,7 @@
 // //     title: 'Festive Special',
 // //     label: 'DECOR AVAILABLE',
 // //     date: '14TH-25TH SEP',
-// //     bg: 'bg-[#FDF0E3]',
+// //     bg: 'bg-sand',
 // //     accent: 'text-gold',
 // //     img: 'https://images.unsplash.com/photo-1487070183336-b863922373d4?w=300&h=300&fit=crop',
 // //   },
@@ -121,7 +121,7 @@
 //     title: 'Festive Special',
 //     label: 'DECOR AVAILABLE',
 //     date: '14TH-25TH SEP',
-//     bg: 'bg-[#FDF0E3]',
+//     bg: 'bg-sand',
 //     accent: 'text-gold',
 //     img: 'https://images.unsplash.com/photo-1487070183336-b863922373d4?w=300&h=300&fit=crop',
 //   },
@@ -253,7 +253,7 @@ const allOccasionCards = [
     tag: "11TH OCT",
     image:
       "https://images.pexels.com/photos/35124359/pexels-photo-35124359.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#FDE2E4]",
+    bg: "bg-petal",
   },
   {
     id: "karwachauth",
@@ -261,7 +261,7 @@ const allOccasionCards = [
     tag: "29TH OCT",
     image:
       "https://images.pexels.com/photos/13831901/pexels-photo-13831901.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#E2E2F5]",
+    bg: "bg-blush",
   },
   {
     id: "diwali",
@@ -270,49 +270,49 @@ const allOccasionCards = [
     subTag: "DECOR AVAILABLE",
     image:
       "https://images.pexels.com/photos/815580/pexels-photo-815580.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#FFF3B0]",
+    bg: "bg-sand",
   },
   {
     id: "anniversary",
     title: "Anniversary Romance",
     image:
       "https://images.pexels.com/photos/264771/pexels-photo-264771.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#FFCCD5]",
+    bg: "bg-petal",
   },
   {
     id: "congrats",
     title: "Congratulations",
     image:
       "https://images.pexels.com/photos/1194036/pexels-photo-1194036.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#E0F2FE]",
+    bg: "bg-blush",
   },
   {
     id: "thankyou",
     title: "Thank You Surprises",
     image:
       "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#EAF0E4]",
+    bg: "bg-blush",
   },
   {
     id: "housewarming",
     title: "Housewarming Plants",
     image:
       "https://images.pexels.com/photos/305821/pexels-photo-305821.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#E8F5E9]",
+    bg: "bg-blush",
   },
   {
     id: "love",
     title: "Love & Romance",
     image:
       "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#FCE4EC]",
+    bg: "bg-petal",
   },
   {
     id: "sorry",
     title: "I Am Sorry Gifts",
     image:
       "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=500",
-    bg: "bg-[#FFF8E1]",
+    bg: "bg-sand",
   },
 ];
 
@@ -394,7 +394,7 @@ export default function OccasionStrip() {
                   </div>
 
                   <div>
-                    <span className="text-[9px] font-bold text-amber-300 uppercase tracking-widest block mb-0.5">
+                    <span className="text-[9px] font-bold text-gold uppercase tracking-widest block mb-0.5">
                       {slide.subTag}
                     </span>
                     <h3 className="font-display font-bold text-base sm:text-lg leading-tight flex items-center justify-between text-white">
