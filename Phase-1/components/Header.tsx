@@ -49,7 +49,7 @@
 //             onClick={() => setIsPincodeModalOpen(true)}
 //             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-rose-light/30 text-xs font-medium text-botanical hover:border-botanical transition-all shadow-2xs shrink-0"
 //           >
-//             <span className="text-rose text-sm">📍</span>
+//             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-4 h-4 text-rose"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
 //             <div className="text-left leading-tight hidden sm:block">
 //               <span className="text-[10px] text-charcoal/60 block">Deliver to</span>
 //               <strong className="text-xs font-bold text-botanical">{pincode} • {selectedSlot.split(" ")[0]}</strong>
@@ -65,7 +65,7 @@
 //               placeholder="Search flowers, cakes, plants, personalized gifts..."
 //               className="w-full py-2 pl-9 pr-4 text-xs rounded-full bg-white border border-rose-light/40 focus:outline-none focus:border-botanical text-charcoal placeholder:text-charcoal/40 shadow-2xs"
 //             />
-//             <span className="absolute left-3 top-2.5 text-xs text-charcoal/40">🔍</span>
+//             <span className="absolute left-3 top-2.5 text-xs text-charcoal/40"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-3.5 h-3.5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg></span>
 //           </div>
 
 //           {/* Actions */}
@@ -79,19 +79,19 @@
 //             </button>
 
 //             <button className="p-1.5 rounded-full hover:bg-blush transition-colors relative" title="Wishlist">
-//               <span className="text-lg">🤍</span>
+//               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
 //             </button>
 
 //             <button
 //               onClick={() => setIsAuthModalOpen(true)}
 //               className="flex items-center gap-1 text-xs font-semibold hover:text-rose transition-colors"
 //             >
-//               <span className="text-base">👤</span>
+//               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><circle cx="12" cy="8" r="4" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
 //               <span className="hidden sm:inline">Login / Register</span>
 //             </button>
 
 //             <button className="relative flex items-center gap-1.5 px-3 py-1.5 bg-botanical text-ivory rounded-full text-xs font-semibold hover:bg-botanical-light transition-all shadow-xs">
-//               <span className="text-sm">🛒</span>
+//               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-4 h-4"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
 //               <span className="hidden sm:inline">Cart</span>
 //               <span className="bg-rose text-ivory text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
 //                 0
@@ -108,7 +108,7 @@
 //               placeholder="Search flowers, cakes, gifts..."
 //               className="w-full py-1.5 pl-8 pr-3 text-xs rounded-full bg-white border border-rose-light/40 focus:outline-none focus:border-botanical text-charcoal placeholder:text-charcoal/40 shadow-2xs"
 //             />
-//             <span className="absolute left-2.5 top-2 text-xs text-charcoal/40">🔍</span>
+//             <span className="absolute left-2.5 top-2 text-xs text-charcoal/40"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-3.5 h-3.5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg></span>
 //           </div>
 //         </div>
 //       </header>
@@ -204,7 +204,7 @@
 //             onClick={() => setIsPincodeModalOpen(true)}
 //             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-botanical/15 text-xs font-medium text-botanical hover:border-botanical transition-all shadow-2xs shrink-0"
 //           >
-//             <span className="text-rose text-sm">📍</span>
+//             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-4 h-4 text-rose"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
 //             <div className="text-left leading-tight hidden sm:block">
 //               <span className="text-[10px] text-charcoal/60 block">Deliver to</span>
 //               <strong className="text-xs font-bold text-botanical">{pincode} • {selectedSlot.split(" ")[0]}</strong>
@@ -233,7 +233,7 @@
 //               className="absolute left-3 top-2.5 text-xs text-charcoal/40"
 //               aria-label="Search"
 //             >
-//               🔍
+//               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-3.5 h-3.5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
 //             </button>
 //           </div>
 
@@ -250,14 +250,14 @@
 //             </button>
 
 //             <button className="p-1.5 rounded-full hover:bg-blush transition-colors relative" title="Wishlist">
-//               <span className="text-lg">🤍</span>
+//               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
 //             </button>
 
 //             <button
 //               onClick={() => setIsAuthModalOpen(true)}
 //               className="flex items-center gap-1 text-xs font-semibold hover:text-rose transition-colors"
 //             >
-//               <span className="text-base">👤</span>
+//               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><circle cx="12" cy="8" r="4" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
 //               <span className="hidden sm:inline">Login / Register</span>
 //             </button>
 
@@ -265,7 +265,7 @@
 //               onClick={openCart}
 //               className="relative flex items-center gap-1.5 px-3 py-1.5 bg-botanical text-ivory rounded-full text-xs font-semibold hover:bg-botanical-light transition-all shadow-xs"
 //             >
-//               <span className="text-sm">🛒</span>
+//               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-4 h-4"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
 //               <span className="hidden sm:inline">Cart</span>
 //               <span className="bg-rose text-ivory text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
 //                 {itemCount}
@@ -282,7 +282,7 @@
 //               placeholder="Search flowers, cakes, gifts..."
 //               className="w-full py-1.5 pl-8 pr-3 text-xs rounded-full bg-white border border-botanical/20 focus:outline-none focus:border-botanical text-charcoal placeholder:text-charcoal/40 shadow-2xs"
 //             />
-//             <span className="absolute left-2.5 top-2 text-xs text-charcoal/40">🔍</span>
+//             <span className="absolute left-2.5 top-2 text-xs text-charcoal/40"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-3.5 h-3.5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg></span>
 //           </div>
 //         </div>
 //       </header>
@@ -462,7 +462,7 @@ export default function Header() {
             onClick={openPincodeModal}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-botanical/15 text-xs font-medium text-botanical hover:border-botanical transition-all shadow-2xs shrink-0"
           >
-            <span className="text-rose text-sm">📍</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-4 h-4 text-rose"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
             <div className="text-left leading-tight hidden sm:block">
               <span className="text-[10px] text-charcoal/60 block">Deliver to</span>
               <strong className="text-xs font-bold text-botanical">
@@ -484,7 +484,7 @@ export default function Header() {
               className="w-full py-2 pl-9 pr-4 text-xs rounded-full bg-white border border-botanical/20 focus:outline-none focus:border-botanical text-charcoal placeholder:text-charcoal/40 shadow-2xs"
             />
             <button onClick={runSearch} className="absolute left-3 top-2.5 text-xs text-charcoal/40" aria-label="Search">
-              🔍
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-3.5 h-3.5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
             </button>
           </div>
 
@@ -499,14 +499,14 @@ export default function Header() {
             </button>
 
             <button className="p-1.5 rounded-full hover:bg-blush transition-colors relative" title="Wishlist" aria-label="Wishlist">
-              <span className="text-lg">🤍</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
             </button>
 
             <button
               onClick={() => setIsAuthModalOpen(true)}
               className="flex items-center gap-1 text-xs font-semibold hover:text-rose transition-colors"
             >
-              <span className="text-base">👤</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><circle cx="12" cy="8" r="4" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
               <span className="hidden sm:inline">Login / Register</span>
             </button>
 
@@ -514,7 +514,7 @@ export default function Header() {
               onClick={openCart}
               className="relative flex items-center gap-1.5 px-3 py-1.5 bg-botanical text-ivory rounded-full text-xs font-semibold hover:bg-botanical-light transition-all shadow-xs"
             >
-              <span className="text-sm">🛒</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-4 h-4"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
               <span className="hidden sm:inline">Cart</span>
               <span className="bg-rose text-ivory text-[10px] font-bold rounded-full h-4 min-w-4 px-1 flex items-center justify-center">
                 {itemCount}
@@ -536,7 +536,7 @@ export default function Header() {
               className="w-full py-1.5 pl-8 pr-3 text-xs rounded-full bg-white border border-botanical/20 focus:outline-none focus:border-botanical text-charcoal placeholder:text-charcoal/40 shadow-2xs"
             />
             <button onClick={runSearch} className="absolute left-2.5 top-2 text-xs text-charcoal/40" aria-label="Search">
-              🔍
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-3.5 h-3.5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
             </button>
           </div>
         </div>

@@ -4,8 +4,8 @@ const brands = ["Cadbury", "Mothercare", "Carlton London", "Wild Stone"];
 
 export default function BrandsSection() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8 border-t border-rose-light/20 bg-white/50 my-6">
-      <h2 className="font-display text-lg sm:text-xl font-bold text-botanical mb-6 text-center">
+    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8 sm:py-10 border-t border-rose-light/20 bg-white/50">
+      <h2 className="section-title section-title-center mb-6">
         Trusted Premium Brands
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

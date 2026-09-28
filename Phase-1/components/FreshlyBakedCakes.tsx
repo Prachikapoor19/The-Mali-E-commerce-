@@ -10,10 +10,10 @@
 
 // export default function FreshlyBakedCakes() {
 //   return (
-//     <section className="w-full bg-sand py-8 px-4 sm:px-6 lg:px-10 xl:px-14 my-6">
+//     <section className="w-full bg-sand py-8 sm:py-10 px-4 sm:px-6 lg:px-10 xl:px-14">
 //       <div className="mb-6 flex items-center justify-between">
 //         <div>
-//           <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical">
+//           <h2 className="section-title">
 //             Freshly Baked Cakes
 //           </h2>
 //           <p className="text-xs sm:text-sm text-charcoal/70 mt-1">
@@ -63,8 +63,8 @@ const cakeItems = [
 
 export default function FreshlyBakedCakes() {
   return (
-    <section className="w-full bg-sand py-8 px-4 sm:px-6 lg:px-10 xl:px-14 my-6">
-      <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical mb-6">
+    <section className="w-full bg-sand py-8 sm:py-10 px-4 sm:px-6 lg:px-10 xl:px-14">
+      <h2 className="section-title mb-6">
         Freshly Baked Cakes
       </h2>
 

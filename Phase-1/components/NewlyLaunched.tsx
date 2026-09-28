@@ -35,9 +35,9 @@ const launches = [
 
 export default function NewlyLaunched() {
   return (
-    <section className="w-full bg-blush py-8">
+    <section className="w-full bg-blush py-8 sm:py-10">
       <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14">
-        <h2 className="font-display text-xl md:text-2xl font-semibold text-charcoal mb-5">
+        <h2 className="section-title mb-5">
           Newly Launched
         </h2>
 

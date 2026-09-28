@@ -25,9 +25,9 @@ const flowerItems = [
 
 export default function PickFavouriteFlower() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8 my-4">
+    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8 sm:py-10">
       {/* Title */}
-      <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical mb-6">
+      <h2 className="section-title mb-6">
         Pick their favourite Flower
       </h2>
 

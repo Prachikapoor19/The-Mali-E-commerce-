@@ -30,10 +30,10 @@ const feelings = [
 
 export default function GiftsForFeeling() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8">
+    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8 sm:py-10">
       {/* Title & Subtitle */}
       <div className="mb-6">
-        <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical">
+        <h2 className="section-title">
           Gifts for Every Feeling
         </h2>
         <p className="text-xs sm:text-sm text-charcoal/70 mt-1">

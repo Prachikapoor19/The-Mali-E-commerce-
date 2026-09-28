@@ -54,7 +54,7 @@
 // // export default function OccasionStrip() {
 // //   return (
 // //     <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6">
-// //       <h2 className="font-display text-xl md:text-2xl font-semibold text-charcoal mb-4">
+// //       <h2 className="section-title mb-4">
 // //         Gifts For Every Occasion
 // //       </h2>
 // //       <div className="flex gap-3 md:gap-4 overflow-x-auto pb-2">
@@ -157,7 +157,7 @@
 
 //   return (
 //     <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6">
-//       <h2 className="font-display text-xl md:text-2xl font-semibold text-charcoal mb-4">
+//       <h2 className="section-title mb-4">
 //         Gifts For Every Occasion
 //       </h2>
 
@@ -346,7 +346,7 @@ export default function OccasionStrip() {
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6 relative">
-      <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical mb-4">
+      <h2 className="section-title mb-4">
         Gifts For Every Occasion
       </h2>
 

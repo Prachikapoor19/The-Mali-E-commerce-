@@ -23,7 +23,7 @@ export default function ProductCard({
   badge,
 }: ProductCardProps) {
   return (
-    <div className="group bg-white rounded-xl overflow-hidden border border-rose-light/20 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+    <div className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between">
       <div>
         {/* Image Container with Badges */}
         <div className="relative w-full h-44 bg-blush/20 overflow-hidden">

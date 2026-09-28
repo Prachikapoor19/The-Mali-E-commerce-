@@ -286,7 +286,7 @@
 // //     <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8">
 // //       {/* Section Title & Subtitle */}
 // //       <div className="mb-4">
-// //         <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical">
+// //         <h2 className="section-title">
 // //           Shop By Bestsellers
 // //         </h2>
 // //         <p className="text-xs sm:text-sm text-charcoal/70 mt-1">
@@ -657,10 +657,10 @@
 //   const categories = ["Flowers", "Cakes", "Personalised", "Hampers", "Chocolates"];
 
 //   return (
-//     <section className="w-full px-3 sm:px-6 lg:px-10 xl:px-14 py-6 sm:py-8">
+//     <section className="w-full px-3 sm:px-6 lg:px-10 xl:px-14 py-8 sm:py-10">
 //       {/* Title */}
 //       <div className="mb-4">
-//         <h2 className="font-display text-lg sm:text-2xl font-bold text-botanical">
+//         <h2 className="section-title">
 //           Shop By Bestsellers
 //         </h2>
 //         <p className="text-xs sm:text-sm text-charcoal/70 mt-0.5">
@@ -693,7 +693,7 @@
 //                 {bestsellersData[activeTab]?.map((item) => (
 //           <div
 //             key={item.id}
-//             className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs hover:shadow-md transition-all flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"
+//             className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"
 //           >
 //             <div>
 //               <div className="relative w-full h-52 sm:h-60 md:h-64 bg-sand overflow-hidden flex items-center justify-center p-2">
@@ -751,7 +751,7 @@
 //       </div>
 
 //       <div className="mt-6 sm:mt-8 text-center">
-//         <button className="px-5 sm:px-6 py-2 border border-rose-light/60 text-botanical rounded-xl text-xs font-semibold hover:bg-rose hover:text-ivory transition-colors">
+//         <button className="px-5 sm:px-6 py-2 border border-rose-light/60 text-botanical rounded-full text-xs font-semibold hover:bg-rose hover:text-ivory transition-colors">
 //           View All {activeTab} &gt;
 //         </button>
 //       </div>
@@ -843,9 +843,9 @@ export default function BestsellersSection() {
   };
 
   return (
-    <section className="w-full px-3 sm:px-6 lg:px-10 xl:px-14 py-6 sm:py-8">
+    <section className="w-full px-3 sm:px-6 lg:px-10 xl:px-14 py-8 sm:py-10">
       <div className="mb-4">
-        <h2 className="font-display text-lg sm:text-2xl font-bold text-botanical">
+        <h2 className="section-title">
           Shop By Bestsellers
         </h2>
         <p className="text-xs sm:text-sm text-charcoal/70 mt-0.5">
@@ -874,7 +874,7 @@ export default function BestsellersSection() {
         {bestsellersData[activeTab]?.map((item) => (
           <div
             key={item.id}
-            className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs hover:shadow-md transition-all flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"
+            className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"
           >
             <div>
               <div className="relative w-full h-52 sm:h-60 md:h-64 bg-sand overflow-hidden flex items-center justify-center p-2">
@@ -907,7 +907,7 @@ export default function BestsellersSection() {
             <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3">
               <button
                 onClick={() => handleAction(item)}
-                className={`w-full text-[10px] sm:text-xs font-semibold py-1.5 rounded-lg transition-colors ${
+                className={`w-full text-[10px] sm:text-xs font-semibold py-2 rounded-full transition-colors ${
                   item.isPersonalised
                     ? "bg-botanical text-ivory hover:bg-botanical-light"
                     : "bg-rose text-ivory hover:bg-rose-dark"
@@ -921,7 +921,7 @@ export default function BestsellersSection() {
       </div>
 
       <div className="mt-6 sm:mt-8 text-center">
-        <button className="px-5 sm:px-6 py-2 border border-rose-light/60 text-botanical rounded-xl text-xs font-semibold hover:bg-rose hover:text-ivory transition-colors">
+        <button className="px-5 sm:px-6 py-2 border border-rose-light/60 text-botanical rounded-full text-xs font-semibold hover:bg-rose hover:text-ivory transition-colors">
           View All {activeTab} &gt;
         </button>
       </div>

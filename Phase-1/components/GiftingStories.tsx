@@ -11,7 +11,7 @@ const stories = [
 export default function GiftingStories() {
   return (
     <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6">
-      <h2 className="font-display text-xl md:text-2xl font-semibold text-charcoal mb-4">
+      <h2 className="section-title mb-4">
         Joyful Gifting Stories
       </h2>
 

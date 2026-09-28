@@ -30,7 +30,7 @@ const categoryItems = [
 
 export default function JoyfulGiftsSection() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6 my-4">
+    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8 sm:py-10">
       {/* Top Gradient Promo Banner */}
       <div className="w-full rounded-2xl sm:rounded-3xl bg-gradient-to-r from-rose-dark via-rose to-botanical-light p-6 sm:p-8 flex items-center justify-between shadow-xs overflow-hidden relative mb-6 text-white">
         <div className="z-10 max-w-md">

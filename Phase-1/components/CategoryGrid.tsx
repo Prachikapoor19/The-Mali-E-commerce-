@@ -9,9 +9,9 @@ const categories = [
 
 export default function CategoryGrid() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8">
+    <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8 sm:py-10">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="font-display text-xl sm:text-2xl font-bold text-botanical">
+        <h2 className="section-title">
           Shop by Category
         </h2>
         <a href="#" className="text-xs sm:text-sm font-semibold text-rose hover:text-rose-dark transition-colors">

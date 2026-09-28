@@ -79,3 +79,35 @@ html::-webkit-scrollbar-thumb {
   background-color: var(--color-sage);
   border-radius: 8px;
 }
+
+
+/* Section headings: one consistent, elegant style with a small gold underline */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-botanical);
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: var(--color-gold);
+}
+.section-title-center {
+  text-align: center;
+}
+.section-title-center::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
