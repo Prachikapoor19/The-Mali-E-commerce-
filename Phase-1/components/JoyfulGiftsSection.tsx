@@ -13,7 +13,7 @@ const categoryItems = [
   },
   {
     title: "Personalised",
-    image: "https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=500",
+    image: "https://images.pexels.com/photos/9451803/pexels-photo-9451803.jpeg?auto=compress&cs=tinysrgb&w=500",
     bg: "bg-[#FFF0F3]",
   },
   {

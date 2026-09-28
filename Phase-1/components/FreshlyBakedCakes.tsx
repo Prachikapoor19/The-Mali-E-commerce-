@@ -55,10 +55,10 @@ import React from "react";
 
 const cakeItems = [
   { name: "Chocolate", image: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=500" },
-  { name: "Butterscotch", image: "https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg?auto=compress&cs=tinysrgb&w=500" },
-  { name: "Fresh Fruit", image: "https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=500" },
-  { name: "Combos", image: "https://images.pexels.com/photos/1407305/pexels-photo-1407305.jpeg?auto=compress&cs=tinysrgb&w=500" },
-  { name: "Pineapple", image: "https://images.pexels.com/photos/1070850/pexels-photo-1070850.jpeg?auto=compress&cs=tinysrgb&w=500" },
+  { name: "Butterscotch", image: "https://images.pexels.com/photos/19252761/pexels-photo-19252761.jpeg?auto=compress&cs=tinysrgb&w=500" },
+  { name: "Fresh Fruit", image: "https://images.pexels.com/photos/9553728/pexels-photo-9553728.jpeg?auto=compress&cs=tinysrgb&w=500" },
+  { name: "Combos", image: "https://images.pexels.com/photos/34263114/pexels-photo-34263114.jpeg?auto=compress&cs=tinysrgb&w=500" },
+  { name: "Pineapple", image: "https://images.pexels.com/photos/8820012/pexels-photo-8820012.jpeg?auto=compress&cs=tinysrgb&w=500" },
 ];
 
 export default function FreshlyBakedCakes() {

@@ -2,12 +2,12 @@
 
 @theme {
   --color-ivory: #FDFBF2;
-  --color-rose: #3F6C4C;        /* green accent */
+  --color-rose: #3F6C4C;
   --color-rose-dark: #2C4E35;
   --color-rose-light: #A8C3AE;
   --color-botanical: #1F2E20;
   --color-botanical-light: #4A7A50;
-  --color-blush: #EAF0E4;       /* soft sage background */
+  --color-blush: #EAF0E4;
   --color-charcoal: #2B2A20;
   --color-gold: #C9A15A;
   --color-sage: #829B88;
@@ -18,8 +18,46 @@
 
 body {
   @apply bg-ivory text-charcoal antialiased;
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+* {
+  scrollbar-width: none;
+}
+
+/* Premium text selection */
+::selection {
+  background-color: var(--color-botanical);
+  color: var(--color-ivory);
+}
+
+/* Consistent, accessible focus ring instead of the browser default */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-botanical);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Crisper images site-wide */
+img {
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Gentle lift-on-hover utility — add class="lift-on-hover" to any card */
+.lift-on-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.lift-on-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(31, 46, 32, 0.18);
 }

@@ -11,11 +11,11 @@ const plants = [
   },
   {
     title: "Lucky Bamboo",
-    image: "https://images.pexels.com/photos/7084337/pexels-photo-7084337.jpeg?auto=compress&cs=tinysrgb&w=500",
+    image: "https://images.pexels.com/photos/30384232/pexels-photo-30384232.jpeg?auto=compress&cs=tinysrgb&w=500",
   },
   {
     title: "Peace Lily",
-    image: "https://images.pexels.com/photos/4505161/pexels-photo-4505161.jpeg?auto=compress&cs=tinysrgb&w=500",
+    image: "https://images.pexels.com/photos/28182770/pexels-photo-28182770.jpeg?auto=compress&cs=tinysrgb&w=500",
   },
   {
     title: "All Plants",

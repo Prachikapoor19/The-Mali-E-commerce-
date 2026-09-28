@@ -1,11 +1,11 @@
 import React from "react";
 
 const flowerItems = [
-  { name: "Orchids", image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { name: "Crochet", image: "https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { name: "Orchids", image: "https://images.pexels.com/photos/1076233/pexels-photo-1076233.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { name: "Crochet", image: "https://images.pexels.com/photos/20269075/pexels-photo-20269075.jpeg?auto=compress&cs=tinysrgb&w=400" },
   { name: "Centerpiece", image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { name: "Sunny Blooms", image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  { name: "Dried Flowers", image: "https://images.pexels.com/photos/1158783/pexels-photo-1158783.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { name: "Sunny Blooms", image: "https://images.pexels.com/photos/15522473/pexels-photo-15522473.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { name: "Dried Flowers", image: "https://images.pexels.com/photos/8532401/pexels-photo-8532401.jpeg?auto=compress&cs=tinysrgb&w=400" },
 ];
 
 export default function FlowersCollection() {

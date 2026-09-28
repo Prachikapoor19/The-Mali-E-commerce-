@@ -66,7 +66,7 @@ export default function Home() {
       <IconStrip />
       <OccasionStrip />
       <HeroBanner />
-      <GiftFinder />
+      <div id="gift-finder" className="scroll-mt-40"><GiftFinder /></div>
       <CategoryGrid />
       <BestsellersSection />
       <FlowersCollection />

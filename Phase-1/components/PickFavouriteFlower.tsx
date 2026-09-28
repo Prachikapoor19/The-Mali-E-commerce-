@@ -7,15 +7,15 @@ const flowerItems = [
   },
   {
     name: "Orchids",
-    image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=500",
+    image: "https://images.pexels.com/photos/1076233/pexels-photo-1076233.jpeg?auto=compress&cs=tinysrgb&w=500",
   },
   {
     name: "Carnations",
-    image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=500",
+    image: "https://images.pexels.com/photos/16244993/pexels-photo-16244993.jpeg?auto=compress&cs=tinysrgb&w=500",
   },
   {
     name: "Gerberas",
-    image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=500",
+    image: "https://images.pexels.com/photos/11563147/pexels-photo-11563147.jpeg?auto=compress&cs=tinysrgb&w=500",
   },
   {
     name: "Sunflowers",

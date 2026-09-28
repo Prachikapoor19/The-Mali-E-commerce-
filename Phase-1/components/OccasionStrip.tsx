@@ -225,7 +225,7 @@ const birthdaySlides = [
     subTag: "CUSTOM LAMPS & FRAMES",
     badge: "EXPRESS 60-MIN",
     image:
-      "https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/9451803/pexels-photo-9451803.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "s2",
@@ -233,7 +233,7 @@ const birthdaySlides = [
     subTag: "BALLOON DECOR & CAKES",
     badge: "MOST POPULAR",
     image:
-      "https://images.pexels.com/photos/3735657/pexels-photo-3735657.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/3859921/pexels-photo-3859921.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "s3",
@@ -248,28 +248,28 @@ const birthdaySlides = [
 // Expanded Occasion Cards List
 const allOccasionCards = [
   {
-    id: "wife",
-    title: "Wife Appreciation Day",
-    tag: "20TH SEP",
+    id: "navratri",
+    title: "Navratri",
+    tag: "11TH OCT",
     image:
-      "https://images.pexels.com/photos/56866/rose-rose-blooms-roses-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=500",
+      "https://images.pexels.com/photos/35124359/pexels-photo-35124359.jpeg?auto=compress&cs=tinysrgb&w=500",
     bg: "bg-[#FDE2E4]",
   },
   {
-    id: "daughters",
-    title: "Daughters' Day",
-    tag: "27TH SEP",
+    id: "karwachauth",
+    title: "Karwa Chauth",
+    tag: "29TH OCT",
     image:
-      "https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=500",
+      "https://images.pexels.com/photos/13831901/pexels-photo-13831901.jpeg?auto=compress&cs=tinysrgb&w=500",
     bg: "bg-[#E2E2F5]",
   },
   {
-    id: "ganesh",
-    title: "Ganesh Chaturthi",
-    tag: "14TH-25TH SEP",
+    id: "diwali",
+    title: "Diwali",
+    tag: "8TH NOV",
     subTag: "DECOR AVAILABLE",
     image:
-      "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=500",
+      "https://images.pexels.com/photos/815580/pexels-photo-815580.jpeg?auto=compress&cs=tinysrgb&w=500",
     bg: "bg-[#FFF3B0]",
   },
   {
