@@ -66,14 +66,17 @@
 
 import React, { useRef } from "react";
 
+const px = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=400`;
+
+// Gift photos (not people) so every circle looks consistent; all checked on Pexels
 const recipients = [
-  { label: "Him", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80" },
-  { label: "Her", image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80" },
-  { label: "Kids", image: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&q=80" },
-  { label: "Friend", image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" },
-  { label: "Wife", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" },
-  { label: "Husband", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" },
-  { label: "Parents", image: "https://images.pexels.com/photos/264771/pexels-photo-264771.jpeg?auto=compress&cs=tinysrgb&w=400" },
+  { label: "Him", note: "Chocolates & more", q: "chocolate", image: px(6167333) },
+  { label: "Her", note: "Roses & blooms", q: "roses", image: px(30891127) },
+  { label: "Kids", note: "Birthday cakes", q: "cake", image: px(3859921) },
+  { label: "Friend", note: "Sweet surprises", q: "ferrero", image: px(30727980) },
+  { label: "Wife", note: "Made with love", q: "red velvet", image: px(38774006) },
+  { label: "Husband", note: "Personalised picks", q: "personalised", image: px(1207918) },
+  { label: "Parents", note: "Hampers & plants", q: "hamper", image: px(264771) },
 ];
 
 export default function GiftsForEveryone() {
@@ -111,27 +114,31 @@ export default function GiftsForEveryone() {
         {/* Responsive Grid on Desktop & Horizontal Swipe on Mobile */}
         <div
           ref={scrollRef}
-          className="grid grid-flow-col auto-cols-[minmax(140px,1fr)] sm:auto-cols-[minmax(160px,1fr)] md:grid-cols-7 gap-4 overflow-x-auto md:overflow-visible pb-4 md:pb-0 scrollbar-none snap-x snap-mandatory"
+          className="grid grid-flow-col auto-cols-[minmax(120px,1fr)] sm:auto-cols-[minmax(140px,1fr)] md:grid-cols-7 items-start gap-4 lg:gap-6 overflow-x-auto md:overflow-visible pb-4 md:pb-0 scrollbar-none snap-x snap-mandatory"
         >
           {recipients.map((item) => (
             <a
               key={item.label}
-              href={`/search?q=${encodeURIComponent(item.label)}`}
+              href={`/search?q=${encodeURIComponent(item.q)}`}
               className="group/card flex flex-col items-center w-full snap-start"
             >
               {/* Card Frame with Soft Pink/Peach Backdrop */}
-              <div className="w-full aspect-square rounded-full bg-gradient-to-br from-petal via-ivory to-blush p-1.5 shadow-xs group-hover/card:shadow-lg group-hover/card:-translate-y-1 transition-all duration-300">
-                <img
-                  src={item.image}
-                  alt={item.label}
-                  className="w-full h-full object-cover rounded-full ring-2 ring-white"
-                />
+              {/* Fixed square box + absolutely placed photo = a perfect circle whatever the photo size */}
+              <div className="relative w-full aspect-square rounded-full p-1.5 bg-gradient-to-br from-gold/40 via-petal to-blush shadow-xs group-hover/card:shadow-lg group-hover/card:-translate-y-1 transition-all duration-300">
+                <div className="relative w-full h-full rounded-full overflow-hidden ring-2 ring-white">
+                  <img
+                    src={item.image}
+                    alt={`Gifts for ${item.label}`}
+                    className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500"
+                  />
+                </div>
               </div>
 
               {/* Label Below Card */}
               <span className="font-display text-sm sm:text-base font-semibold text-botanical mt-3 group-hover/card:text-rose transition-colors text-center">
-                {item.label}
+                For {item.label}
               </span>
+              <span className="text-[11px] text-charcoal/55 text-center">{item.note}</span>
             </a>
           ))}
         </div>

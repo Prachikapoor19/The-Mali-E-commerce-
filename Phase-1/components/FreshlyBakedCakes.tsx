@@ -73,11 +73,11 @@ export default function FreshlyBakedCakes() {
         {cakeItems.map((item) => (
           <a key={item.name} href={`/search?q=${encodeURIComponent(item.name)}`} className="flex flex-col items-center group">
             {/* Round bakery-style frame */}
-            <div className="w-full aspect-square rounded-full overflow-hidden bg-white ring-4 ring-white shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300 mb-4">
+            <div className="relative w-full aspect-square rounded-full overflow-hidden bg-white ring-4 ring-white shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300 mb-4">
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
             </div>
 

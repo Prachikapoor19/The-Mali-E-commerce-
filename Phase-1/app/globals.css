@@ -136,3 +136,10 @@ html::-webkit-scrollbar-thumb {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Keep photo boxes exactly their shape (square, 3:4, circle...) even when a
+   photo is taller than the box — otherwise tall photos stretch the card */
+.aspect-square,
+[class*="aspect-["] {
+  min-height: 0;
+}
