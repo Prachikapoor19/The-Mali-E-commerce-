@@ -295,7 +295,7 @@ const items = [
 
 export default function IconStrip() {
   return (
-    <section className="w-full bg-ivory border-b border-botanical/10 py-4 px-3 sm:px-6 lg:px-10">
+    <section className="w-full bg-ivory border-b border-botanical/10 pt-6 pb-5 px-3 sm:px-6 lg:px-10">
       <div className="w-full flex items-center justify-between gap-2 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory">
         {items.map((item) => (
           <a

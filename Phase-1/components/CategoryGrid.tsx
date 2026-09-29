@@ -10,7 +10,7 @@ const categories = [
 export default function CategoryGrid() {
   return (
     <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8 sm:py-10">
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-6 flex items-end justify-between">
         <h2 className="section-title">
           Shop by Category
         </h2>
@@ -21,16 +21,16 @@ export default function CategoryGrid() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.map((cat) => (
-          <a key={cat.title} href={`/search?q=${encodeURIComponent(cat.title)}`} className={`group flex items-center justify-between p-4 rounded-xl border border-rose-light/20 ${cat.bg} hover:shadow-md transition-all`}>
+          <a key={cat.title} href={`/search?q=${encodeURIComponent(cat.title)}`} className={`group flex items-center justify-between gap-3 p-4 sm:p-5 rounded-2xl border border-rose-light/20 ${cat.bg} hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300`}>
             <div>
-              <h3 className="font-semibold text-sm sm:text-base text-botanical group-hover:text-rose transition-colors">
+              <h3 className="font-display font-semibold text-base sm:text-lg text-botanical group-hover:text-rose transition-colors">
                 {cat.title}
               </h3>
               <p className="text-xs text-charcoal/60 mt-0.5">
                 {cat.subtitle}
               </p>
             </div>
-            <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0">
+            <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0 shadow-sm ring-2 ring-white">
               <img src={cat.image} alt={cat.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
             </div>
           </a>

@@ -36,7 +36,7 @@ export default function GiftsForFeeling() {
         <h2 className="section-title">
           Gifts for Every Feeling
         </h2>
-        <p className="text-xs sm:text-sm text-charcoal/70 mt-1">
+        <p className="text-xs sm:text-sm text-charcoal/70 mt-3">
           When emotions matter most, send a gift that speaks from the heart.
         </p>
       </div>
@@ -59,7 +59,7 @@ export default function GiftsForFeeling() {
             </div>
 
             {/* Label */}
-            <span className="font-medium text-xs sm:text-sm text-botanical text-center mt-3 group-hover:text-rose transition-colors">
+            <span className="font-display font-semibold text-sm sm:text-base text-botanical text-center mt-3 group-hover:text-rose transition-colors">
               {item.label}
             </span>
           </a>

@@ -34,20 +34,20 @@ export default function PickFavouriteFlower() {
       {/* 5-Column Studio Portrait Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
         {flowerItems.map((item) => (
-          <a key={item.name} href={`/search?q=${encodeURIComponent(item.name)}`} className="flex flex-col items-center group">
-            {/* Tall Vertical Portrait Studio Frame */}
-            <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden bg-sand/60 p-2 border border-black/5 shadow-2xs group-hover:shadow-md transition-all">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
-              />
+          <a key={item.name} href={`/search?q=${encodeURIComponent(item.name)}`} className="group relative block aspect-[3/4] rounded-3xl overflow-hidden bg-sand shadow-xs hover:shadow-xl transition-shadow">
+            <img
+              src={item.image}
+              alt={item.name}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            {/* Soft dark fade so the name is readable on any photo */}
+            <div className="absolute inset-0 bg-gradient-to-t from-botanical/85 via-botanical/10 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+              <span className="block font-display text-lg sm:text-xl font-semibold text-ivory">{item.name}</span>
+              <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-gold opacity-80 group-hover:opacity-100 transition-opacity">
+                Shop now <span aria-hidden="true">&rarr;</span>
+              </span>
             </div>
-
-            {/* Label Below Card */}
-            <span className="font-semibold text-xs sm:text-sm text-botanical mt-3 text-center group-hover:text-rose transition-colors">
-              {item.name}
-            </span>
           </a>
         ))}
       </div>

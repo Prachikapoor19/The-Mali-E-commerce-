@@ -28,7 +28,7 @@ export default function OffersBanner() {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal/60">{offer.provider}</span>
                 <h3 className="font-bold text-sm text-botanical mt-0.5">{offer.title}</h3>
                 <p className="text-xs text-charcoal/70 mt-1">{offer.desc}</p>
-                {justApplied === offer.code && (
+                {offer.code !== null && justApplied === offer.code && (
                   <p className="text-[11px] font-semibold text-rose mt-1">Applied! You&apos;ll see it in your cart.</p>
                 )}
               </div>

@@ -64,15 +64,16 @@ const cakeItems = [
 export default function FreshlyBakedCakes() {
   return (
     <section className="w-full bg-sand py-8 sm:py-10 px-4 sm:px-6 lg:px-10 xl:px-14">
-      <h2 className="section-title mb-6">
-        Freshly Baked Cakes
-      </h2>
+      <div className="mb-8">
+        <h2 className="section-title">Freshly Baked Cakes</h2>
+        <p className="text-xs sm:text-sm text-charcoal/70 mt-3">Baked on the day of delivery, in the flavours they love.</p>
+      </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8">
         {cakeItems.map((item) => (
           <a key={item.name} href={`/search?q=${encodeURIComponent(item.name)}`} className="flex flex-col items-center group">
-            {/* Tall Vertical Portrait Card Frame */}
-            <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden bg-white/40 shadow-xs border border-white/60 mb-3">
+            {/* Round bakery-style frame */}
+            <div className="w-full aspect-square rounded-full overflow-hidden bg-white ring-4 ring-white shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300 mb-4">
               <img
                 src={item.image}
                 alt={item.name}
@@ -81,7 +82,7 @@ export default function FreshlyBakedCakes() {
             </div>
 
             {/* Simple Center-Aligned Category Name */}
-            <span className="font-semibold text-xs sm:text-sm text-botanical text-center group-hover:text-rose transition-colors">
+            <span className="font-display font-semibold text-sm sm:text-base text-botanical text-center group-hover:text-rose transition-colors">
               {item.name}
             </span>
           </a>

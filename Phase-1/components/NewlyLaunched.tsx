@@ -1,80 +1,31 @@
 'use client';
 
-const launches = [
-  {
-    name: 'Hot Girl Bouquet',
-    href: '/product/f2',
-    price: '\u20B9649',
-    oldPrice: '\u20B9799',
-    img: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=300&h=380&fit=crop',
-  },
-  {
-    name: 'Rose Pineapple Eggless Cake',
-    href: '/search?q=pineapple%20cake',
-    price: '\u20B9599',
-    oldPrice: '\u20B9699',
-    img: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=300&h=380&fit=crop',
-  },
-  {
-    name: 'Personalised Jewellery Box',
-    href: '/search?q=personalised',
-    price: '\u20B91,099',
-    oldPrice: null,
-    img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=300&h=380&fit=crop',
-  },
-  {
-    name: 'Red Rose Delight',
-    href: '/product/f1',
-    price: '\u20B9549',
-    oldPrice: '\u20B9649',
-    img: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=300&h=380&fit=crop',
-  },
-  {
-    name: 'Money Plant in White Pot',
-    href: '/product/pl1',
-    price: '\u20B9399',
-    oldPrice: null,
-    img: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=300&h=380&fit=crop',
-  },
-];
+import ProductCard from './ProductCard';
+import { getProduct, type CatalogItem } from './searchCatalog';
+
+// Newest additions to the catalogue (prices and photos come from searchCatalog.ts)
+const NEW_IDS = ['pl2', 'pl3', 'h5', 'pl5', 'pl4'];
 
 export default function NewlyLaunched() {
-  return (
-    <section className="w-full bg-blush py-8 sm:py-10">
-      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14">
-        <h2 className="section-title mb-5">
-          Newly Launched
-        </h2>
+  const products = NEW_IDS.map(getProduct).filter((p): p is CatalogItem => Boolean(p));
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
-          {launches.map((item) => (
-            <a key={item.name} href={item.href} className="bg-white rounded-xl overflow-hidden group">
-              <div className="aspect-[3/4] overflow-hidden">
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-2.5">
-                <h3 className="text-xs font-semibold text-charcoal leading-snug line-clamp-2">
-                  {item.name}
-                </h3>
-                <div className="flex items-center gap-1.5 mt-1">
-                  <span className="text-sm font-semibold text-charcoal">{item.price}</span>
-                  {item.oldPrice && (
-                    <span className="text-[11px] text-charcoal/40 line-through">{item.oldPrice}</span>
-                  )}
-                </div>
-              </div>
-            </a>
-          ))}
+  return (
+    <section className="w-full bg-blush py-10 sm:py-14">
+      <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14">
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-dark">Just in</span>
+            <h2 className="section-title mt-1">Newly Launched</h2>
+          </div>
+          <a href="/search?q=all" className="text-xs sm:text-sm font-semibold text-rose hover:text-rose-dark transition-colors whitespace-nowrap">
+            View All &rarr;
+          </a>
         </div>
 
-        <div className="flex justify-center mt-6">
-          <a href="/search?q=all" className="text-sm font-semibold text-charcoal border border-charcoal/20 rounded-full px-6 py-2.5 hover:border-rose hover:text-rose transition-colors">
-            View All Products
-          </a>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          {products.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
         </div>
       </div>
     </section>

@@ -120,16 +120,16 @@ export default function GiftsForEveryone() {
               className="group/card flex flex-col items-center w-full snap-start"
             >
               {/* Card Frame with Soft Pink/Peach Backdrop */}
-              <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-petal via-ivory to-blush border border-petal-dark/60 p-2 overflow-hidden flex items-end justify-center shadow-2xs group-hover/card:shadow-md transition-all">
+              <div className="w-full aspect-square rounded-full bg-gradient-to-br from-petal via-ivory to-blush p-1.5 shadow-xs group-hover/card:shadow-lg group-hover/card:-translate-y-1 transition-all duration-300">
                 <img
                   src={item.image}
                   alt={item.label}
-                  className="w-full h-full object-cover rounded-xl group-hover/card:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover rounded-full ring-2 ring-white"
                 />
               </div>
 
               {/* Label Below Card */}
-              <span className="text-xs sm:text-sm font-medium text-botanical mt-2.5 group-hover/card:text-rose transition-colors text-center">
+              <span className="font-display text-sm sm:text-base font-semibold text-botanical mt-3 group-hover/card:text-rose transition-colors text-center">
                 {item.label}
               </span>
             </a>

@@ -55,6 +55,7 @@ import GiftsForFeeling from "@/components/GiftsForFeeling";
 import NewlyLaunched from "@/components/NewlyLaunched";
 import OffersBanner from "@/components/OffersBanner";
 import PlantsSection from "@/components/PlantsSection";
+import TrustBanner from "@/components/TrustBanner";
 import BrandsSection from "@/components/BrandsSection";
 import Footer from "@/components/Footer";
 
@@ -63,11 +64,11 @@ export default function Home() {
     <main className="min-h-screen bg-ivory">
       <Header />
       <CategoryNav />
+      <HeroBanner />
       <IconStrip />
       <OccasionStrip />
-      <HeroBanner />
-      <div id="gift-finder" className="scroll-mt-40"><GiftFinder /></div>
       <CategoryGrid />
+      <div id="gift-finder" className="scroll-mt-40"><GiftFinder /></div>
       <BestsellersSection />
       <FlowersCollection />
       <JoyfulGiftsSection />
@@ -78,6 +79,7 @@ export default function Home() {
       <NewlyLaunched />
       <OffersBanner />
       <PlantsSection />
+      <TrustBanner />
       <BrandsSection />
       <Footer />
     </main>
