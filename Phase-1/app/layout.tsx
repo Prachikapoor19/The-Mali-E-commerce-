@@ -33,6 +33,7 @@ import type { Metadata } from 'next';
 import { Fraunces, Manrope } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/components/CartContext';
+import { WishlistProvider } from '@/components/WishlistContext';
 import CartDrawerConnected from '@/components/CartDrawerConnected';
 import PersonalizationModalConnected from '@/components/PersonalizationModalConnected';
 
@@ -60,9 +61,11 @@ export default function RootLayout({
     <html lang="en" className={`${fraunces.variable} ${manrope.variable}`}>
       <body>
         <CartProvider>
-          {children}
-          <CartDrawerConnected />
-          <PersonalizationModalConnected />
+          <WishlistProvider>
+            {children}
+            <CartDrawerConnected />
+            <PersonalizationModalConnected />
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>

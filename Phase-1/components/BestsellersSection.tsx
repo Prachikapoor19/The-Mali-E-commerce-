@@ -763,6 +763,7 @@
 
 import React, { useState } from "react";
 import { useCart } from "./CartContext";
+import WishlistButton from "./WishlistButton";
 
 interface Product {
   id: string;
@@ -876,13 +877,14 @@ export default function BestsellersSection() {
             key={item.id}
             className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"
           >
-            <div>
+            <a href={`/product/${item.id}`} className="block">
               <div className="relative w-full h-52 sm:h-60 md:h-64 bg-sand overflow-hidden flex items-center justify-center p-2">
                 <img
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
                 />
+                <WishlistButton id={item.id} className="absolute top-3 right-3" />
               </div>
 
               <div className="p-2.5 sm:p-3">
@@ -902,7 +904,7 @@ export default function BestsellersSection() {
                   <span className="text-[9px] sm:text-[10px] font-bold text-rose">{item.discount}</span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3">
               <button
@@ -921,9 +923,9 @@ export default function BestsellersSection() {
       </div>
 
       <div className="mt-6 sm:mt-8 text-center">
-        <button className="px-5 sm:px-6 py-2 border border-rose-light/60 text-botanical rounded-full text-xs font-semibold hover:bg-rose hover:text-ivory transition-colors">
+        <a href={`/search?q=${encodeURIComponent(activeTab)}`} className="inline-block px-5 sm:px-6 py-2 border border-rose-light/60 text-botanical rounded-full text-xs font-semibold hover:bg-rose hover:text-ivory transition-colors">
           View All {activeTab} &gt;
-        </button>
+        </a>
       </div>
     </section>
   );

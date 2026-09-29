@@ -360,6 +360,7 @@ import React, { useState } from "react";
 import { Cinzel } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { useCart } from "./CartContext";
+import { useWishlist } from "./WishlistContext";
 
 // Logo font loaded the Next.js way (no <link> tag, no layout shift)
 const cinzel = Cinzel({
@@ -378,6 +379,7 @@ const DELIVERY_SLOTS = [
 export default function Header() {
   const router = useRouter();
   const { itemCount, openCart } = useCart();
+  const { count: wishlistCount } = useWishlist();
 
   // Search (shared by desktop + mobile inputs)
   const [searchQuery, setSearchQuery] = useState("");
@@ -498,9 +500,14 @@ export default function Header() {
               <span>Gift Finder</span>
             </button>
 
-            <button className="p-1.5 rounded-full hover:bg-blush transition-colors relative" title="Wishlist" aria-label="Wishlist">
+            <a href="/wishlist" className="p-1.5 rounded-full hover:bg-blush transition-colors relative" title="Wishlist" aria-label={`Wishlist (${wishlistCount})`}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
-            </button>
+              {wishlistCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 bg-rose text-ivory text-[9px] font-bold rounded-full h-4 min-w-4 px-1 flex items-center justify-center">
+                  {wishlistCount}
+                </span>
+              )}
+            </a>
 
             <button
               onClick={() => setIsAuthModalOpen(true)}

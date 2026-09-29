@@ -1,71 +1,62 @@
-import React from "react";
+'use client';
 
-export interface ProductCardProps {
-  id: string;
-  name: string;
-  price: string;
-  originalPrice: string;
-  discount: string;
-  rating: string;
-  image: string;
-  deliveryTag: string;
-  badge?: string;
-}
+import { useCart } from './CartContext';
+import WishlistButton from './WishlistButton';
+import { discountPercent, type CatalogItem } from './searchCatalog';
+import { formatINR } from './pricing';
 
-export default function ProductCard({
-  name,
-  price,
-  originalPrice,
-  discount,
-  rating,
-  image,
-  deliveryTag,
-  badge,
-}: ProductCardProps) {
+// Shared product card: search results, wishlist and "You may also like"
+export default function ProductCard({ product, onAdded }: { product: CatalogItem; onAdded?: () => void }) {
+  const { addToCart, openPersonalize } = useCart();
+  const off = discountPercent(product);
+  const cartProduct = { id: product.id, name: product.name, price: product.price, image: product.image };
+
   return (
     <div className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between">
-      <div>
-        {/* Image Container with Badges */}
-        <div className="relative w-full h-44 bg-blush/20 overflow-hidden">
+      <a href={`/product/${product.id}`} className="block">
+        <div className="relative aspect-square bg-sand overflow-hidden">
           <img
-            src={image}
-            alt={name}
+            src={product.image}
+            alt={product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
-          {badge && (
+          {product.badge && (
             <span className="absolute top-2 left-2 bg-gold text-botanical font-bold text-[10px] px-2 py-0.5 rounded-full shadow-xs">
-              {badge}
+              {product.badge}
             </span>
           )}
-          <span className="absolute bottom-2 left-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded">
-            🚀 {deliveryTag}
-          </span>
+          <WishlistButton id={product.id} className="absolute top-2 right-2" />
         </div>
-
-        {/* Content Section */}
         <div className="p-3">
-          <div className="flex items-center justify-between text-[11px] mb-1">
-            <span className="bg-blush text-rose-dark font-semibold px-1.5 py-0.5 rounded">
-              {rating}
-            </span>
+          <h3 className="font-semibold text-xs sm:text-sm text-botanical line-clamp-1">{product.name}</h3>
+          <div className="mt-1 flex items-center gap-1 text-[11px] text-charcoal/60">
+            <span className="bg-blush text-rose-dark font-semibold px-1.5 py-0.5 rounded">{product.rating} ★</span>
+            <span>({product.reviews.toLocaleString('en-IN')})</span>
           </div>
-          <h3 className="font-medium text-xs sm:text-sm text-botanical line-clamp-1">
-            {name}
-          </h3>
-          
-          {/* Price Layout */}
-          <div className="mt-2 flex items-baseline gap-1.5">
-            <span className="font-bold text-sm text-botanical">{price}</span>
-            <span className="text-xs text-charcoal/40 line-through">{originalPrice}</span>
-            <span className="text-[10px] font-bold text-rose">{discount}</span>
+          <div className="mt-1.5 flex items-baseline gap-1.5 flex-wrap">
+            <span className="font-bold text-sm text-botanical">{formatINR(product.price)}</span>
+            {off > 0 && (
+              <>
+                <span className="text-xs text-charcoal/40 line-through">{formatINR(product.originalPrice)}</span>
+                <span className="text-[10px] font-bold text-rose">{off}% OFF</span>
+              </>
+            )}
           </div>
         </div>
-      </div>
+      </a>
 
-      {/* Button */}
-      <div className="p-3 pt-0">
-        <button className="w-full py-1.5 bg-rose text-ivory rounded-lg text-xs font-semibold hover:bg-rose-dark transition-colors">
-          Add to Cart
+      <div className="px-3 pb-3">
+        <button
+          onClick={() => {
+            if (product.isPersonalised) openPersonalize(cartProduct);
+            else addToCart(cartProduct);
+            onAdded?.();
+          }}
+          className={`w-full py-2 rounded-full text-xs font-semibold transition-colors ${
+            product.isPersonalised ? 'bg-botanical text-ivory hover:bg-botanical-light' : 'bg-rose text-ivory hover:bg-rose-dark'
+          }`}
+        >
+          {product.isPersonalised ? 'Personalise Now' : 'Add to Cart'}
         </button>
       </div>
     </div>
