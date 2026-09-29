@@ -52,6 +52,7 @@ export default function CheckoutPage() {
   const [couponInput, setCouponInput] = useState('');
   const [couponMsg, setCouponMsg] = useState('');
   const [placing, setPlacing] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   // Dates are set after mount so they use the visitor's clock
   useEffect(() => {
@@ -114,17 +115,16 @@ export default function CheckoutPage() {
     return Object.keys(e).length === 0;
   };
 
-  const placeOrder = () => {
+  const placeOrder = async () => {
     if (!validate()) {
       // Bring the first error into view
       setTimeout(() => document.querySelector('[data-error="true"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 0);
       return;
     }
     setPlacing(true);
-    const order: Order = {
-      id: makeOrderId(),
-      placedAt: new Date().toISOString(),
-      items,
+    setSubmitError('');
+
+    const details = {
       recipient: {
         name: form.recipientName.trim(),
         phone: form.recipientPhone,
@@ -135,18 +135,52 @@ export default function CheckoutPage() {
       sender: { name: form.senderName.trim(), phone: form.senderPhone },
       deliveryDate,
       slotId: slot.id,
-      slotName: slot.name,
       giftMessage: form.giftMessage.trim(),
-      paymentMethod: 'Cash on Delivery',
       coupon,
-      subtotal,
-      discount,
-      delivery,
-      total,
     };
-    saveOrder(order);
-    clearCart();
-    router.push(`/order-confirmed?id=${order.id}`);
+
+    // Our own copy for the confirmation page on this device
+    const finish = (orderId: string, totals: { subtotal: number; discount: number; delivery: number; total: number }) => {
+      const order: Order = {
+        id: orderId,
+        placedAt: new Date().toISOString(),
+        items,
+        ...details,
+        slotName: slot.name,
+        paymentMethod: 'Cash on Delivery',
+        ...totals,
+      };
+      saveOrder(order);
+      clearCart();
+      router.push(`/order-confirmed?id=${orderId}`);
+    };
+
+    try {
+      // Save the order in the database (MongoDB) via our API
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...details,
+          items: items.map((i) => ({ id: i.id, quantity: i.quantity, customText: i.customText })),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        finish(data.orderId, { subtotal: data.subtotal, discount: data.discount, delivery: data.delivery, total: data.total });
+        return;
+      }
+      if (res.status === 503 && data.error === 'not_configured') {
+        // Database not connected yet (demo mode): keep the order on this device only
+        finish(makeOrderId(), { subtotal, discount, delivery, total });
+        return;
+      }
+      setSubmitError(data.error || 'Could not place the order. Please try again.');
+    } catch {
+      setSubmitError('No internet connection. Please check and try again.');
+    }
+    setPlacing(false);
   };
 
   const fieldError = (key: keyof FormState | 'date') =>
@@ -389,6 +423,7 @@ export default function CheckoutPage() {
             >
               {placing ? 'Placing order…' : `Place Order · ${formatINR(total)}`}
             </button>
+            {submitError && <p className="text-xs text-red-600 text-center mt-3">{submitError}</p>}
             <p className="text-[11px] text-charcoal/50 text-center mt-3">
               By placing this order you agree to our <a href="/terms-and-conditions" className="underline">Terms</a> and{' '}
               <a href="/refund-policy" className="underline">Refund Policy</a>.

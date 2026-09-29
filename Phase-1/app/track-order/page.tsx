@@ -4,9 +4,20 @@ import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { findOrder, type Order } from '@/components/orders';
+import { findOrder } from '@/components/orders';
 
 const STEPS = ['Order placed', 'Being prepared', 'Out for delivery', 'Delivered'];
+const STATUS_STEP: Record<string, number> = { placed: 0, preparing: 1, out_for_delivery: 2, delivered: 3 };
+
+// What the page shows, whether it came from the database or this device
+type Tracked = {
+  id: string;
+  recipientName: string;
+  city: string;
+  deliveryDate: string;
+  slotName: string;
+  status: string; // placed | preparing | out_for_delivery | delivered | cancelled
+};
 
 function prettyDate(ymd: string) {
   const [y, m, d] = ymd.split('-').map(Number);
@@ -17,14 +28,36 @@ function prettyDate(ymd: string) {
 function TrackOrder() {
   const params = useSearchParams();
   const [orderId, setOrderId] = useState('');
-  const [order, setOrder] = useState<Order | null>(null);
+  const [order, setOrder] = useState<Tracked | null>(null);
   const [notFound, setNotFound] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const track = (id: string) => {
-    if (!id.trim()) return;
-    const found = findOrder(id);
-    setOrder(found ?? null);
-    setNotFound(!found);
+  const track = async (raw: string) => {
+    const id = raw.trim().toUpperCase();
+    if (!id) return;
+    setLoading(true);
+    setNotFound(false);
+    let result: Tracked | null = null;
+    try {
+      // 1) Live status from the database
+      const res = await fetch(`/api/orders/${encodeURIComponent(id)}`, { cache: 'no-store' });
+      if (res.ok) {
+        const d = await res.json();
+        result = { id: d.orderId, recipientName: d.recipientFirstName, city: d.city, deliveryDate: d.deliveryDate, slotName: d.slotName, status: d.status };
+      }
+    } catch {
+      // offline — fall back to this device below
+    }
+    if (!result) {
+      // 2) Orders placed on this device (demo mode, before the database was connected)
+      const local = findOrder(id);
+      if (local) {
+        result = { id: local.id, recipientName: local.recipient.name, city: local.recipient.city, deliveryDate: local.deliveryDate, slotName: local.slotName, status: 'placed' };
+      }
+    }
+    setOrder(result);
+    setNotFound(!result);
+    setLoading(false);
   };
 
   // Opening /track-order?id=MALI123456 tracks that order straight away
@@ -55,7 +88,7 @@ function TrackOrder() {
             onClick={() => track(orderId)}
             className="bg-botanical hover:bg-botanical-light text-ivory font-semibold px-6 py-3 rounded-full transition-colors shrink-0"
           >
-            Track
+            {loading ? '…' : 'Track'}
           </button>
         </div>
 
@@ -70,7 +103,7 @@ function TrackOrder() {
             <div className="flex justify-between items-start gap-4 mb-5">
               <div>
                 <p className="text-xs text-charcoal/50">Order {order.id}</p>
-                <p className="font-semibold text-botanical">For {order.recipient.name}, {order.recipient.city}</p>
+                <p className="font-semibold text-botanical">For {order.recipientName}, {order.city}</p>
               </div>
               <p className="text-xs text-right text-charcoal/60">
                 {prettyDate(order.deliveryDate)}
@@ -78,9 +111,12 @@ function TrackOrder() {
                 {order.slotName}
               </p>
             </div>
+            {order.status === 'cancelled' ? (
+              <p className="text-sm font-semibold text-red-600">This order was cancelled. Please contact us if this is unexpected.</p>
+            ) : (
             <ol className="space-y-3">
               {STEPS.map((step, i) => {
-                const done = i === 0; // only "Order placed" is known until a backend is connected
+                const done = i <= (STATUS_STEP[order.status] ?? 0);
                 return (
                   <li key={step} className="flex items-center gap-3 text-sm">
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold ${done ? 'bg-rose text-ivory' : 'bg-blush text-charcoal/40'}`}>
@@ -91,6 +127,7 @@ function TrackOrder() {
                 );
               })}
             </ol>
+            )}
           </div>
         )}
       </div>
