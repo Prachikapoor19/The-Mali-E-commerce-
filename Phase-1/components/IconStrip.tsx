@@ -300,7 +300,7 @@ export default function IconStrip() {
         {items.map((item) => (
           <a
             key={item.label}
-            href="#"
+            href={`/search?q=${encodeURIComponent(item.label)}`}
             className="flex flex-col items-center group shrink-0 flex-1 min-w-[70px] sm:min-w-[85px] lg:min-w-0 snap-start"
           >
             <IconWrap>{item.icon}</IconWrap>

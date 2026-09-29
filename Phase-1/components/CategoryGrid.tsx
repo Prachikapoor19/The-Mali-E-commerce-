@@ -14,14 +14,14 @@ export default function CategoryGrid() {
         <h2 className="section-title">
           Shop by Category
         </h2>
-        <a href="#" className="text-xs sm:text-sm font-semibold text-rose hover:text-rose-dark transition-colors">
+        <a href="/search?q=all" className="text-xs sm:text-sm font-semibold text-rose hover:text-rose-dark transition-colors">
           View All &rarr;
         </a>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.map((cat) => (
-          <a key={cat.title} href="#" className={`group flex items-center justify-between p-4 rounded-xl border border-rose-light/20 ${cat.bg} hover:shadow-md transition-all`}>
+          <a key={cat.title} href={`/search?q=${encodeURIComponent(cat.title)}`} className={`group flex items-center justify-between p-4 rounded-xl border border-rose-light/20 ${cat.bg} hover:shadow-md transition-all`}>
             <div>
               <h3 className="font-semibold text-sm sm:text-base text-botanical group-hover:text-rose transition-colors">
                 {cat.title}

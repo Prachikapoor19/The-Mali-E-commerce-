@@ -116,7 +116,7 @@ export default function GiftsForEveryone() {
           {recipients.map((item) => (
             <a
               key={item.label}
-              href="#"
+              href={`/search?q=${encodeURIComponent(item.label)}`}
               className="group/card flex flex-col items-center w-full snap-start"
             >
               {/* Card Frame with Soft Pink/Peach Backdrop */}

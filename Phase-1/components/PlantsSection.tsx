@@ -34,7 +34,7 @@ export default function PlantsSection() {
       {/* 5-Column Vertical Studio Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
         {plants.map((plant) => (
-          <a key={plant.title} href="#" className="flex flex-col items-center group">
+          <a key={plant.title} href={`/search?q=${encodeURIComponent(plant.title)}`} className="flex flex-col items-center group">
             {/* Tall Vertical Portrait Card Frame */}
             <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden bg-white/40 shadow-xs border border-black/5 mb-3">
               <img

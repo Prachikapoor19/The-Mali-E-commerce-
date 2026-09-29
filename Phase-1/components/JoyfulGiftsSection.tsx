@@ -61,7 +61,7 @@ export default function JoyfulGiftsSection() {
       {/* 5-Column Category Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
         {categoryItems.map((item) => (
-          <a key={item.title} href="#" className="flex flex-col items-center group">
+          <a key={item.title} href={`/search?q=${encodeURIComponent(item.title)}`} className="flex flex-col items-center group">
             {/* Square Studio Card */}
             <div
               className={`w-full aspect-square rounded-2xl ${item.bg} p-3 overflow-hidden shadow-2xs border border-black/5 flex items-center justify-center mb-2.5 transition-transform duration-300 group-hover:scale-105`}

@@ -43,7 +43,7 @@ export default function NewlyLaunched() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
           {launches.map((item) => (
-            <a key={item.name} href="#" className="bg-white rounded-xl overflow-hidden group">
+            <a key={item.name} href={`/search?q=${encodeURIComponent(item.name)}`} className="bg-white rounded-xl overflow-hidden group">
               <div className="aspect-[3/4] overflow-hidden">
                 <img
                   src={item.img}

@@ -34,7 +34,7 @@ export default function PickFavouriteFlower() {
       {/* 5-Column Studio Portrait Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
         {flowerItems.map((item) => (
-          <a key={item.name} href="#" className="flex flex-col items-center group">
+          <a key={item.name} href={`/search?q=${encodeURIComponent(item.name)}`} className="flex flex-col items-center group">
             {/* Tall Vertical Portrait Studio Frame */}
             <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden bg-sand/60 p-2 border border-black/5 shadow-2xs group-hover:shadow-md transition-all">
               <img

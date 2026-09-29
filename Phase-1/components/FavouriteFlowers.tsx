@@ -17,7 +17,7 @@ export default function FavouriteFlowers() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
         {flowers.map((f) => (
-          <a key={f.name} href="#" className="group">
+          <a key={f.name} href={`/search?q=${encodeURIComponent(f.name)}`} className="group">
             <div className="aspect-[3/4] rounded-xl overflow-hidden mb-2 bg-blush">
               <img
                 src={f.img}

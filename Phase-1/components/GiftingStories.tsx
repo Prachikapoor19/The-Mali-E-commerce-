@@ -17,7 +17,7 @@ export default function GiftingStories() {
 
       <div className="flex gap-3 md:gap-4 overflow-x-auto pb-2">
         {stories.map((s) => (
-          <a key={s.title} href="#" className="shrink-0 w-36 md:w-44 group relative rounded-xl overflow-hidden">
+          <a key={s.title} href={`/search?q=${encodeURIComponent(s.title)}`} className="shrink-0 w-36 md:w-44 group relative rounded-xl overflow-hidden">
             <div className="aspect-[9/16]">
               <img
                 src={s.img}

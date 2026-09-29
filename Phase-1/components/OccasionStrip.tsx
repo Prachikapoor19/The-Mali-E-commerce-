@@ -420,7 +420,7 @@ export default function OccasionStrip() {
           {allOccasionCards.map((item) => (
             <a
               key={item.id}
-              href="#"
+              href={`/search?q=${encodeURIComponent(item.title)}`}
               className={`group/card flex justify-between p-4 rounded-2xl ${item.bg} w-64 sm:w-72 h-36 shrink-0 snap-start shadow-2xs relative overflow-hidden transition-all hover:shadow-md border border-black/5`}
             >
               <div className="flex flex-col justify-between z-10 max-w-[55%]">

@@ -46,7 +46,7 @@ export default function GiftsForFeeling() {
         {feelings.map((item) => (
           <a
             key={item.label}
-            href="#"
+            href={`/search?q=${encodeURIComponent(item.label)}`}
             className={`group rounded-3xl ${item.bg} p-4 sm:p-5 flex flex-col justify-between items-center h-80 sm:h-96 shadow-xs hover:shadow-md transition-all border border-black/5 overflow-hidden`}
           >
             {/* Image Container */}

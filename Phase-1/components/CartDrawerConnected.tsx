@@ -1,10 +1,12 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import CartDrawer from './CartDrawer';
 import { useCart } from './CartContext';
 
 export default function CartDrawerConnected() {
-  const { items, isCartOpen, closeCart, updateQty, clearCart } = useCart();
+  const router = useRouter();
+  const { items, isCartOpen, closeCart, updateQty, coupon, setCoupon } = useCart();
 
   return (
     <CartDrawer
@@ -12,9 +14,11 @@ export default function CartDrawerConnected() {
       onClose={closeCart}
       cartItems={items}
       onUpdateQty={updateQty}
+      appliedCoupon={coupon}
+      onCouponChange={setCoupon}
       onConfirmOrder={() => {
-        clearCart();
         closeCart();
+        router.push('/checkout');
       }}
     />
   );

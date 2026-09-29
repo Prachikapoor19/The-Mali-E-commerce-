@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { couponDiscount, deliveryCharge, formatINR, FREE_DELIVERY_ABOVE } from "./pricing";
 
 interface CartItem {
   id: string;
@@ -17,25 +18,33 @@ interface CartDrawerProps {
   cartItems: CartItem[];
   onUpdateQty: (id: string, delta: number) => void;
   onConfirmOrder: () => void;
+  appliedCoupon?: string;
+  onCouponChange?: (code: string) => void;
 }
 
-export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, onConfirmOrder }: CartDrawerProps) {
-  const [coupon, setCoupon] = useState("");
-  const [discount, setDiscount] = useState(0);
+export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, onConfirmOrder, appliedCoupon = "", onCouponChange }: CartDrawerProps) {
+  const [coupon, setCoupon] = useState(appliedCoupon);
+  const [couponMsg, setCouponMsg] = useState("");
+
+  useEffect(() => {
+    setCoupon(appliedCoupon);
+  }, [appliedCoupon]);
 
   if (!isOpen) return null;
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const total = Math.max(0, subtotal - discount);
+  const discount = couponDiscount(appliedCoupon, subtotal);
+  const delivery = deliveryCharge(subtotal);
+  const total = Math.max(0, subtotal - discount + delivery);
 
   const applyCouponCode = () => {
-    if (coupon.toUpperCase() === "MALI15") {
-      const disc = Math.round(subtotal * 0.15);
-      setDiscount(disc);
-    } else if (coupon.toUpperCase() === "NEWAPP") {
-      setDiscount(200);
+    const code = coupon.trim().toUpperCase();
+    if (couponDiscount(code, subtotal) > 0) {
+      onCouponChange?.(code);
+      setCouponMsg("");
     } else {
-      setDiscount(0);
+      onCouponChange?.("");
+      setCouponMsg(code ? "This coupon is not valid." : "");
     }
   };
 
@@ -45,7 +54,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, on
         <div>
           <div className="flex items-center justify-between pb-4 border-b border-rose-light/20">
             <h3 className="font-display font-bold text-lg text-botanical flex items-center gap-2">
-              <span>🛒</span> Your Shopping Cart
+              Your Shopping Cart
             </h3>
             <button onClick={onClose} className="w-8 h-8 rounded-full bg-blush/60 flex items-center justify-center text-charcoal hover:bg-rose hover:text-white transition-colors">
               ✕
@@ -57,7 +66,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, on
               <p className="text-xs text-center text-charcoal/50 py-10">Your cart is currently empty.</p>
             ) : (
               cartItems.map((item) => (
-                <div key={item.id} className="py-3 flex gap-3 items-center">
+                <div key={item.id + (item.customText || "")} className="py-3 flex gap-3 items-center">
                   <img src={item.image} alt={item.name} className="w-14 h-14 object-cover rounded-xl shrink-0" />
                   <div className="flex-1">
                     <h4 className="font-semibold text-xs text-botanical line-clamp-1">{item.name}</h4>
@@ -89,21 +98,29 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, on
                 Apply
               </button>
             </div>
+            {couponMsg && <p className="text-[11px] text-red-600 -mt-1">{couponMsg}</p>}
 
             <div className="space-y-1 text-xs">
               <div className="flex justify-between text-charcoal/60">
                 <span>Subtotal</span>
-                <span>₹{subtotal}</span>
+                <span>{formatINR(subtotal)}</span>
               </div>
               {discount > 0 && (
                 <div className="flex justify-between text-rose font-bold">
                   <span>Coupon Discount</span>
-                  <span>-₹{discount}</span>
+                  <span>-{formatINR(discount)}</span>
                 </div>
+              )}
+              <div className="flex justify-between text-charcoal/60">
+                <span>Delivery</span>
+                <span>{delivery === 0 ? "FREE" : formatINR(delivery)}</span>
+              </div>
+              {delivery > 0 && (
+                <p className="text-[10px] text-charcoal/50">Add {formatINR(FREE_DELIVERY_ABOVE - subtotal)} more for free delivery</p>
               )}
               <div className="flex justify-between font-bold text-sm text-botanical pt-2 border-t border-rose-light/20">
                 <span>Total Amount</span>
-                <span>₹{total}</span>
+                <span>{formatINR(total)}</span>
               </div>
             </div>
 
