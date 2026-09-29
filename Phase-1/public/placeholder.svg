@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F6EFE2"/>
+      <stop offset="1" stop-color="#EAF0E4"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#g)"/>
+  <g fill="none" stroke="#829B88" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+    <path d="M200 285c0-50 0-85 0-110"/>
+    <path d="M200 230c-30-5-48-25-52-55 30 4 48 22 52 55Z"/>
+    <path d="M200 205c30-5 48-25 52-55-30 4-48 22-52 55Z"/>
+    <circle cx="200" cy="150" r="26"/>
+  </g>
+  <text x="200" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#4A7A50" opacity="0.8">The Mali</text>
+</svg>

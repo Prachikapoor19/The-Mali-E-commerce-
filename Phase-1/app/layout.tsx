@@ -36,6 +36,7 @@ import { CartProvider } from '@/components/CartContext';
 import { WishlistProvider } from '@/components/WishlistContext';
 import CartDrawerConnected from '@/components/CartDrawerConnected';
 import PersonalizationModalConnected from '@/components/PersonalizationModalConnected';
+import ImageFallback from '@/components/ImageFallback';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -65,6 +66,7 @@ export default function RootLayout({
             {children}
             <CartDrawerConnected />
             <PersonalizationModalConnected />
+            <ImageFallback />
           </WishlistProvider>
         </CartProvider>
       </body>
