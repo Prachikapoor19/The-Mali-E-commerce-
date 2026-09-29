@@ -16,7 +16,8 @@
   --color-sand: #F6EFE2;
   --color-gold-dark: #8C6D3B;
 
-  --font-display: var(--font-fraunces), serif;
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-logo: "Cinzel", Georgia, serif;
 
   /* Entrance animation for hero text: class="animate-fade-up" */
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -31,7 +32,7 @@
       transform: translateY(0);
     }
   }
-  --font-sans: var(--font-manrope), sans-serif;
+  --font-sans: "Manrope Variable", system-ui, sans-serif;
 }
 
 body {

@@ -357,18 +357,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Cinzel } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { useCart } from "./CartContext";
 import { useWishlist } from "./WishlistContext";
 import SearchSuggestions from "./SearchSuggestions";
 
-// Logo font loaded the Next.js way (no <link> tag, no layout shift)
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  display: "swap",
-});
+// Logo font (Cinzel) is bundled via @fontsource in app/layout.tsx
+const cinzel = { className: "font-logo" };
 
 const DELIVERY_SLOTS = [
   { id: "express", name: "Express 60-Minute", short: "Express", time: "Delivered within 1 hour", tag: "Fastest" },
