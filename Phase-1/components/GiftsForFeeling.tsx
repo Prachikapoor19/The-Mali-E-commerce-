@@ -3,7 +3,7 @@ import React from "react";
 const feelings = [
   {
     label: "Love & Romance",
-    image: "https://images.pexels.com/photos/56866/rose-rose-blooms-roses-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=500",
+    image: "https://images.pexels.com/photos/13831901/pexels-photo-13831901.jpeg?auto=compress&cs=tinysrgb&w=500",
     bg: "bg-petal", // Soft Pink
   },
   {

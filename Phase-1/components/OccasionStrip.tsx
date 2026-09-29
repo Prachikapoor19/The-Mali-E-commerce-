@@ -241,7 +241,7 @@ const birthdaySlides = [
     subTag: "FRESH FLOWER COMBOS",
     badge: "TRENDING NOW",
     image:
-      "https://images.pexels.com/photos/56866/rose-rose-blooms-roses-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/30891127/pexels-photo-30891127.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 ];
 

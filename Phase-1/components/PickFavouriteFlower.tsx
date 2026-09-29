@@ -3,7 +3,7 @@ import React from "react";
 const flowerItems = [
   {
     name: "Roses",
-    image: "https://images.pexels.com/photos/56866/rose-rose-blooms-roses-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=500",
+    image: "https://images.pexels.com/photos/30891127/pexels-photo-30891127.jpeg?auto=compress&cs=tinysrgb&w=500",
   },
   {
     name: "Orchids",
