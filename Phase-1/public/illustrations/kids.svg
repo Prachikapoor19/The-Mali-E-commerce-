@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<rect width="200" height="200" fill="#FBF1DF"/>
+<circle cx="100" cy="108" r="70" fill="#fff" opacity=".45"/>
+<g stroke-linejoin="round" stroke-linecap="round">
+
+<path d="M140 92 C142 110 136 124 128 132" fill="none" stroke="#3B2F2F" stroke-width="2"/>
+<ellipse cx="146" cy="62" rx="20" ry="24" fill="#9CC5E8" stroke="#3B2F2F" stroke-width="3"/><path d="M142 86 l4 6 l4 -6z" fill="#9CC5E8" stroke="#3B2F2F" stroke-width="3"/>
+<path d="M138 52 q4 -6 10 -4" fill="none" stroke="#fff" stroke-width="3"/>
+<ellipse cx="96" cy="164" rx="44" ry="6" fill="#3B2F2F" opacity=".12"/>
+<ellipse cx="96" cy="138" rx="36" ry="28" fill="#D9A06B" stroke="#3B2F2F" stroke-width="3"/>
+<ellipse cx="96" cy="142" rx="20" ry="15" fill="#F3D2AE"/>
+<circle cx="66" cy="70" r="13" fill="#D9A06B" stroke="#3B2F2F" stroke-width="3"/><circle cx="66" cy="70" r="6" fill="#F3D2AE"/>
+<circle cx="126" cy="70" r="13" fill="#D9A06B" stroke="#3B2F2F" stroke-width="3"/><circle cx="126" cy="70" r="6" fill="#F3D2AE"/>
+<circle cx="96" cy="96" r="34" fill="#D9A06B" stroke="#3B2F2F" stroke-width="3"/>
+<ellipse cx="96" cy="110" rx="14" ry="10" fill="#F3D2AE"/>
+<ellipse cx="96" cy="104" rx="5" ry="3.5" fill="#3B2F2F"/>
+<g>
+  <circle cx="86.0" cy="94" r="3.6" fill="#3B2F2F"/><circle cx="106.0" cy="94" r="3.6" fill="#3B2F2F"/>
+  <circle cx="87.2" cy="92.7" r="1.1" fill="#fff"/><circle cx="107.2" cy="92.7" r="1.1" fill="#fff"/>
+  <path d="M92.0 99.0 q4.0 4.5 8.0 0" fill="none" stroke="#3B2F2F" stroke-width="2.4" stroke-linecap="round"/>
+  <ellipse cx="81.0" cy="100.0" rx="4.5" ry="2.8" fill="#F29BB0" opacity=".7"/>
+  <ellipse cx="111.0" cy="100.0" rx="4.5" ry="2.8" fill="#F29BB0" opacity=".7"/>
+</g>
+<ellipse cx="128" cy="134" rx="10" ry="8" fill="#D9A06B" stroke="#3B2F2F" stroke-width="3"/>
+<path transform="translate(40 50) scale(1)" d="M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2Z" fill="#C9A15A"/><path transform="translate(52 160) scale(0.6)" d="M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2Z" fill="#C9A15A"/><path transform="translate(160 130) scale(0.8)" d="M0 4 C-6 -3 -13 3 -7 9 L0 15 L7 9 C13 3 6 -3 0 4Z" fill="#F29BB0"/>
+</g>
+</svg>

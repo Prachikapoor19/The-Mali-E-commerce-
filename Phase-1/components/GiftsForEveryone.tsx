@@ -66,17 +66,16 @@
 
 import React, { useRef } from "react";
 
-const px = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=400`;
-
-// Gift photos (not people) so every circle looks consistent; all checked on Pexels
+// Cute hand-drawn illustrations made for The Mali (public/illustrations) —
+// they load instantly, never break, and match the brand colours
 const recipients = [
-  { label: "Him", note: "Chocolates & more", q: "chocolate", image: px(6167333) },
-  { label: "Her", note: "Roses & blooms", q: "roses", image: px(30891127) },
-  { label: "Kids", note: "Birthday cakes", q: "cake", image: px(3859921) },
-  { label: "Friend", note: "Sweet surprises", q: "ferrero", image: px(30727980) },
-  { label: "Wife", note: "Made with love", q: "red velvet", image: px(38774006) },
-  { label: "Husband", note: "Personalised picks", q: "personalised", image: px(1207918) },
-  { label: "Parents", note: "Hampers & plants", q: "hamper", image: px(264771) },
+  { label: "Him", note: "Chocolates & more", q: "chocolate", image: "/illustrations/him.svg" },
+  { label: "Her", note: "Roses & blooms", q: "roses", image: "/illustrations/her.svg" },
+  { label: "Kids", note: "Birthday cakes", q: "cake", image: "/illustrations/kids.svg" },
+  { label: "Friend", note: "Sweet surprises", q: "ferrero", image: "/illustrations/friend.svg" },
+  { label: "Wife", note: "Made with love", q: "red velvet", image: "/illustrations/wife.svg" },
+  { label: "Husband", note: "Personalised picks", q: "personalised", image: "/illustrations/husband.svg" },
+  { label: "Parents", note: "Hampers & plants", q: "hamper", image: "/illustrations/parents.svg" },
 ];
 
 export default function GiftsForEveryone() {
