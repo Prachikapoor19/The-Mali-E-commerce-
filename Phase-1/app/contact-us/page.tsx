@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ContactForm from '@/components/ContactForm';
 
 export default function ContactUsPage() {
   return (
@@ -27,23 +28,7 @@ export default function ContactUsPage() {
             </div>
           </div>
 
-          <form className="space-y-4">
-            <div>
-              <label className="text-sm font-semibold text-botanical block mb-1">Name</label>
-              <input type="text" className="w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-rose" placeholder="Your name" />
-            </div>
-            <div>
-              <label className="text-sm font-semibold text-botanical block mb-1">Email</label>
-              <input type="email" className="w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-rose" placeholder="you@example.com" />
-            </div>
-            <div>
-              <label className="text-sm font-semibold text-botanical block mb-1">Message</label>
-              <textarea rows={4} className="w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-rose" placeholder="How can we help?" />
-            </div>
-            <button type="button" className="bg-rose hover:bg-rose-dark text-ivory font-semibold px-6 py-2.5 rounded-full transition-colors">
-              Send Message
-            </button>
-          </form>
+          <ContactForm />
         </div>
       </section>
       <Footer />

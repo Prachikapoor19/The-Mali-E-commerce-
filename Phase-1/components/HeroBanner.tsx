@@ -120,6 +120,7 @@ import { useState, useEffect } from 'react';
 const slides = [
   {
     tag: 'Same-Day Delivery',
+    href: '/search?q=all',
     title: 'Forgot a Date? We Have You Covered',
     subtitle: 'Order before 6 PM for guaranteed delivery today in 200+ cities.',
     cta: 'Order Now',
@@ -131,6 +132,7 @@ const slides = [
   },
   {
     tag: 'Gourmet Cakes',
+    href: '/search?q=cakes',
     title: 'Gourmet Cakes for Your Celebration',
     subtitle: 'Find the sweetest delights for your sweetest moments.',
     cta: 'Order Now',
@@ -142,6 +144,7 @@ const slides = [
   },
   {
     tag: 'Personalised Gifts',
+    href: '/search?q=personalised',
     title: 'Gifts That Feel Truly Yours',
     subtitle: 'Curated hampers and keepsakes for every relationship.',
     cta: 'Shop Gifts',
@@ -214,13 +217,13 @@ export default function HeroBanner() {
                   {slide.subtitle}
                 </p>
 
-                <button className={`mt-1 w-fit inline-flex items-center gap-2 text-xs md:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all shadow-xs ${slide.btnBg}`}>
+                <a href={slide.href} className={`mt-1 w-fit inline-flex items-center gap-2 text-xs md:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all shadow-xs ${slide.btnBg}`}>
                   <span>{slide.cta}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
-                </button>
+                </a>
               </div>
 
               {/* Right Hero Image */}

@@ -20,7 +20,7 @@ export default function FlowersCollection() {
       <div className="w-full bg-petal border border-petal-dark relative py-8 px-4 sm:px-8 rounded-3xl">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
           {flowerItems.map((item) => (
-            <div key={item.name} className="flex flex-col items-center group">
+            <a key={item.name} href={`/search?q=${encodeURIComponent(item.name + " flowers")}`} className="flex flex-col items-center group">
               {/* Category Name Above Card */}
               <span className="font-semibold text-sm text-botanical mb-2.5">
                 {item.name}
@@ -36,10 +36,10 @@ export default function FlowersCollection() {
               </div>
 
               {/* Order Now Pill Button */}
-              <button className="px-4 py-1.5 bg-white text-botanical text-xs font-semibold rounded-full shadow-2xs border border-rose-light/30 hover:bg-botanical hover:text-ivory transition-all flex items-center gap-1">
+              <span className="px-4 py-1.5 bg-white text-botanical text-xs font-semibold rounded-full shadow-2xs border border-rose-light/30 group-hover:bg-botanical group-hover:text-ivory transition-all flex items-center gap-1">
                 Order Now <span className="text-[10px]">&gt;</span>
-              </button>
-            </div>
+              </span>
+            </a>
           ))}
         </div>
       </div>

@@ -361,6 +361,7 @@ import { Cinzel } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { useCart } from "./CartContext";
 import { useWishlist } from "./WishlistContext";
+import SearchSuggestions from "./SearchSuggestions";
 
 // Logo font loaded the Next.js way (no <link> tag, no layout shift)
 const cinzel = Cinzel({
@@ -383,9 +384,13 @@ export default function Header() {
 
   // Search (shared by desktop + mobile inputs)
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchFocused, setSearchFocused] = useState(false);
   const runSearch = () => {
     const q = searchQuery.trim();
-    if (q) router.push(`/search?q=${encodeURIComponent(q)}`);
+    if (q) {
+      setSearchFocused(false);
+      router.push(`/search?q=${encodeURIComponent(q)}`);
+    }
   };
 
   // Pincode + delivery slot
@@ -417,6 +422,25 @@ export default function Header() {
   // Auth
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authTab, setAuthTab] = useState<"login" | "register">("login");
+  const [authPhone, setAuthPhone] = useState("");
+  const [authError, setAuthError] = useState("");
+  const [authDone, setAuthDone] = useState(false);
+
+  const openAuth = () => {
+    setAuthError("");
+    setAuthDone(false);
+    setIsAuthModalOpen(true);
+  };
+
+  // Accounts need a backend (OTP SMS). Until then, be honest and point to guest checkout.
+  const submitAuth = () => {
+    if (!/^[6-9]\d{9}$/.test(authPhone)) {
+      setAuthError("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+    setAuthError("");
+    setAuthDone(true);
+  };
 
   // Gift Finder → smooth-scroll to the Gift Finder section on the homepage
   const goToGiftFinder = () => {
@@ -481,13 +505,20 @@ export default function Header() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && runSearch()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") runSearch();
+                if (e.key === "Escape") setSearchFocused(false);
+              }}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setSearchFocused(false)}
               placeholder="Search flowers, cakes, plants, personalized gifts..."
+              aria-label="Search products"
               className="w-full py-2 pl-9 pr-4 text-xs rounded-full bg-white border border-botanical/20 focus:outline-none focus:border-botanical text-charcoal placeholder:text-charcoal/40 shadow-2xs"
             />
             <button onClick={runSearch} className="absolute left-3 top-2.5 text-xs text-charcoal/40" aria-label="Search">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-3.5 h-3.5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
             </button>
+            {searchFocused && <SearchSuggestions query={searchQuery} onPick={() => setSearchFocused(false)} />}
           </div>
 
           {/* Actions */}
@@ -510,7 +541,7 @@ export default function Header() {
             </a>
 
             <button
-              onClick={() => setIsAuthModalOpen(true)}
+              onClick={openAuth}
               className="flex items-center gap-1 text-xs font-semibold hover:text-rose transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><circle cx="12" cy="8" r="4" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
@@ -538,13 +569,19 @@ export default function Header() {
               enterKeyHint="search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && runSearch()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") runSearch();
+                if (e.key === "Escape") setSearchFocused(false);
+              }}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setSearchFocused(false)}
               placeholder="Search flowers, cakes, gifts..."
               className="w-full py-1.5 pl-8 pr-3 text-xs rounded-full bg-white border border-botanical/20 focus:outline-none focus:border-botanical text-charcoal placeholder:text-charcoal/40 shadow-2xs"
             />
             <button onClick={runSearch} className="absolute left-2.5 top-2 text-xs text-charcoal/40" aria-label="Search">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-3.5 h-3.5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
             </button>
+            {searchFocused && <SearchSuggestions query={searchQuery} onPick={() => setSearchFocused(false)} />}
           </div>
         </div>
       </header>
@@ -654,18 +691,41 @@ export default function Header() {
               inputMode="numeric"
               maxLength={10}
               placeholder="Mobile Number"
+              value={authPhone}
+              onChange={(e) => {
+                setAuthPhone(e.target.value.replace(/\D/g, ""));
+                setAuthError("");
+              }}
+              onKeyDown={(e) => e.key === "Enter" && submitAuth()}
               className="w-full text-xs p-3 rounded-xl border border-botanical/20 mb-3"
             />
+            {authError && <p className="text-[11px] text-red-600 -mt-2 mb-3">{authError}</p>}
             {authTab === "register" && (
               <input type="email" placeholder="Email (optional)" className="w-full text-xs p-3 rounded-xl border border-botanical/20 mb-3" />
             )}
 
-            <button
-              onClick={() => setIsAuthModalOpen(false)}
-              className="w-full py-3 bg-botanical text-ivory text-xs font-bold rounded-xl hover:bg-botanical-light transition-colors"
-            >
-              {authTab === "login" ? "Send OTP" : "Create Account"}
-            </button>
+            {authDone ? (
+              <div className="bg-blush rounded-xl p-4 text-xs text-botanical">
+                <p className="font-bold mb-1">Accounts are launching soon!</p>
+                <p className="text-charcoal/70">
+                  You don&apos;t need an account to order. Checkout as a guest and we&apos;ll send order updates to your mobile.
+                  You can track any order with its Order ID.
+                </p>
+                <button
+                  onClick={() => setIsAuthModalOpen(false)}
+                  className="mt-3 w-full py-2.5 bg-botanical text-ivory font-bold rounded-xl hover:bg-botanical-light transition-colors"
+                >
+                  Continue Shopping
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={submitAuth}
+                className="w-full py-3 bg-botanical text-ivory text-xs font-bold rounded-xl hover:bg-botanical-light transition-colors"
+              >
+                {authTab === "login" ? "Send OTP" : "Create Account"}
+              </button>
+            )}
 
             <p className="text-[10px] text-charcoal/40 text-center mt-3">
               By continuing, you agree to The Mali&apos;s Terms &amp; Privacy Policy.
