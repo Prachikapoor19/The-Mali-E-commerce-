@@ -7,12 +7,11 @@ MongoDB Atlas as the database. It deploys to Vercel together with the site.
 
 | URL | What |
 | --- | --- |
-| `POST /api/orders` | Places an order. Prices are always re-checked on the server from `components/searchCatalog.ts`. |
+| `POST /api/orders` | Places an order. Prices are always re-checked on the server against the live products in MongoDB. |
 | `GET /api/orders/MALI123456` | Public order status for the Track Order page (no address or phone numbers). |
 | `/admin` | Password-protected page: all orders, filter by status, change status. |
 | `POST /api/admin/login`, `/logout` | Admin login (httpOnly cookie, 7 days). |
 | `GET /api/admin/orders`, `PATCH /api/admin/orders/[id]` | Admin order list and status update. |
-
 | `GET /api/products` | All visible products for the shop. |
 | `GET/POST /api/admin/products` | Admin: list every product (including hidden) / add a product. |
 | `PATCH/DELETE /api/admin/products/[id]` | Admin: edit, hide/show (`{ "active": false }`) or delete a product. |
