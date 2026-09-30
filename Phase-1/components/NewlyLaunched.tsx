@@ -1,13 +1,13 @@
 'use client';
 
 import ProductCard from './ProductCard';
-import { getProduct, type CatalogItem } from './searchCatalog';
-
-// Newest additions to the catalogue (prices and photos come from searchCatalog.ts)
-const NEW_IDS = ['pl2', 'pl3', 'h5', 'pl5', 'pl4'];
+import { useProducts } from './ProductsContext';
 
 export default function NewlyLaunched() {
-  const products = NEW_IDS.map(getProduct).filter((p): p is CatalogItem => Boolean(p));
+  const { products } = useProducts();
+  // Newest additions: products added in admin go to the end of the list, so show the last five
+  const newest = products.slice(-5).reverse();
+  if (newest.length === 0) return null;
 
   return (
     <section className="w-full bg-blush py-10 sm:py-14">
@@ -23,7 +23,7 @@ export default function NewlyLaunched() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-          {products.map((p) => (
+          {newest.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>

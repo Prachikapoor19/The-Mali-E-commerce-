@@ -17,7 +17,11 @@ export async function connectDB(): Promise<typeof mongoose> {
   if (!uri) throw new Error('MONGODB_URI is not set');
   if (cache.conn) return cache.conn;
   if (!cache.promise) {
-    cache.promise = mongoose.connect(uri, { dbName: process.env.MONGODB_DB || 'themali', bufferCommands: false });
+    cache.promise = mongoose.connect(uri, {
+      dbName: process.env.MONGODB_DB || 'themali',
+      bufferCommands: false,
+      serverSelectionTimeoutMS: 8000, // fail fast instead of hanging a page/build
+    });
   }
   try {
     cache.conn = await cache.promise;

@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useCart } from './CartContext';
 import WishlistButton from './WishlistButton';
 import ProductCard from './ProductCard';
-import { discountPercent, getProduct, relatedProducts } from './searchCatalog';
+import { discountPercent, relatedProducts, type CatalogItem } from './searchCatalog';
+import { useProducts } from './ProductsContext';
 import { formatINR, FREE_DELIVERY_ABOVE } from './pricing';
 
 const TRUST = [
@@ -14,16 +15,17 @@ const TRUST = [
   { title: 'Free message card', text: 'Add your personal note at checkout' },
 ];
 
-export default function ProductView({ id }: { id: string }) {
+export default function ProductView({ product: serverProduct }: { product: CatalogItem }) {
   const router = useRouter();
   const { addToCart, openPersonalize, closeCart } = useCart();
   const [qty, setQty] = useState(1);
-  const product = getProduct(id);
-  if (!product) return null;
+  const { products, getProduct } = useProducts();
+  // Prefer the freshest copy (e.g. a price changed in admin a moment ago)
+  const product = getProduct(serverProduct.id) ?? serverProduct;
 
   const off = discountPercent(product);
   const cartProduct = { id: product.id, name: product.name, price: product.price, image: product.image };
-  const related = relatedProducts(product.id, 4);
+  const related = relatedProducts(products, product.id, 4);
 
   const add = () => {
     for (let i = 0; i < qty; i++) addToCart(cartProduct);

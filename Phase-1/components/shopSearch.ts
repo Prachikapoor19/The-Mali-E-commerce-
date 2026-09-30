@@ -1,6 +1,6 @@
 // Search + filter logic shared by the shop page and the header suggestions.
 
-import { SEARCH_CATALOG, type CatalogItem } from './searchCatalog';
+import { PRODUCT_CATEGORIES, type CatalogItem } from './searchCatalog';
 
 // Words that don't help narrow down products
 const STOP_WORDS = new Set(['n', 'and', 'for', 'the', 'of', 'a', 'in', 'with', 'to', 'my', 'your', 'gift', 'gifts', 'all', 'best', 'bestseller', 'bestsellers', 'same', 'day', 'delivery', 'midnight', 'new', 'premium', 'luxe', 'her', 'him', 'combo', 'combos']);
@@ -17,7 +17,7 @@ const CATEGORY_WORDS: Record<string, string[]> = {
 
 const stem = (w: string) => (w.length > 3 ? w.replace(/s$/, '') : w);
 
-export const CATEGORIES = ['Flowers', 'Cakes', 'Plants', 'Personalised', 'Chocolates', 'Hampers'] as const;
+export const CATEGORIES = PRODUCT_CATEGORIES;
 
 export const PRICE_RANGES = [
   { id: 'under500', label: 'Under ₹500', min: 0, max: 499 },
@@ -34,30 +34,30 @@ export const SORTS = [
 ] as const;
 
 // Text search. `exact` is false when nothing matched and we fell back to everything.
-export function searchCatalog(rawQuery: string): { results: CatalogItem[]; exact: boolean } {
+export function searchCatalog(rawQuery: string, items: CatalogItem[]): { results: CatalogItem[]; exact: boolean } {
   const query = rawQuery.toLowerCase().trim();
-  if (!query || query === 'all') return { results: SEARCH_CATALOG, exact: true };
+  if (!query || query === 'all') return { results: items, exact: true };
   const words = query
     .split(/[^a-z0-9]+/)
     .filter((w) => w && !STOP_WORDS.has(w))
     .map(stem);
-  if (words.length === 0) return { results: SEARCH_CATALOG, exact: true };
+  if (words.length === 0) return { results: items, exact: true };
 
-  const results = SEARCH_CATALOG.filter((item) => {
+  const results = items.filter((item) => {
     const itemWords = (item.name + ' ' + item.category).toLowerCase().split(/[^a-z0-9]+/).map(stem);
     const categoryWords = (CATEGORY_WORDS[item.category] || []).map(stem);
     return words.some((w) => itemWords.includes(w) || categoryWords.includes(w));
   });
 
-  return results.length ? { results, exact: true } : { results: SEARCH_CATALOG, exact: false };
+  return results.length ? { results, exact: true } : { results: items, exact: false };
 }
 
 // Quick name-first matches for the header dropdown
-export function suggest(rawQuery: string, limit = 5): CatalogItem[] {
+export function suggest(rawQuery: string, items: CatalogItem[], limit = 5): CatalogItem[] {
   const q = rawQuery.toLowerCase().trim();
   if (q.length < 2) return [];
-  const byName = SEARCH_CATALOG.filter((p) => p.name.toLowerCase().includes(q));
-  const { results, exact } = searchCatalog(q);
+  const byName = items.filter((p) => p.name.toLowerCase().includes(q));
+  const { results, exact } = searchCatalog(q, items);
   const extra = exact ? results.filter((p) => !byName.includes(p)) : [];
   return [...byName, ...extra].slice(0, limit);
 }

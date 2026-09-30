@@ -1,11 +1,13 @@
 'use client';
 
 import { suggest } from './shopSearch';
+import { useProducts } from './ProductsContext';
 import { formatINR } from './pricing';
 
 // Live product matches shown under the header search box while typing
 export default function SearchSuggestions({ query, onPick }: { query: string; onPick: () => void }) {
-  const items = suggest(query, 5);
+  const { products } = useProducts();
+  const items = suggest(query, products, 5);
   if (query.trim().length < 2) return null;
 
   return (

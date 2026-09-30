@@ -1,7 +1,7 @@
 // POST /api/orders — place an order (saved in MongoDB)
 import { connectDB, isDbConfigured } from '@/lib/db';
 import { OrderModel } from '@/lib/orderModel';
-import { getProduct } from '@/components/searchCatalog';
+import { listProducts } from '@/lib/products';
 import { couponDiscount, deliveryCharge, DELIVERY_SLOTS } from '@/components/pricing';
 
 type IncomingItem = { id?: unknown; quantity?: unknown; customText?: unknown };
@@ -30,9 +30,10 @@ export async function POST(request: Request) {
   if (rawItems.length === 0 || rawItems.length > 50) {
     return Response.json({ error: 'Your cart is empty' }, { status: 400 });
   }
+  const catalogue = await listProducts(); // live products from the database
   const items = [];
   for (const raw of rawItems) {
-    const product = getProduct(str(raw.id, 20));
+    const product = catalogue.find((p) => p.id === str(raw.id, 60));
     const quantity = Number(raw.quantity);
     if (!product || !Number.isInteger(quantity) || quantity < 1 || quantity > 20) {
       return Response.json({ error: 'Some items in your cart are no longer available' }, { status: 400 });

@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import CategoryNav from '@/components/CategoryNav';
 import Footer from '@/components/Footer';
 import { applyFilters, CATEGORIES, PRICE_RANGES, searchCatalog, SORTS } from '@/components/shopSearch';
+import { useProducts } from '@/components/ProductsContext';
 
 const chip = (active: boolean) =>
   `px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-colors whitespace-nowrap ${
@@ -30,7 +31,8 @@ function SearchResults() {
     router.replace(`${pathname}?${next.toString()}`, { scroll: false });
   };
 
-  const { results: matched, exact } = searchCatalog(query);
+  const { products } = useProducts();
+  const { results: matched, exact } = searchCatalog(query, products);
   const results = applyFilters(matched, { category, price, sort });
   const isAll = !query || query.toLowerCase() === 'all';
   const hasFilters = Boolean(category || price);

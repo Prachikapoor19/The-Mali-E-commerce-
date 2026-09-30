@@ -13,6 +13,19 @@ MongoDB Atlas as the database. It deploys to Vercel together with the site.
 | `POST /api/admin/login`, `/logout` | Admin login (httpOnly cookie, 7 days). |
 | `GET /api/admin/orders`, `PATCH /api/admin/orders/[id]` | Admin order list and status update. |
 
+| `GET /api/products` | All visible products for the shop. |
+| `GET/POST /api/admin/products` | Admin: list every product (including hidden) / add a product. |
+| `PATCH/DELETE /api/admin/products/[id]` | Admin: edit, hide/show (`{ "active": false }`) or delete a product. |
+
+### Products
+Products live in MongoDB (`products` collection). The first time the site talks
+to an empty database it copies in the 30 starter products from
+`components/searchCatalog.ts` (only once — tracked in the `settings` collection).
+After that, manage everything from **/admin → Products**: add, edit price/photo/
+description, hide (out of stock) or delete. Pages refresh right after a change
+(and at least every 60 seconds). Order prices are always re-checked against the
+live product list, and hidden products can't be ordered.
+
 Order statuses: `placed` → `preparing` → `out_for_delivery` → `delivered` (or `cancelled`).
 
 Until `MONGODB_URI` is set, checkout keeps working in **demo mode** (orders are

@@ -4,18 +4,20 @@ import Header from '@/components/Header';
 import CategoryNav from '@/components/CategoryNav';
 import Footer from '@/components/Footer';
 import ProductView from '@/components/ProductView';
-import { SEARCH_CATALOG, getProduct } from '@/components/searchCatalog';
+import { findProduct } from '@/lib/products';
 
-// Every product page is built ahead of time; unknown ids show the 404 page
-export const dynamicParams = false;
+// Product pages are built on first visit and refreshed at most every 60s
+// (or immediately when the product is edited in admin).
+export const revalidate = 60;
 
+// Nothing prebuilt at deploy time; each product page is created on its first visit and cached
 export function generateStaticParams() {
-  return SEARCH_CATALOG.map((p) => ({ id: p.id }));
+  return [];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  const product = getProduct(id);
+  const product = await findProduct(id);
   if (!product) return { title: 'Product not found — The Mali' };
   return {
     title: `${product.name} — The Mali`,
@@ -25,14 +27,14 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const product = getProduct(id);
+  const product = await findProduct(id);
   if (!product) notFound();
 
   return (
     <main>
       <Header />
       <CategoryNav />
-      <ProductView id={product.id} />
+      <ProductView product={product} />
       <Footer />
     </main>
   );

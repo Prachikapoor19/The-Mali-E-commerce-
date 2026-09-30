@@ -5,10 +5,12 @@ import CategoryNav from '@/components/CategoryNav';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import { useWishlist } from '@/components/WishlistContext';
-import { getProduct, type CatalogItem } from '@/components/searchCatalog';
+import type { CatalogItem } from '@/components/searchCatalog';
+import { useProducts } from '@/components/ProductsContext';
 
 export default function WishlistPage() {
   const { ids, isReady } = useWishlist();
+  const { getProduct } = useProducts();
   const products = ids.map(getProduct).filter((p): p is CatalogItem => Boolean(p));
 
   return (

@@ -764,6 +764,9 @@
 import React, { useState } from "react";
 import { useCart } from "./CartContext";
 import WishlistButton from "./WishlistButton";
+import { useProducts } from "./ProductsContext";
+import { discountPercent, type CatalogItem } from "./searchCatalog";
+import { formatINR } from "./pricing";
 
 interface Product {
   id: string;
@@ -778,55 +781,48 @@ interface Product {
   isPersonalised?: boolean;
 }
 
-const bestsellersData: Record<string, Product[]> = {
-  Flowers: [
-    { id: "f1", name: "The Classic Red Rose Delight", price: "₹549", originalPrice: "₹649", discount: "15% OFF", rating: "4.9 ★", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80", badge: "Wifey Wants This", tagColor: "bg-rose-dark" },
-    { id: "f2", name: "Hot Girl Bouquet", price: "₹899", originalPrice: "₹999", discount: "10% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/30891127/pexels-photo-30891127.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Wifey Wants This", tagColor: "bg-rose-dark" },
-    { id: "f3", name: "Blue Horizon Blooms", price: "₹2,199", originalPrice: "₹2,449", discount: "10% OFF", rating: "4.7 ★", image: "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Bestseller", tagColor: "bg-gold text-botanical" },
-    { id: "f4", name: "For My Better Half", price: "₹499", originalPrice: "₹599", discount: "16% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Wifey Wants This", tagColor: "bg-rose-dark" },
-    { id: "f5", name: "Sunlit Charm Sunflower", price: "₹2,399", originalPrice: "₹2,799", discount: "14% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Bestseller", tagColor: "bg-gold text-botanical" },
-  ],
-  Cakes: [
-    { id: "c1", name: "Truffle Chocolate Cake", price: "₹599", originalPrice: "₹699", discount: "14% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Top Rated", tagColor: "bg-rose" },
-    { id: "c2", name: "Fresh Fruit Delight", price: "₹699", originalPrice: "₹799", discount: "12% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/9553728/pexels-photo-9553728.jpeg?auto=compress&cs=tinysrgb&w=400" },
-    { id: "c3", name: "Red Velvet Heart Cake", price: "₹799", originalPrice: "₹899", discount: "11% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/38774006/pexels-photo-38774006.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Bestseller", tagColor: "bg-gold text-botanical" },
-    { id: "c4", name: "Butterscotch Crunch", price: "₹549", originalPrice: "₹649", discount: "15% OFF", rating: "4.7 ★", image: "https://images.pexels.com/photos/19252761/pexels-photo-19252761.jpeg?auto=compress&cs=tinysrgb&w=400" },
-    { id: "c5", name: "Black Forest Classic", price: "₹599", originalPrice: "₹699", discount: "14% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/8802102/pexels-photo-8802102.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  ],
-  Personalised: [
-    { id: "p1", name: "Custom LED Photo Frame", price: "₹899", originalPrice: "₹1,099", discount: "18% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/9451328/pexels-photo-9451328.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "Personalise It!", tagColor: "bg-botanical", isPersonalised: true },
-    { id: "p2", name: "Engraved Wooden Mug", price: "₹499", originalPrice: "₹599", discount: "16% OFF", rating: "4.7 ★", image: "https://images.pexels.com/photos/1207918/pexels-photo-1207918.jpeg?auto=compress&cs=tinysrgb&w=400", isPersonalised: true },
-    { id: "p3", name: "Personalised Cushion", price: "₹399", originalPrice: "₹499", discount: "20% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/1248583/pexels-photo-1248583.jpeg?auto=compress&cs=tinysrgb&w=400", isPersonalised: true },
-    { id: "p4", name: "Customized Keychain", price: "₹299", originalPrice: "₹399", discount: "25% OFF", rating: "4.6 ★", image: "https://images.pexels.com/photos/1194036/pexels-photo-1194036.jpeg?auto=compress&cs=tinysrgb&w=400", isPersonalised: true },
-    { id: "p5", name: "Magic Personalised Mug", price: "₹449", originalPrice: "₹549", discount: "18% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/1566308/pexels-photo-1566308.jpeg?auto=compress&cs=tinysrgb&w=400", isPersonalised: true },
-  ],
-  Hampers: [
-    { id: "h1", name: "Luxury Gourmet Box", price: "₹2,499", originalPrice: "₹2,999", discount: "16% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/264771/pexels-photo-264771.jpeg?auto=compress&cs=tinysrgb&w=400", badge: "LUXE", tagColor: "bg-botanical" },
-    { id: "h2", name: "Spa & Wellness Kit", price: "₹1,899", originalPrice: "₹2,199", discount: "13% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/6621472/pexels-photo-6621472.jpeg?auto=compress&cs=tinysrgb&w=400" },
-    { id: "h3", name: "Chocolate Basket", price: "₹1,299", originalPrice: "₹1,499", discount: "13% OFF", rating: "4.7 ★", image: "https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&w=400" },
-    { id: "h4", name: "Dry Fruits Celebration", price: "₹1,599", originalPrice: "₹1,899", discount: "15% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=400" },
-    { id: "h5", name: "Self Care Luxury Box", price: "₹2,199", originalPrice: "₹2,499", discount: "12% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/17555293/pexels-photo-17555293.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  ],
-  Chocolates: [
-    { id: "ch1", name: "Ferrero Rocher Tower", price: "₹1,199", originalPrice: "₹1,399", discount: "14% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/30727980/pexels-photo-30727980.jpeg?auto=compress&cs=tinysrgb&w=400" },
-    { id: "ch2", name: "Handcrafted Truffles", price: "₹899", originalPrice: "₹999", discount: "10% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/65882/chocolate-dark-coffee-confiserie-65882.jpeg?auto=compress&cs=tinysrgb&w=400" },
-    { id: "ch3", name: "Cadbury Celebrations", price: "₹499", originalPrice: "₹599", discount: "16% OFF", rating: "4.7 ★", image: "https://images.pexels.com/photos/37857736/pexels-photo-37857736.jpeg?auto=compress&cs=tinysrgb&w=400" },
-    { id: "ch4", name: "Belgian Dark Chocolate", price: "₹999", originalPrice: "₹1,199", discount: "16% OFF", rating: "4.9 ★", image: "https://images.pexels.com/photos/6167333/pexels-photo-6167333.jpeg?auto=compress&cs=tinysrgb&w=400" },
-    { id: "ch5", name: "Assorted Chocolate Bouquet", price: "₹1,099", originalPrice: "₹1,299", discount: "15% OFF", rating: "4.8 ★", image: "https://images.pexels.com/photos/13831901/pexels-photo-13831901.jpeg?auto=compress&cs=tinysrgb&w=400" },
-  ],
+// Badge colours (any other badge text uses gold)
+const BADGE_STYLE: Record<string, string> = {
+  Bestseller: "bg-gold text-botanical",
+  "Top Rated": "bg-rose",
+  Trending: "bg-rose-dark",
+  LUXE: "bg-botanical",
+  "Personalise It": "bg-botanical",
+  "Good Luck": "bg-rose",
 };
 
-const tabIcons: Record<string, string> = {
-  Flowers: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=100&q=80",
-  Cakes: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=100",
-  Personalised: "https://images.pexels.com/photos/9451328/pexels-photo-9451328.jpeg?auto=compress&cs=tinysrgb&w=100",
-  Hampers: "https://images.pexels.com/photos/264771/pexels-photo-264771.jpeg?auto=compress&cs=tinysrgb&w=100",
-  Chocolates: "https://images.pexels.com/photos/65882/chocolate-dark-coffee-confiserie-65882.jpeg?auto=compress&cs=tinysrgb&w=100",
-};
+const TAB_ORDER = ["Flowers", "Cakes", "Personalised", "Hampers", "Chocolates", "Plants"];
+
+// Card data comes from the live product list (MongoDB), best-reviewed first
+function toCard(p: CatalogItem): Product {
+  const off = discountPercent(p);
+  return {
+    id: p.id,
+    name: p.name,
+    price: formatINR(p.price),
+    originalPrice: off > 0 ? formatINR(p.originalPrice) : "",
+    discount: off > 0 ? `${off}% OFF` : "",
+    rating: `${p.rating} ★`,
+    image: p.image,
+    badge: p.badge,
+    tagColor: p.badge ? BADGE_STYLE[p.badge] ?? "bg-gold text-botanical" : undefined,
+    isPersonalised: p.isPersonalised,
+  };
+}
 
 export default function BestsellersSection() {
-  const [activeTab, setActiveTab] = useState<string>("Flowers");
-  const categories = ["Flowers", "Cakes", "Personalised", "Hampers", "Chocolates"];
+  const { products } = useProducts();
+  const categories = TAB_ORDER.filter((c) => products.some((p) => p.category === c));
+  const [chosenTab, setActiveTab] = useState<string>("Flowers");
+  const activeTab = categories.includes(chosenTab) ? chosenTab : categories[0] ?? "Flowers";
+  const cards = products
+    .filter((p) => p.category === activeTab)
+    .sort((a, b) => b.reviews - a.reviews)
+    .slice(0, 5)
+    .map(toCard);
+  const tabIcons: Record<string, string> = Object.fromEntries(
+    categories.map((c) => [c, products.find((p) => p.category === c)?.image ?? ""])
+  );
   const { addToCart, openPersonalize } = useCart();
 
   const handleAction = (item: Product) => {
@@ -872,7 +868,7 @@ export default function BestsellersSection() {
       </div>
 
       <div className="flex md:grid md:grid-cols-5 gap-3 sm:gap-4 overflow-x-auto md:overflow-visible pb-3 md:pb-0 scrollbar-none snap-x snap-mandatory">
-        {bestsellersData[activeTab]?.map((item) => (
+        {cards.map((item) => (
           <div
             key={item.id}
             className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"

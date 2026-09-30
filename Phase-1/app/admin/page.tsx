@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { formatINR } from '@/components/pricing';
+import ProductsAdmin from '@/components/admin/ProductsAdmin';
 
 type Status = 'placed' | 'preparing' | 'out_for_delivery' | 'delivered' | 'cancelled';
 
@@ -54,6 +55,8 @@ export default function AdminPage() {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [tab, setTab] = useState<'orders' | 'products'>('orders');
+  const toLogin = useCallback(() => setState('login'), []);
 
   const load = useCallback(async () => {
     try {
@@ -166,8 +169,31 @@ export default function AdminPage() {
       </div>
     );
 
+  const tabs = (
+    <div className="flex gap-1 bg-white border border-rose-light/30 rounded-full p-1 w-fit mb-6">
+      {(['orders', 'products'] as const).map((t) => (
+        <button
+          key={t}
+          onClick={() => setTab(t)}
+          className={`px-5 py-2 rounded-full text-sm font-semibold ${tab === t ? 'bg-botanical text-ivory' : 'text-botanical'}`}
+        >
+          {t === 'orders' ? `Orders (${orders.length})` : 'Products'}
+        </button>
+      ))}
+    </div>
+  );
+
+  if (tab === 'products')
+    return shell(
+      <div className="px-4 sm:px-8 py-6 max-w-6xl mx-auto">
+        {tabs}
+        <ProductsAdmin onUnauthorized={toLogin} />
+      </div>
+    );
+
   return shell(
     <div className="px-4 sm:px-8 py-6 max-w-6xl mx-auto">
+      {tabs}
       <div className="flex gap-2 overflow-x-auto pb-2 mb-6">
         {FILTERS.map((f) => (
           <button

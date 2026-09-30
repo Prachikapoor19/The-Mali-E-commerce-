@@ -1,6 +1,9 @@
-// The single product catalogue for the site.
-// Search, product pages, wishlist and "You may also like" all read from here,
-// so a product added here shows up everywhere.
+// Starter product list. On first run these are copied into MongoDB, and from then
+// on products are managed from the Admin page (/admin → Products).
+// This list is also used as a fallback when the database is not connected.
+
+// Shop categories (shared by the shop, admin form and database)
+export const PRODUCT_CATEGORIES = ['Flowers', 'Cakes', 'Plants', 'Personalised', 'Chocolates', 'Hampers'] as const;
 
 export interface CatalogItem {
   id: string;
@@ -15,6 +18,7 @@ export interface CatalogItem {
   includes: string[];
   isPersonalised?: boolean;
   badge?: string;
+  active?: boolean; // false = hidden from the shop (admin only)
 }
 
 const px = (id: number, w = 800) =>
@@ -190,15 +194,15 @@ export const SEARCH_CATALOG: CatalogItem[] = [
   },
 ];
 
-export function getProduct(id: string): CatalogItem | undefined {
-  return SEARCH_CATALOG.find((p) => p.id === id);
+export function findIn(list: CatalogItem[], id: string): CatalogItem | undefined {
+  return list.find((p) => p.id === id);
 }
 
 // Same-category products first, then others, never the product itself
-export function relatedProducts(id: string, count = 4): CatalogItem[] {
-  const current = getProduct(id);
-  const same = SEARCH_CATALOG.filter((p) => p.id !== id && p.category === current?.category);
-  const others = SEARCH_CATALOG.filter((p) => p.id !== id && p.category !== current?.category);
+export function relatedProducts(list: CatalogItem[], id: string, count = 4): CatalogItem[] {
+  const current = findIn(list, id);
+  const same = list.filter((p) => p.id !== id && p.category === current?.category);
+  const others = list.filter((p) => p.id !== id && p.category !== current?.category);
   return [...same, ...others].slice(0, count);
 }
 

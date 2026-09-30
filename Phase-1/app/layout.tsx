@@ -42,26 +42,34 @@ import { WishlistProvider } from '@/components/WishlistContext';
 import CartDrawerConnected from '@/components/CartDrawerConnected';
 import PersonalizationModalConnected from '@/components/PersonalizationModalConnected';
 import ImageFallback from '@/components/ImageFallback';
+import { ProductsProvider } from '@/components/ProductsContext';
+import { listProducts } from '@/lib/products';
 
 export const metadata: Metadata = {
   title: 'The Mali — Flowers, Cakes & Gifts',
   description: 'Fresh flowers, cakes, and gifts delivered same-day.',
 };
 
-export default function RootLayout({
+// Pages are refreshed at most every 60s (and right away when admin edits a product)
+export const revalidate = 60;
+
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const products = await listProducts();
   return (
     <html lang="en">
       <body>
-        <CartProvider>
-          <WishlistProvider>
-            {children}
-            <CartDrawerConnected />
-            <PersonalizationModalConnected />
-            <ImageFallback />
-          </WishlistProvider>
-        </CartProvider>
+        <ProductsProvider initialProducts={products}>
+          <CartProvider>
+            <WishlistProvider>
+              {children}
+              <CartDrawerConnected />
+              <PersonalizationModalConnected />
+              <ImageFallback />
+            </WishlistProvider>
+          </CartProvider>
+        </ProductsProvider>
       </body>
     </html>
   );
