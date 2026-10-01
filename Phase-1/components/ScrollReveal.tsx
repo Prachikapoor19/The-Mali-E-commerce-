@@ -37,8 +37,13 @@ export default function ScrollReveal() {
 
     const prepare = (el: Element, delay = 0) => {
       const node = el as HTMLElement;
-      if (node.dataset.revealDone || !below(node)) return; // never hide what's already on screen
-      node.dataset.revealDone = '1';
+      if (node.classList.contains('is-visible')) return;
+      // Already prepared by an earlier run (e.g. React dev mode runs effects twice): just watch it again
+      if (node.classList.contains('reveal')) {
+        observer.observe(node);
+        return;
+      }
+      if (!below(node)) return; // never move what's already on screen
       node.classList.add('reveal');
       if (delay) node.style.setProperty('--reveal-delay', `${delay}ms`);
       observer.observe(node);
