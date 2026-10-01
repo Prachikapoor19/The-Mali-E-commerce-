@@ -173,17 +173,16 @@ html::-webkit-scrollbar-thumb {
 
 /* ---------- Scroll reveal ----------
    components/ScrollReveal.tsx adds .reveal to sections and cards that are
-   still below the screen, then .is-visible when they scroll into view.
-   Content already on screen is never hidden, so nothing flickers on load. */
+   still below the screen, then .is-visible as they come close.
+   Content is NEVER hidden (no opacity change) — it only rises gently into
+   place — so full-page screenshots, printing and slow devices always see
+   everything. */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(36px) scale(0.985);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform;
 }
 .reveal.is-visible {
-  opacity: 1;
   transform: none;
 }

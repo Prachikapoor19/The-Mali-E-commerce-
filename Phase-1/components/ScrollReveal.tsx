@@ -5,12 +5,12 @@ import { usePathname } from 'next/navigation';
 
 /**
  * Gentle scroll animations for the whole site.
- * Sections (and the cards inside their grids) that start below the screen fade
- * and slide up as you scroll to them. Cards in a row appear one after another.
+ * Sections (and the cards inside their grids) that start below the screen
+ * rise gently into place as you scroll to them. Nothing is ever hidden. Cards in a row appear one after another.
  * Anything already visible is left alone, and visitors who turned off motion in
  * their device settings see everything immediately.
  */
-const SECTION_SELECTOR = 'main section, main > div > section, footer';
+const SECTION_SELECTOR = 'main section, main > div > section';
 const CARD_SELECTOR = ':scope .grid > *';
 const MAX_STAGGER = 6; // cards after the 6th in a row don't wait any longer
 
@@ -30,7 +30,7 @@ export default function ScrollReveal() {
           }
         }
       },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
+      { rootMargin: '0px 0px -5% 0px', threshold: 0 } // rises as it comes into view
     );
 
     const below = (el: Element) => el.getBoundingClientRect().top > window.innerHeight;
@@ -56,7 +56,7 @@ export default function ScrollReveal() {
             const row = card.parentElement as HTMLElement;
             // Sideways-swipe rows (mobile carousels): reveal the whole row at once
             if (row.scrollWidth > row.clientWidth + 4) prepare(row);
-            else prepare(card, Math.min(i, MAX_STAGGER) * 80);
+            else prepare(card, Math.min(i, MAX_STAGGER) * 60);
           });
         } else {
           prepare(section);
