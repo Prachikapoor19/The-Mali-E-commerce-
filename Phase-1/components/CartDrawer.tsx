@@ -56,7 +56,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, on
             <h3 className="font-display font-bold text-lg text-botanical flex items-center gap-2">
               Your Shopping Cart
             </h3>
-            <button onClick={onClose} className="w-8 h-8 rounded-full bg-blush/60 flex items-center justify-center text-charcoal hover:bg-rose hover:text-white transition-colors">
+            <button onClick={onClose} aria-label="Close cart" className="w-8 h-8 rounded-full bg-blush/60 flex items-center justify-center text-charcoal hover:bg-rose hover:text-white transition-colors">
               ✕
             </button>
           </div>

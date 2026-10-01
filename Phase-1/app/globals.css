@@ -37,6 +37,14 @@
   --animate-fade-in: fade-in 0.25s ease-out both;
   --animate-pop-in: pop-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-slide-in-right: slide-in-right 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* New page fades in (app/template.tsx) */
+  --animate-page-in: page-in 0.45s ease-out both;
+
+  @keyframes page-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
   /* Little "boing" for the cart count and the wishlist heart */
   --animate-bump: bump 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
 
@@ -185,4 +193,24 @@ html::-webkit-scrollbar-thumb {
 }
 .reveal.is-visible {
   transform: none;
+  will-change: auto;
+}
+
+/* ---------- Falling petals (components/HeroPetals.tsx) ---------- */
+.petal {
+  position: absolute;
+  top: -24px;
+  border-radius: 80% 10% 80% 10%;
+  opacity: 0;
+  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.06);
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes petal-fall {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.9; }
+  50% { transform: translate(var(--drift), 260px) rotate(200deg); }
+  85% { opacity: 0.8; }
+  100% { transform: translate(calc(var(--drift) * -0.5), 560px) rotate(400deg); opacity: 0; }
 }

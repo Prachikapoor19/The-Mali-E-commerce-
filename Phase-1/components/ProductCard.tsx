@@ -4,6 +4,7 @@ import { useCart } from './CartContext';
 import WishlistButton from './WishlistButton';
 import { discountPercent, type CatalogItem } from './searchCatalog';
 import { formatINR } from './pricing';
+import { flyToCart } from './flyToCart';
 
 // Shared product card: search results, wishlist and "You may also like"
 export default function ProductCard({ product, onAdded }: { product: CatalogItem; onAdded?: () => void }) {
@@ -12,7 +13,7 @@ export default function ProductCard({ product, onAdded }: { product: CatalogItem
   const cartProduct = { id: product.id, name: product.name, price: product.price, image: product.image };
 
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between">
+    <div data-product-card className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between">
       <a href={`/product/${product.id}`} className="block">
         <div className="relative aspect-square bg-sand overflow-hidden">
           <img
@@ -47,10 +48,16 @@ export default function ProductCard({ product, onAdded }: { product: CatalogItem
 
       <div className="px-3 pb-3">
         <button
-          onClick={() => {
-            if (product.isPersonalised) openPersonalize(cartProduct);
-            else addToCart(cartProduct);
-            onAdded?.();
+          onClick={(e) => {
+            if (product.isPersonalised) {
+              openPersonalize(cartProduct);
+              onAdded?.();
+              return;
+            }
+            flyToCart(e.currentTarget, product.image).then(() => {
+              addToCart(cartProduct);
+              onAdded?.();
+            });
           }}
           className={`w-full py-2 rounded-full text-xs font-semibold transition-colors ${
             product.isPersonalised ? 'bg-botanical text-ivory hover:bg-botanical-light' : 'bg-rose text-ivory hover:bg-rose-dark'

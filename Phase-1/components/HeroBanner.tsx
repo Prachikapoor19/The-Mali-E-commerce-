@@ -116,6 +116,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import HeroPetals from './HeroPetals';
 
 const px = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1600`;
 
@@ -235,6 +236,8 @@ export default function HeroBanner() {
             </div>
           );
         })}
+
+        <HeroPetals />
 
         {/* Arrows (bottom-right, clear of the text) */}
         <div className="hidden sm:flex absolute bottom-5 right-6 lg:right-10 z-20 gap-2">

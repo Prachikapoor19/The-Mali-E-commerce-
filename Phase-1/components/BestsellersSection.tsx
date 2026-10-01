@@ -767,6 +767,7 @@ import WishlistButton from "./WishlistButton";
 import { useProducts } from "./ProductsContext";
 import { discountPercent, type CatalogItem } from "./searchCatalog";
 import { formatINR } from "./pricing";
+import { flyToCart } from "./flyToCart";
 
 interface Product {
   id: string;
@@ -825,7 +826,7 @@ export default function BestsellersSection() {
   );
   const { addToCart, openPersonalize } = useCart();
 
-  const handleAction = (item: Product) => {
+  const handleAction = (item: Product, button?: Element) => {
     const product = {
       id: item.id,
       name: item.name,
@@ -835,7 +836,7 @@ export default function BestsellersSection() {
     if (item.isPersonalised) {
       openPersonalize(product);
     } else {
-      addToCart(product);
+      flyToCart(button, item.image).then(() => addToCart(product));
     }
   };
 
@@ -871,6 +872,7 @@ export default function BestsellersSection() {
         {cards.map((item) => (
           <div
             key={item.id}
+            data-product-card
             className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between shrink-0 w-44 sm:w-52 md:w-auto snap-start"
           >
             <a href={`/product/${item.id}`} className="block">
@@ -904,7 +906,7 @@ export default function BestsellersSection() {
 
             <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3">
               <button
-                onClick={() => handleAction(item)}
+                onClick={(e) => handleAction(item, e.currentTarget)}
                 className={`w-full text-[10px] sm:text-xs font-semibold py-2 rounded-full transition-colors ${
                   item.isPersonalised
                     ? "bg-botanical text-ivory hover:bg-botanical-light"

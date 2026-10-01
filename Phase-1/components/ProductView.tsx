@@ -7,6 +7,7 @@ import WishlistButton from './WishlistButton';
 import ProductCard from './ProductCard';
 import { discountPercent, relatedProducts, type CatalogItem } from './searchCatalog';
 import { useProducts } from './ProductsContext';
+import { flyToCart } from './flyToCart';
 import { formatINR, FREE_DELIVERY_ABOVE } from './pricing';
 
 const TRUST = [
@@ -27,8 +28,11 @@ export default function ProductView({ product: serverProduct }: { product: Catal
   const cartProduct = { id: product.id, name: product.name, price: product.price, image: product.image };
   const related = relatedProducts(products, product.id, 4);
 
-  const add = () => {
+  const addNow = () => {
     for (let i = 0; i < qty; i++) addToCart(cartProduct);
+  };
+  const add = (e: React.MouseEvent<HTMLElement>) => {
+    flyToCart(e.currentTarget, product.image).then(addNow);
   };
 
   return (
@@ -43,7 +47,7 @@ export default function ProductView({ product: serverProduct }: { product: Catal
           <span className="text-botanical font-medium">{product.name}</span>
         </nav>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-14 items-start">
+        <div data-product-card className="grid md:grid-cols-2 gap-8 lg:gap-14 items-start">
           {/* Image */}
           <div className="relative rounded-3xl overflow-hidden bg-sand aspect-square border border-rose-light/20">
             <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
@@ -124,7 +128,7 @@ export default function ProductView({ product: serverProduct }: { product: Catal
                   </button>
                   <button
                     onClick={() => {
-                      add();
+                      addNow();
                       closeCart();
                       router.push('/checkout');
                     }}
