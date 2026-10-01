@@ -3,6 +3,8 @@ import { connectDB, isDbConfigured } from '@/lib/db';
 import { OrderModel } from '@/lib/orderModel';
 import { listProducts } from '@/lib/products';
 import { couponDiscount, deliveryCharge, DELIVERY_SLOTS } from '@/components/pricing';
+import { after } from 'next/server';
+import { sendOrderAlert } from '@/lib/orderAlert';
 
 type IncomingItem = { id?: unknown; quantity?: unknown; customText?: unknown };
 
@@ -103,6 +105,26 @@ export async function POST(request: Request) {
           discount,
           delivery,
           total,
+        });
+        // Email the shop owner after the customer already has their confirmation
+        const siteUrl = new URL(request.url).origin;
+        const alert = {
+          orderId: order.orderId,
+          items,
+          recipient,
+          sender,
+          deliveryDate,
+          slotName: slot.name,
+          giftMessage: str(body.giftMessage, 200),
+          paymentMethod: 'Cash on Delivery',
+          coupon: discount > 0 ? coupon : '',
+          subtotal,
+          discount,
+          delivery,
+          total,
+        };
+        after(async () => {
+          await sendOrderAlert(alert, siteUrl);
         });
         return Response.json({ orderId: order.orderId, subtotal, discount, delivery, total }, { status: 201 });
       } catch (err) {

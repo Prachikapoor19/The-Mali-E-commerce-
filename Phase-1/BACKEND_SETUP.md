@@ -30,6 +30,14 @@ Order statuses: `placed` → `preparing` → `out_for_delivery` → `delivered` 
 Until `MONGODB_URI` is set, checkout keeps working in **demo mode** (orders are
 saved only in the customer's browser).
 
+### New-order email alerts
+Every new order emails the shop (`lib/orderAlert.ts`) with the items, total to
+collect, delivery date/slot, address, phone numbers, gift message and an
+"Open admin" button. The email goes out after the customer already sees their
+confirmation, and a failed email never affects the order. Set `RESEND_API_KEY`
+and `ORDER_ALERT_EMAIL` to turn it on. Without your own verified domain, Resend
+only delivers to the email address you signed up to Resend with.
+
 ## Environment variables
 
 | Name | Example | Needed |
@@ -38,6 +46,9 @@ saved only in the customer's browser).
 | `ADMIN_PASSWORD` | a long password only you know | Yes |
 | `MONGODB_DB` | `themali` (default) | No |
 | `ADMIN_SECRET` | any long random text | No (recommended) |
+| `RESEND_API_KEY` | `re_...` from resend.com → API Keys | For order emails |
+| `ORDER_ALERT_EMAIL` | `you@gmail.com` (several: comma-separated) | For order emails |
+| `MAIL_FROM` | `The Mali <orders@themali.in>` — only after verifying your domain in Resend | No |
 
 Never commit these values or paste them in chat.
 
