@@ -61,24 +61,32 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-ivory">
+    <main className="min-h-screen">
       <Header />
       <CategoryNav />
       <HeroBanner />
       <IconStrip />
-      <OccasionStrip />
-      <CategoryGrid />
+      <div className="band band-petal">
+        <OccasionStrip />
+        <CategoryGrid />
+      </div>
       <div id="gift-finder" className="scroll-mt-40"><GiftFinder /></div>
       <BestsellersSection />
-      <FlowersCollection />
+      <div className="band band-sage">
+        <FlowersCollection />
+      </div>
       <JoyfulGiftsSection />
-      <GiftsForEveryone />
-      <PickFavouriteFlower />
+      <div className="band band-petal">
+        <GiftsForEveryone />
+        <PickFavouriteFlower />
+      </div>
       <FreshlyBakedCakes />
       <GiftsForFeeling />
       <NewlyLaunched />
       <OffersBanner />
-      <PlantsSection />
+      <div className="band band-sand">
+        <PlantsSection />
+      </div>
       <TrustBanner />
       <BrandsSection />
       <Footer />
