@@ -10,7 +10,7 @@ export default function NewlyLaunched() {
   if (newest.length === 0) return null;
 
   return (
-    <section className="w-full bg-blush py-10 sm:py-14">
+    <section className="w-full band band-sage py-10 sm:py-14">
       <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>

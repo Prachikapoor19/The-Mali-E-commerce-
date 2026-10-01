@@ -63,7 +63,7 @@ const cakeItems = [
 
 export default function FreshlyBakedCakes() {
   return (
-    <section className="w-full bg-sand py-8 sm:py-10 px-4 sm:px-6 lg:px-10 xl:px-14">
+    <section className="w-full band band-sand py-8 sm:py-10 px-4 sm:px-6 lg:px-10 xl:px-14">
       <div className="mb-8">
         <h2 className="section-title">Freshly Baked Cakes</h2>
         <p className="text-xs sm:text-sm text-charcoal/70 mt-3">Baked on the day of delivery, in the flavours they love.</p>
