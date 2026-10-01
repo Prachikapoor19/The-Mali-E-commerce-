@@ -42,6 +42,7 @@ import { WishlistProvider } from '@/components/WishlistContext';
 import CartDrawerConnected from '@/components/CartDrawerConnected';
 import PersonalizationModalConnected from '@/components/PersonalizationModalConnected';
 import ImageFallback from '@/components/ImageFallback';
+import ScrollReveal from '@/components/ScrollReveal';
 import { ProductsProvider } from '@/components/ProductsContext';
 import { listProducts } from '@/lib/products';
 
@@ -67,6 +68,7 @@ export default async function RootLayout({
               <CartDrawerConnected />
               <PersonalizationModalConnected />
               <ImageFallback />
+              <ScrollReveal />
             </WishlistProvider>
           </CartProvider>
         </ProductsProvider>

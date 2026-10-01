@@ -49,8 +49,8 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, on
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end">
-      <div className="bg-white w-full max-w-md h-full flex flex-col justify-between p-6 shadow-2xl relative animate-in slide-in-from-right duration-300">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end animate-fade-in" onClick={onClose}>
+      <div className="bg-white w-full max-w-md h-full flex flex-col justify-between p-6 shadow-2xl relative animate-slide-in-right" onClick={(e) => e.stopPropagation()}>
         <div>
           <div className="flex items-center justify-between pb-4 border-b border-rose-light/20">
             <h3 className="font-display font-bold text-lg text-botanical flex items-center gap-2">

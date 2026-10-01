@@ -32,6 +32,31 @@
       transform: translateY(0);
     }
   }
+
+  /* Overlays and drawers */
+  --animate-fade-in: fade-in 0.25s ease-out both;
+  --animate-pop-in: pop-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-slide-in-right: slide-in-right 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Little "boing" for the cart count and the wishlist heart */
+  --animate-bump: bump 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pop-in {
+    from { opacity: 0; transform: translateY(12px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes bump {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.35); }
+    100% { transform: scale(1); }
+  }
   --font-sans: "Manrope Variable", system-ui, sans-serif;
 }
 
@@ -143,4 +168,22 @@ html::-webkit-scrollbar-thumb {
 .aspect-square,
 [class*="aspect-["] {
   min-height: 0;
+}
+
+
+/* ---------- Scroll reveal ----------
+   components/ScrollReveal.tsx adds .reveal to sections and cards that are
+   still below the screen, then .is-visible when they scroll into view.
+   Content already on screen is never hidden, so nothing flickers on load. */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }

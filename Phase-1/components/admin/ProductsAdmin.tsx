@@ -252,11 +252,11 @@ export default function ProductsAdmin({ onUnauthorized }: { onUnauthorized: () =
 
       {/* Add / edit form */}
       {editing && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-y-auto" onClick={() => setEditing(null)}>
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-y-auto animate-fade-in" onClick={() => setEditing(null)}>
           <form
             onSubmit={save}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-3xl w-full max-w-3xl p-5 sm:p-7 shadow-2xl my-6"
+            className="bg-white rounded-3xl w-full max-w-3xl p-5 sm:p-7 shadow-2xl my-6 animate-pop-in"
           >
             <div className="flex items-center justify-between mb-5">
               <h2 className="font-display text-xl font-bold text-botanical">{editing === 'new' ? 'Add product' : 'Edit product'}</h2>

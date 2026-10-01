@@ -18,8 +18,8 @@ export default function PersonalizationModal({ product, onClose, onSave }: Perso
   const [imageName, setImageName] = useState("");
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative border border-rose-light/30">
+    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
+      <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative border border-rose-light/30 animate-pop-in">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 rounded-full bg-blush/60 flex items-center justify-center text-charcoal hover:bg-rose hover:text-white transition-colors"
