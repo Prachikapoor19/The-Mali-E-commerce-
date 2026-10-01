@@ -3,12 +3,18 @@
 // This list is also used as a fallback when the database is not connected.
 
 // Shop categories (shared by the shop, admin form and database)
-export const PRODUCT_CATEGORIES = ['Flowers', 'Cakes', 'Plants', 'Personalised', 'Chocolates', 'Hampers'] as const;
+export const PRODUCT_CATEGORIES = [
+  'Flowers', 'Cakes', 'Plants', 'Personalised', 'Chocolates', 'Hampers',
+  'Perfumes', 'Dresses', 'Purses', 'Earrings', 'Bracelets', 'Soft Toys', 'Decor',
+] as const;
+
+// Categories added in October 2026 (shown together in the "Gifts & More" menu)
+export const LIFESTYLE_CATEGORIES = ['Perfumes', 'Dresses', 'Purses', 'Earrings', 'Bracelets', 'Soft Toys', 'Decor'] as const;
 
 export interface CatalogItem {
   id: string;
   name: string;
-  category: 'Flowers' | 'Cakes' | 'Personalised' | 'Hampers' | 'Chocolates' | 'Plants';
+  category: (typeof PRODUCT_CATEGORIES)[number];
   price: number;
   originalPrice: number;
   rating: number;
@@ -191,6 +197,146 @@ export const SEARCH_CATALOG: CatalogItem[] = [
     id: 'pl5', name: 'Snake Plant', category: 'Plants', price: 649, originalPrice: 799, rating: 4.8, reviews: 301, image: px(4505161),
     description: 'Tall, striking and almost impossible to kill. A great air-purifying plant for bedrooms and offices.',
     includes: ['Snake plant (Sansevieria)', 'Pot', 'Care card'],
+  },
+
+  // ---------------- Perfumes ----------------
+  {
+    id: 'pf1', name: 'Rose Petal Eau de Parfum', category: 'Perfumes', price: 1299, originalPrice: 1599, rating: 4.8, reviews: 214,
+    image: 'https://images.unsplash.com/photo-1595425959632-34f2822322ce?w=800&q=80', badge: 'New',
+    description: 'A soft, romantic fragrance with notes of fresh rose and warm musk — made to linger all day.',
+    includes: ['50 ml eau de parfum', 'Gift box with ribbon', 'Free message card'],
+  },
+  {
+    id: 'pf2', name: 'Ocean Bloom Perfume', category: 'Perfumes', price: 999, originalPrice: 1199, rating: 4.7, reviews: 168,
+    image: 'https://images.unsplash.com/photo-1615160460366-2c9a41771b51?w=800&q=80',
+    description: 'A fresh, airy scent of sea breeze and white florals. Light enough for every day.',
+    includes: ['50 ml eau de toilette', 'Gift box', 'Free message card'],
+  },
+  {
+    id: 'pf3', name: 'Noir Gold Perfume', category: 'Perfumes', price: 1599, originalPrice: 1899, rating: 4.9, reviews: 96,
+    image: 'https://images.unsplash.com/photo-1585218334450-afcf929da36e?w=800&q=80', badge: 'LUXE',
+    description: 'A rich evening fragrance with amber, oud and a hint of vanilla in an elegant black-and-gold bottle.',
+    includes: ['100 ml eau de parfum', 'Luxury gift box', 'Free message card'],
+  },
+
+  // ---------------- Dresses ----------------
+  {
+    id: 'dr1', name: 'White Sweetheart Dress', category: 'Dresses', price: 1899, originalPrice: 2299, rating: 4.7, reviews: 121,
+    image: 'https://images.unsplash.com/photo-1540459920617-415d62f1f76b?w=800&q=80', badge: 'New',
+    description: 'A graceful white dress with a sweetheart neckline — perfect for brunches, birthdays and photos.',
+    includes: ['1 dress (S, M, L, XL — mention size in the message)', 'Gift wrap', 'Free message card'],
+  },
+  {
+    id: 'dr2', name: 'Floral Sundress', category: 'Dresses', price: 1499, originalPrice: 1799, rating: 4.8, reviews: 187,
+    image: 'https://images.unsplash.com/photo-1762154057377-cc9d3dd6900c?w=800&q=80', badge: 'Trending',
+    description: 'A breezy floral sundress in soft cotton, made for sunny days and easy smiles.',
+    includes: ['1 dress (S, M, L, XL — mention size in the message)', 'Gift wrap', 'Free message card'],
+  },
+  {
+    id: 'dr3', name: 'Red Floral Maxi Dress', category: 'Dresses', price: 1999, originalPrice: 2499, rating: 4.6, reviews: 88,
+    image: 'https://images.unsplash.com/photo-1502868354157-ec2edd2a1651?w=800&q=80',
+    description: 'A flowing maxi dress with a red floral print that\'s festive, feminine and comfortable.',
+    includes: ['1 dress (S, M, L, XL — mention size in the message)', 'Gift wrap', 'Free message card'],
+  },
+
+  // ---------------- Purses ----------------
+  {
+    id: 'pu1', name: 'Classic Red Handbag', category: 'Purses', price: 1799, originalPrice: 2199, rating: 4.8, reviews: 142,
+    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80', badge: 'Bestseller',
+    description: 'A structured red handbag with a smooth finish — the statement piece every wardrobe needs.',
+    includes: ['1 handbag', 'Dust bag', 'Gift box'],
+  },
+  {
+    id: 'pu2', name: 'Pearl White Mini Purse', category: 'Purses', price: 1199, originalPrice: 1499, rating: 4.7, reviews: 109,
+    image: 'https://images.unsplash.com/photo-1682745230951-8a5aa9a474a0?w=800&q=80',
+    description: 'A dainty white mini purse that fits the essentials and goes with everything.',
+    includes: ['1 mini purse', 'Detachable strap', 'Gift box'],
+  },
+  {
+    id: 'pu3', name: 'Floral Print Handbag', category: 'Purses', price: 1399, originalPrice: 1699, rating: 4.6, reviews: 77,
+    image: 'https://images.unsplash.com/photo-1591561954557-26941169b49e?w=800&q=80', badge: 'New',
+    description: 'A cheerful floral handbag that brings a pop of colour to any outfit.',
+    includes: ['1 handbag', 'Gift box', 'Free message card'],
+  },
+
+  // ---------------- Earrings ----------------
+  {
+    id: 'er1', name: 'Blue Stone Silver Earrings', category: 'Earrings', price: 799, originalPrice: 999, rating: 4.8, reviews: 233,
+    image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80', badge: 'Bestseller',
+    description: 'Sparkling silver-tone earrings set with deep blue stones — elegant for festive evenings.',
+    includes: ['1 pair of earrings', 'Velvet jewellery pouch', 'Gift box'],
+  },
+  {
+    id: 'er2', name: 'Classic Drop Earrings', category: 'Earrings', price: 649, originalPrice: 799, rating: 4.7, reviews: 158,
+    image: 'https://images.unsplash.com/photo-1693212793204-bcea856c75fe?w=800&q=80',
+    description: 'Simple, graceful drop earrings that go from office to dinner.',
+    includes: ['1 pair of earrings', 'Jewellery pouch', 'Gift box'],
+  },
+  {
+    id: 'er3', name: 'Golden Statement Earrings', category: 'Earrings', price: 899, originalPrice: 1099, rating: 4.6, reviews: 94,
+    image: 'https://images.unsplash.com/photo-1652766540048-de0a878a3266?w=800&q=80', badge: 'Trending',
+    description: 'Bold golden earrings that finish any look — a gift she\'ll wear again and again.',
+    includes: ['1 pair of earrings', 'Gift box', 'Free message card'],
+  },
+
+  // ---------------- Bracelets ----------------
+  {
+    id: 'br1', name: 'Gold Chain Bracelet', category: 'Bracelets', price: 899, originalPrice: 1099, rating: 4.8, reviews: 176,
+    image: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&q=80', badge: 'Bestseller',
+    description: 'A delicate gold-tone chain bracelet for everyday elegance.',
+    includes: ['1 bracelet (adjustable)', 'Jewellery pouch', 'Gift box'],
+  },
+  {
+    id: 'br2', name: 'Heart Charm Silver Bracelet', category: 'Bracelets', price: 749, originalPrice: 899, rating: 4.9, reviews: 212,
+    image: 'https://images.unsplash.com/photo-1676291055501-286c48bb186f?w=800&q=80', badge: 'Love',
+    description: 'A silver-tone bracelet with little heart charms and red stones — made for saying \'I love you\'.',
+    includes: ['1 bracelet (adjustable)', 'Gift box', 'Free message card'],
+  },
+  {
+    id: 'br3', name: 'Multi-Stone Gold Bracelet', category: 'Bracelets', price: 1099, originalPrice: 1299, rating: 4.7, reviews: 83,
+    image: 'https://images.unsplash.com/photo-1717605383946-96c6884c36b4?w=800&q=80', badge: 'New',
+    description: 'A gold-tone bracelet set with four colourful stones — playful, bright and festive.',
+    includes: ['1 bracelet (adjustable)', 'Gift box', 'Free message card'],
+  },
+
+  // ---------------- Soft Toys ----------------
+  {
+    id: 'st1', name: 'Bow-Tie Teddy Bear', category: 'Soft Toys', price: 699, originalPrice: 899, rating: 4.9, reviews: 341,
+    image: 'https://images.unsplash.com/photo-1602734846297-9299fc2d4703?w=800&q=80', badge: 'Bestseller',
+    description: 'A huggable brown teddy bear in a smart bow tie — the sweetest companion for any gift.',
+    includes: ['1 teddy bear (approx. 30 cm)', 'Gift wrap', 'Free message card'],
+  },
+  {
+    id: 'st2', name: 'Red Bow Love Teddy', category: 'Soft Toys', price: 799, originalPrice: 999, rating: 4.8, reviews: 264,
+    image: 'https://images.unsplash.com/photo-1556012018-50c5c0da73bf?w=800&q=80', badge: 'Love',
+    description: 'A soft teddy with a red bow, perfect for anniversaries, Valentine\'s Day or just because.',
+    includes: ['1 teddy bear (approx. 35 cm)', 'Gift wrap', 'Free message card'],
+  },
+  {
+    id: 'st3', name: 'Cuddly Brown Bear', category: 'Soft Toys', price: 549, originalPrice: 699, rating: 4.7, reviews: 198,
+    image: 'https://images.unsplash.com/photo-1530325553241-4f6e7690cf36?w=800&q=80',
+    description: 'A super-soft brown bear that kids and grown-ups both love to cuddle.',
+    includes: ['1 soft toy (approx. 25 cm)', 'Gift wrap', 'Free message card'],
+  },
+
+  // ---------------- Decor ----------------
+  {
+    id: 'dc1', name: 'Eucalyptus Candle Set', category: 'Decor', price: 899, originalPrice: 1099, rating: 4.8, reviews: 147,
+    image: 'https://images.unsplash.com/photo-1613068431228-8cb6a1e92573?w=800&q=80', badge: 'New',
+    description: 'White pillar candles with eucalyptus leaves for a calm, cosy corner at home.',
+    includes: ['3 pillar candles', 'Decorative eucalyptus sprigs', 'Gift box'],
+  },
+  {
+    id: 'dc2', name: 'Warm Fairy String Lights', category: 'Decor', price: 499, originalPrice: 649, rating: 4.7, reviews: 289,
+    image: 'https://images.unsplash.com/photo-1513538416877-f11f5fb85d83?w=800&q=80', badge: 'Trending',
+    description: 'Warm-white fairy lights to make any room, balcony or celebration glow.',
+    includes: ['10 m warm-white string lights', 'USB / plug adapter', 'Gift box'],
+  },
+  {
+    id: 'dc3', name: 'Ceramic Vase with Blooms', category: 'Decor', price: 1199, originalPrice: 1399, rating: 4.8, reviews: 112,
+    image: 'https://images.unsplash.com/photo-1534037984048-f20a42c90c2d?w=800&q=80',
+    description: 'A white ceramic vase with a pretty pink-and-white flower arrangement for the living room.',
+    includes: ['White ceramic vase', 'Artificial flower arrangement (lasts for years)', 'Gift box'],
   },
 ];
 

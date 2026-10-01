@@ -3,7 +3,7 @@
 // components/searchCatalog.ts. Without a database it simply uses that list.
 import { connectDB, isDbConfigured } from './db';
 import { ProductModel, SettingModel, PRODUCT_CATEGORIES } from './productModel';
-import { SEARCH_CATALOG, type CatalogItem } from '@/components/searchCatalog';
+import { SEARCH_CATALOG, LIFESTYLE_CATEGORIES, type CatalogItem } from '@/components/searchCatalog';
 
 type Lean = {
   productId: string;
@@ -41,40 +41,76 @@ export function toItem(d: Lean): CatalogItem {
 
 const SEEDED_KEY = 'starterProductsAdded';
 
-async function ensureSeeded() {
-  const already = await SettingModel.findOne({ key: SEEDED_KEY }).lean();
-  if (already) return;
-  if ((await ProductModel.estimatedDocumentCount()) === 0) {
-    try {
-      await ProductModel.insertMany(
-        SEARCH_CATALOG.map((p, i) => ({
-          productId: p.id,
-          name: p.name,
-          category: p.category,
-          price: p.price,
-          originalPrice: p.originalPrice,
-          rating: p.rating,
-          reviews: p.reviews,
-          image: p.image,
-          description: p.description,
-          includes: p.includes,
-          isPersonalised: Boolean(p.isPersonalised),
-          badge: p.badge ?? '',
-          active: true,
-          sortOrder: i,
-        })),
-        { ordered: false }
-      );
-    } catch (err) {
-      // Two requests seeding at once → duplicate keys; the products are there either way
-      if ((err as { code?: number }).code !== 11000) throw err;
-    }
-  }
+const toDoc = (p: CatalogItem, i: number) => ({
+  productId: p.id,
+  name: p.name,
+  category: p.category,
+  price: p.price,
+  originalPrice: p.originalPrice,
+  rating: p.rating,
+  reviews: p.reviews,
+  image: p.image,
+  description: p.description,
+  includes: p.includes,
+  isPersonalised: Boolean(p.isPersonalised),
+  badge: p.badge ?? '',
+  active: true,
+  sortOrder: i,
+});
+
+// Later additions to the starter list. Each one is copied into an existing database
+// exactly once (so a product deleted in admin never comes back).
+const TOP_UPS: { key: string; categories: readonly string[] }[] = [
+  { key: 'lifestyleProductsAdded', categories: LIFESTYLE_CATEGORIES },
+];
+
+const markDone = async (key: string) => {
   try {
-    await SettingModel.updateOne({ key: SEEDED_KEY }, { $set: { value: true } }, { upsert: true });
+    await SettingModel.updateOne({ key }, { $set: { value: true } }, { upsert: true });
   } catch (err) {
     if ((err as { code?: number }).code !== 11000) throw err; // another request just saved it
   }
+};
+
+const insertIgnoringDuplicates = async (docs: ReturnType<typeof toDoc>[]) => {
+  if (docs.length === 0) return;
+  try {
+    await ProductModel.insertMany(docs, { ordered: false });
+  } catch (err) {
+    // Two requests seeding at once → duplicate keys; the products are there either way
+    if ((err as { code?: number }).code !== 11000) throw err;
+  }
+};
+
+let seededInThisProcess = false;
+
+async function ensureSeeded() {
+  if (seededInThisProcess) return;
+  const done = new Set(
+    (await SettingModel.find({ key: { $in: [SEEDED_KEY, ...TOP_UPS.map((t) => t.key)] } }).lean()).map((d) => d.key)
+  );
+
+  if (!done.has(SEEDED_KEY)) {
+    // Brand-new database: copy in the whole starter list (including later additions)
+    if ((await ProductModel.estimatedDocumentCount()) === 0) {
+      await insertIgnoringDuplicates(SEARCH_CATALOG.map(toDoc));
+    }
+    await markDone(SEEDED_KEY);
+    for (const t of TOP_UPS) await markDone(t.key);
+  } else {
+    for (const t of TOP_UPS) {
+      if (done.has(t.key)) continue;
+      const wanted = SEARCH_CATALOG.map(toDoc).filter((d) => t.categories.includes(d.category));
+      const existing = new Set(
+        (await ProductModel.find({ productId: { $in: wanted.map((d) => d.productId) } }, { productId: 1 }).lean()).map(
+          (d) => d.productId
+        )
+      );
+      await insertIgnoringDuplicates(wanted.filter((d) => !existing.has(d.productId)));
+      await markDone(t.key);
+    }
+  }
+  seededInThisProcess = true;
 }
 
 /** Shop products (visible only). Falls back to the built-in list if the database is unavailable. */

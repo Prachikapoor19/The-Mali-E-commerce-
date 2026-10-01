@@ -13,6 +13,13 @@ const CATEGORY_WORDS: Record<string, string[]> = {
   Personalised: ['personalised', 'personalized', 'custom', 'mug', 'cushion', 'frame', 'photo', 'lamp', 'keychain', 'engraved'],
   Hampers: ['hamper', 'gourmet', 'spa', 'wellness', 'dry', 'corporate', 'diwali', 'festive', 'navratri', 'dooj', 'christmas'],
   Chocolates: ['chocolate', 'truffle', 'ferrero', 'cadbury', 'signature', 'handmade'],
+  Perfumes: ['perfume', 'fragrance', 'scent', 'parfum', 'deo', 'attar', 'cologne', 'mist'],
+  Dresses: ['dress', 'gown', 'frock', 'maxi', 'sundress', 'outfit', 'clothes', 'clothing', 'fashion', 'kurti'],
+  Purses: ['purse', 'handbag', 'bag', 'clutch', 'wallet', 'sling', 'tote', 'fashion'],
+  Earrings: ['earring', 'jhumka', 'jhumki', 'stud', 'hoop', 'jewellery', 'jewelry'],
+  Bracelets: ['bracelet', 'bangle', 'kada', 'charm', 'jewellery', 'jewelry'],
+  'Soft Toys': ['soft', 'toy', 'teddy', 'bear', 'plush', 'stuffed', 'bunny', 'kid', 'kids'],
+  Decor: ['decor', 'decoration', 'candle', 'light', 'fairy', 'vase', 'diya', 'lamp', 'home', 'housewarming', 'balloon'],
 };
 
 const stem = (w: string) => (w.length > 3 ? w.replace(/s$/, '') : w);

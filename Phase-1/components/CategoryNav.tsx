@@ -60,6 +60,12 @@ const HAMPERS_MENU: MegaMenu = {
   byOccasion: ["Birthday Hampers", "Anniversary Hampers", "Diwali Hampers", "Corporate Hampers"],
 };
 
+const LIFESTYLE_MENU: MegaMenu = {
+  fashion: [{ name: "Dresses", isNew: true }, { name: "Purses", isNew: true }],
+  jewellery: ["Earrings", "Bracelets"],
+  moreGifts: ["Perfumes", "Soft Toys", "Decor"],
+};
+
 const NAV_ITEMS: { id: string; label: string; data: MegaMenu }[] = [
   { id: "birthday", label: "Birthday", data: BIRTHDAY_MENU },
   { id: "anniversary", label: "Anniversary", data: ANNIVERSARY_MENU },
@@ -70,6 +76,7 @@ const NAV_ITEMS: { id: string; label: string; data: MegaMenu }[] = [
   { id: "personalised", label: "Personalised", data: PERSONALISED_MENU },
   { id: "chocolates", label: "Chocolates", data: CHOCOLATES_MENU },
   { id: "hampers", label: "Hampers", data: HAMPERS_MENU },
+  { id: "lifestyle", label: "Fashion & More", data: LIFESTYLE_MENU },
 ];
 
 // "byFlavour" -> "By Flavour"

@@ -792,7 +792,7 @@ const BADGE_STYLE: Record<string, string> = {
   "Good Luck": "bg-rose",
 };
 
-const TAB_ORDER = ["Flowers", "Cakes", "Personalised", "Hampers", "Chocolates", "Plants"];
+const TAB_ORDER = ["Flowers", "Cakes", "Personalised", "Hampers", "Chocolates", "Plants", "Perfumes", "Dresses", "Purses", "Earrings", "Bracelets", "Soft Toys", "Decor"];
 
 // Card data comes from the live product list (MongoDB), best-reviewed first
 function toCard(p: CatalogItem): Product {

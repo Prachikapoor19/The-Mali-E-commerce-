@@ -58,6 +58,7 @@ import PlantsSection from "@/components/PlantsSection";
 import TrustBanner from "@/components/TrustBanner";
 import BrandsSection from "@/components/BrandsSection";
 import Footer from "@/components/Footer";
+import LifestyleSection from "@/components/LifestyleSection";
 
 export default function Home() {
   return (
@@ -69,6 +70,9 @@ export default function Home() {
       <div className="band band-petal">
         <OccasionStrip />
         <CategoryGrid />
+      </div>
+      <div className="band band-sand">
+        <LifestyleSection />
       </div>
       <div id="gift-finder" className="scroll-mt-40"><GiftFinder /></div>
       <BestsellersSection />

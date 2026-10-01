@@ -8,6 +8,11 @@ const SHOP = [
   { label: "Personalised Gifts", href: "/search?q=personalised" },
   { label: "Chocolates", href: "/search?q=chocolates" },
   { label: "Hampers", href: "/search?q=hampers" },
+  { label: "Perfumes", href: "/search?q=perfumes" },
+  { label: "Dresses & Purses", href: "/search?q=dresses%20purses" },
+  { label: "Earrings & Bracelets", href: "/search?q=earrings%20bracelets" },
+  { label: "Soft Toys", href: "/search?q=soft%20toys" },
+  { label: "Decor", href: "/search?q=decor" },
 ];
 
 const COMPANY = [
