@@ -41,22 +41,35 @@ export const SORTS = [
 ] as const;
 
 // Text search. `exact` is false when nothing matched and we fell back to everything.
-export function searchCatalog(rawQuery: string, items: CatalogItem[]): { results: CatalogItem[]; exact: boolean } {
+export function searchCatalog(
+  rawQuery: string,
+  items: CatalogItem[]
+): { results: CatalogItem[]; exact: boolean; direct: Set<string> } {
   const query = rawQuery.toLowerCase().trim();
-  if (!query || query === 'all') return { results: items, exact: true };
+  if (!query || query === 'all') return { results: items, exact: true, direct: new Set() };
   const words = query
     .split(/[^a-z0-9]+/)
     .filter((w) => w && !STOP_WORDS.has(w))
     .map(stem);
-  if (words.length === 0) return { results: items, exact: true };
+  if (words.length === 0) return { results: items, exact: true, direct: new Set() };
 
-  const results = items.filter((item) => {
+  // 1) Products whose own name/category contains the word ("peace lily" → Peace Lily)
+  const direct = items.filter((item) => {
     const itemWords = (item.name + ' ' + item.category).toLowerCase().split(/[^a-z0-9]+/).map(stem);
+    return words.some((w) => itemWords.includes(w));
+  });
+  // 2) Then related products through category keywords ("love" → flowers, "jhumka" → earrings)
+  const directIds = new Set(direct.map((p) => p.id));
+  const related = items.filter((item) => {
+    if (directIds.has(item.id)) return false;
     const categoryWords = (CATEGORY_WORDS[item.category] || []).map(stem);
-    return words.some((w) => itemWords.includes(w) || categoryWords.includes(w));
+    return words.some((w) => categoryWords.includes(w));
   });
 
-  return results.length ? { results, exact: true } : { results: items, exact: false };
+  const results = [...direct, ...related];
+  return results.length
+    ? { results, exact: true, direct: directIds }
+    : { results: items, exact: false, direct: new Set() };
 }
 
 // Quick name-first matches for the header dropdown
@@ -71,7 +84,7 @@ export function suggest(rawQuery: string, items: CatalogItem[], limit = 5): Cata
 
 export function applyFilters(
   items: CatalogItem[],
-  opts: { category?: string | null; price?: string | null; sort?: string | null }
+  opts: { category?: string | null; price?: string | null; sort?: string | null; direct?: Set<string> }
 ): CatalogItem[] {
   let list = items;
   if (opts.category) list = list.filter((p) => p.category === opts.category);
@@ -89,8 +102,18 @@ export function applyFilters(
     case 'rating':
       sorted.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
       break;
-    default:
-      sorted.sort((a, b) => b.reviews - a.reviews); // popularity = most reviewed
+    default: {
+      // popularity = most reviewed; exact name matches for a search always come first
+      const first = (p: CatalogItem) => (opts.direct?.has(p.id) ? 0 : 1);
+      sorted.sort((a, b) => first(a) - first(b) || b.reviews - a.reviews);
+    }
   }
   return sorted;
+}
+
+/** Link to the shop for one category, optionally narrowed by a search word. */
+export function shopHref(category: string, query?: string) {
+  const params = new URLSearchParams({ cat: category });
+  if (query) params.set('q', query);
+  return `/search?${params.toString()}`;
 }

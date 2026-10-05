@@ -32,8 +32,10 @@ function SearchResults() {
   };
 
   const { products } = useProducts();
-  const { results: matched, exact } = searchCatalog(query, products);
-  const results = applyFilters(matched, { category, price, sort });
+  // Search inside the chosen category, so a tile like "Peace Lily" (Plants) never pulls in flowers
+  const pool = category ? products.filter((p) => p.category === category) : products;
+  const { results: matched, exact, direct } = searchCatalog(query, pool);
+  const results = applyFilters(matched, { category, price, sort, direct });
   const isAll = !query || query.toLowerCase() === 'all';
   const hasFilters = Boolean(category || price);
 

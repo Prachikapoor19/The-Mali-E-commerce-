@@ -1,3 +1,12 @@
+import { shopHref } from './shopSearch';
+
+// Each tile opens exactly one shop category
+const GRID_CATEGORY: Record<string, string> = {
+  "Fresh Flowers": "Flowers",
+  "Yummy Cakes": "Cakes",
+  "Custom Gifts": "Personalised",
+  Combos: "Hampers",
+};
 import React from "react";
 
 const categories = [
@@ -21,7 +30,7 @@ export default function CategoryGrid() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.map((cat) => (
-          <a key={cat.title} href={`/search?q=${encodeURIComponent(cat.title)}`} className={`group flex items-center justify-between gap-3 p-4 sm:p-5 rounded-2xl border border-rose-light/20 ${cat.bg} hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300`}>
+          <a key={cat.title} href={shopHref(GRID_CATEGORY[cat.title] ?? "Flowers")} className={`group flex items-center justify-between gap-3 p-4 sm:p-5 rounded-2xl border border-rose-light/20 ${cat.bg} hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300`}>
             <div>
               <h3 className="font-display font-semibold text-base sm:text-lg text-botanical group-hover:text-rose transition-colors">
                 {cat.title}

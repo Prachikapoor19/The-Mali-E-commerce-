@@ -1,3 +1,4 @@
+import { shopHref } from './shopSearch';
 import React from "react";
 
 const feelings = [
@@ -42,11 +43,11 @@ export default function GiftsForFeeling() {
       </div>
 
       {/* 5-Column Full Pastel Portrait Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
+      <div className="m-row grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
         {feelings.map((item) => (
           <a
             key={item.label}
-            href={`/search?q=${encodeURIComponent(item.label)}`}
+            href={shopHref("Flowers", item.label)}
             className={`group rounded-3xl ${item.bg} p-4 sm:p-5 flex flex-col justify-between items-center h-80 sm:h-96 shadow-xs hover:shadow-md transition-all border border-black/5 overflow-hidden`}
           >
             {/* Image Container */}

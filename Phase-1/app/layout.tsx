@@ -1,35 +1,4 @@
-// import type { Metadata } from 'next';
-// import { Fraunces, Manrope } from 'next/font/google';
-// import './globals.css';
-
-// const fraunces = Fraunces({
-//   subsets: ['latin'],
-//   weight: ['400', '500', '600', '700'],
-//   variable: '--font-fraunces',
-// });
-
-// const manrope = Manrope({
-//   subsets: ['latin'],
-//   weight: ['400', '500', '600', '700', '800'],
-//   variable: '--font-manrope',
-// });
-
-// export const metadata: Metadata = {
-//   title: 'The Mali — Flowers, Cakes & Gifts',
-//   description: 'Fresh flowers, cakes, and gifts delivered same-day.',
-// };
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{ children: React.ReactNode }>) {
-//   return (
-//     <html lang="en" className={`${fraunces.variable} ${manrope.variable}`}>
-//       <body>{children}</body>
-//     </html>
-//   );
-// }
-
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 // Fonts are bundled with the site (no download from Google at build time)
 import '@fontsource-variable/fraunces';
 import '@fontsource-variable/manrope';
@@ -43,12 +12,21 @@ import CartDrawerConnected from '@/components/CartDrawerConnected';
 import PersonalizationModalConnected from '@/components/PersonalizationModalConnected';
 import ImageFallback from '@/components/ImageFallback';
 import ScrollReveal from '@/components/ScrollReveal';
+import MobileTabBar from '@/components/MobileTabBar';
 import { ProductsProvider } from '@/components/ProductsContext';
 import { listProducts } from '@/lib/products';
 
 export const metadata: Metadata = {
   title: 'The Mali — Flowers, Cakes & Gifts',
   description: 'Fresh flowers, cakes, and gifts delivered same-day.',
+};
+
+// Phone browser bar in the brand green; content can use the full screen on notched phones
+export const viewport: Viewport = {
+  themeColor: '#1F2E20',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 };
 
 // Pages are refreshed at most every 60s (and right away when admin edits a product)
@@ -65,6 +43,7 @@ export default async function RootLayout({
           <CartProvider>
             <WishlistProvider>
               {children}
+              <MobileTabBar />
               <CartDrawerConnected />
               <PersonalizationModalConnected />
               <ImageFallback />

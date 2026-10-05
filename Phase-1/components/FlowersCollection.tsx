@@ -1,3 +1,4 @@
+import { shopHref } from './shopSearch';
 import React from "react";
 
 const flowerItems = [
@@ -18,9 +19,9 @@ export default function FlowersCollection() {
 
       {/* Premium Floral Blush Tint Banner */}
       <div className="w-full bg-petal border border-petal-dark relative py-8 px-4 sm:px-8 rounded-3xl">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+        <div className="m-row grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
           {flowerItems.map((item) => (
-            <a key={item.name} href={`/search?q=${encodeURIComponent(item.name + " flowers")}`} className="flex flex-col items-center group">
+            <a key={item.name} href={shopHref("Flowers", item.name)} className="flex flex-col items-center group">
               {/* Category Name Above Card */}
               <span className="font-semibold text-sm text-botanical mb-2.5">
                 {item.name}

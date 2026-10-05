@@ -22,7 +22,7 @@ export default function NewlyLaunched() {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+        <div className="m-row m-row-wide grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {newest.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

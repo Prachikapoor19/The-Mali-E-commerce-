@@ -1,3 +1,4 @@
+import { shopHref } from './shopSearch';
 import React from "react";
 
 const flowerItems = [
@@ -32,9 +33,9 @@ export default function PickFavouriteFlower() {
       </h2>
 
       {/* 5-Column Studio Portrait Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
+      <div className="m-row grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
         {flowerItems.map((item) => (
-          <a key={item.name} href={`/search?q=${encodeURIComponent(item.name)}`} className="group relative block aspect-[3/4] rounded-3xl overflow-hidden bg-sand shadow-xs hover:shadow-xl transition-shadow">
+          <a key={item.name} href={shopHref("Flowers", item.name)} className="group relative block aspect-[3/4] rounded-3xl overflow-hidden bg-sand shadow-xs hover:shadow-xl transition-shadow">
             <img
               src={item.image}
               alt={item.name}

@@ -273,3 +273,27 @@ body {
     opacity: 0.32;
   }
 }
+
+/* ---------- Phone: grids become side-swipe rows ----------
+   Add class "m-row" to a grid. On phones (<640px) its cards sit in one row you
+   swipe sideways (about 2.5 cards visible, so it's obvious there's more).
+   Tablets and desktop keep the normal grid. "m-row-wide" = wider cards (products). */
+@media (max-width: 639px) {
+  .m-row {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+  }
+  .m-row > * {
+    flex: 0 0 38%;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+  .m-row-wide > * {
+    flex-basis: 46%;
+  }
+}
