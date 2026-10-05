@@ -3,11 +3,10 @@ import CategoryNav from "@/components/CategoryNav";
 import IconStrip from "@/components/IconStrip";
 import OccasionStrip from "@/components/OccasionStrip";
 import HeroBanner from "@/components/HeroBanner";
-import CategoryGrid from "@/components/CategoryGrid";
+// CategoryGrid and JoyfulGiftsSection are kept in components/ but not shown (same categories as the icon strip)
 import GiftFinder from "@/components/GiftFinder";
 import BestsellersSection from "@/components/BestsellersSection";
 import FlowersCollection from "@/components/FlowersCollection";
-import JoyfulGiftsSection from "@/components/JoyfulGiftsSection";
 import GiftsForEveryone from "@/components/GiftsForEveryone";
 import PickFavouriteFlower from "@/components/PickFavouriteFlower";
 import FreshlyBakedCakes from "@/components/FreshlyBakedCakes";
@@ -29,7 +28,6 @@ export default function Home() {
       <IconStrip />
       <div className="band band-petal">
         <OccasionStrip />
-        <CategoryGrid />
       </div>
       <div className="band band-sand">
         <LifestyleSection />
@@ -39,7 +37,6 @@ export default function Home() {
       <div className="band band-sage">
         <FlowersCollection />
       </div>
-      <JoyfulGiftsSection />
       <div className="band band-petal">
         <GiftsForEveryone />
         <PickFavouriteFlower />
