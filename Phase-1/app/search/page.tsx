@@ -10,7 +10,7 @@ import { applyFilters, CATEGORIES, PRICE_RANGES, searchCatalog, SORTS } from '@/
 import { useProducts } from '@/components/ProductsContext';
 
 const chip = (active: boolean) =>
-  `px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-colors whitespace-nowrap ${
+  `inline-flex items-center min-h-10 px-4 py-2 rounded-full text-xs font-semibold border transition-colors whitespace-nowrap ${
     active ? 'bg-botanical text-ivory border-botanical' : 'bg-white text-botanical border-botanical/20 hover:border-botanical'
   }`;
 

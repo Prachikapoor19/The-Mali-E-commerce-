@@ -119,18 +119,18 @@ export default function CategoryNav() {
             return (
               <div
                 key={item.id}
-                className="shrink-0 py-2"
+                className="shrink-0"
                 onPointerEnter={(e) => { if (e.pointerType === "mouse") setActiveMenu(item.id); }}
                 onPointerLeave={(e) => { if (e.pointerType === "mouse") setActiveMenu(null); }}
               >
                 <button
                   onClick={() => setActiveMenu(isOpen ? null : item.id)}
                   aria-expanded={isOpen}
-                  className={`relative flex items-center gap-1 py-1.5 px-0.5 transition-colors hover:text-rose after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-gold after:origin-center after:transition-transform after:duration-300 ${isOpen ? "text-rose after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"}`}
+                  className={`relative flex items-center gap-1 py-3 px-0.5 transition-colors hover:text-rose after:absolute after:left-0 after:right-0 after:bottom-1.5 after:h-0.5 after:rounded-full after:bg-gold after:origin-center after:transition-transform after:duration-300 ${isOpen ? "text-rose after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"}`}
                 >
                   <span>{item.label}</span>
                   {item.id === "lifestyle" && (
-                    <span className="text-[8px] leading-none bg-gold text-white font-bold px-1.5 py-0.5 rounded-full uppercase">New</span>
+                    <span className="text-[11px] leading-none bg-gold text-white font-bold px-1.5 py-0.5 rounded-full uppercase">New</span>
                   )}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={`w-3.5 h-3.5 opacity-50 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}><path d="m6 9 6 6 6-6" /></svg>
                 </button>
@@ -151,7 +151,7 @@ export default function CategoryNav() {
                                 <li key={name} className="flex items-center gap-1.5">
                                   <a href={toHref(item.label, name)} onClick={() => setActiveMenu(null)} className="text-charcoal/80 hover:text-rose transition-colors">{name}</a>
                                   {isNew && (
-                                    <span className="text-[8px] bg-gold text-white font-bold px-1.5 py-px rounded-full uppercase">New</span>
+                                    <span className="text-[11px] bg-gold text-white font-bold px-1.5 py-px rounded-full uppercase">New</span>
                                   )}
                                 </li>
                               );

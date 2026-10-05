@@ -39,7 +39,7 @@ export default function PersonalizationModal({ product, onClose, onSave }: Perso
             <label className="border-2 border-dashed border-rose-light/60 rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer hover:bg-blush/40 transition-colors">
               <span className="text-2xl mb-1">📸</span>
               <span className="text-xs font-semibold text-botanical">Click to upload photo</span>
-              <span className="text-[10px] text-charcoal/50">Supports JPG, PNG (Max 10MB)</span>
+              <span className="text-[11px] text-charcoal/50">Supports JPG, PNG (Max 10MB)</span>
               <input
                 type="file"
                 className="hidden"

@@ -17,7 +17,7 @@ export default function NewlyLaunched() {
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-dark">Just in</span>
             <h2 className="section-title mt-1">Newly Launched</h2>
           </div>
-          <a href="/search?q=all" className="text-xs sm:text-sm font-semibold text-rose hover:text-rose-dark transition-colors whitespace-nowrap">
+          <a href="/search?q=all" className="inline-flex items-center min-h-10 text-xs sm:text-sm font-semibold text-rose hover:text-rose-dark transition-colors whitespace-nowrap">
             View All &rarr;
           </a>
         </div>

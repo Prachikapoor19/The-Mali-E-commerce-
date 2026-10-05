@@ -47,7 +47,7 @@ export default function JoyfulGiftsSection() {
         {/* Decorative Floating Graphic */}
         <div className="hidden sm:flex items-center gap-3 shrink-0 z-10">
           <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-white/60 shadow-md transform rotate-3">
-            <img
+            <img loading="lazy" decoding="async"
               src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=400"
               alt="Birthday Cake"
               className="w-full h-full object-cover"
@@ -67,7 +67,7 @@ export default function JoyfulGiftsSection() {
             <div
               className={`w-full aspect-square rounded-2xl ${item.bg} p-3 overflow-hidden shadow-2xs border border-black/5 flex items-center justify-center mb-2.5 transition-transform duration-300 group-hover:scale-105`}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover rounded-xl"

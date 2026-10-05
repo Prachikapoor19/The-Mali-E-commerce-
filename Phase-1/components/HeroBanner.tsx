@@ -80,6 +80,9 @@ export default function HeroBanner() {
               <img
                 src={slide.img}
                 alt={slide.alt}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                fetchPriority={idx === 0 ? 'high' : 'low'}
+                decoding="async"
                 className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[6000ms] ease-out ${active ? 'scale-105' : 'scale-100'}`}
               />
               {/* Green wash so the text is always readable */}
@@ -88,7 +91,7 @@ export default function HeroBanner() {
 
               {/* Text */}
               <div className="relative h-full flex flex-col justify-end sm:justify-center gap-4 px-6 sm:px-12 lg:px-16 pb-16 sm:pb-0 max-w-2xl">
-                <span className={`w-fit text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-[0.18em] bg-gold text-botanical ${active ? 'animate-fade-up' : ''}`}>
+                <span className={`w-fit text-[11px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-[0.18em] bg-gold text-botanical ${active ? 'animate-fade-up' : ''}`}>
                   {slide.tag}
                 </span>
                 <h2 className={`font-display text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] text-ivory ${active ? 'animate-fade-up [animation-delay:120ms]' : ''}`}>
@@ -147,14 +150,16 @@ export default function HeroBanner() {
         </div>
 
         {/* Progress dots */}
-        <div className="absolute bottom-5 left-6 sm:left-12 lg:left-16 z-20 flex items-center gap-2">
+        <div className="absolute bottom-2 left-3.5 sm:left-9.5 lg:left-13.5 z-20 flex items-center">
           {slides.map((s, idx) => (
             <button
               key={s.title}
               onClick={() => setCurrentIndex(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-500 ${currentIndex === idx ? 'w-10 bg-gold' : 'w-4 bg-ivory/50 hover:bg-ivory/80'}`}
-            />
+              className="py-4 px-2.5 group"
+            >
+              <span className={`block h-1.5 rounded-full transition-all duration-500 ${currentIndex === idx ? 'w-10 bg-gold' : 'w-4 bg-ivory/50 group-hover:bg-ivory/80'}`} />
+            </button>
           ))}
         </div>
       </div>

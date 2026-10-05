@@ -1,5 +1,6 @@
 'use client';
 
+import { sized } from './imageUrl';
 import { useCart } from './CartContext';
 import WishlistButton from './WishlistButton';
 import { discountPercent, type CatalogItem } from './searchCatalog';
@@ -16,13 +17,13 @@ export default function ProductCard({ product, onAdded }: { product: CatalogItem
     <div data-product-card className="group bg-white rounded-2xl overflow-hidden border border-rose-light/20 shadow-xs lift-on-hover flex flex-col justify-between">
       <a href={`/product/${product.id}`} className="block">
         <div className="relative aspect-square bg-sand overflow-hidden">
-          <img
-            src={product.image}
+          <img loading="lazy" decoding="async"
+            src={sized(product.image, 500)}
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
           {product.badge && (
-            <span className="absolute top-2 left-2 bg-gold text-botanical font-bold text-[10px] px-2 py-0.5 rounded-full shadow-xs">
+            <span className="absolute top-2 left-2 bg-gold text-botanical font-bold text-[11px] px-2 py-0.5 rounded-full shadow-xs">
               {product.badge}
             </span>
           )}
@@ -39,7 +40,7 @@ export default function ProductCard({ product, onAdded }: { product: CatalogItem
             {off > 0 && (
               <>
                 <span className="text-xs text-charcoal/40 line-through">{formatINR(product.originalPrice)}</span>
-                <span className="text-[10px] font-bold text-rose">{off}% OFF</span>
+                <span className="text-[11px] font-bold text-rose">{off}% OFF</span>
               </>
             )}
           </div>
@@ -59,7 +60,7 @@ export default function ProductCard({ product, onAdded }: { product: CatalogItem
               onAdded?.();
             });
           }}
-          className={`w-full py-2 rounded-full text-xs font-semibold transition-colors ${
+          className={`w-full min-h-10 py-2 rounded-full text-xs font-semibold transition-colors ${
             product.isPersonalised ? 'bg-botanical text-ivory hover:bg-botanical-light' : 'bg-rose text-ivory hover:bg-rose-dark'
           }`}
         >

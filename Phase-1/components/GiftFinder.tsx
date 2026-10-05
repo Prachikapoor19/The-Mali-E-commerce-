@@ -42,7 +42,7 @@ export default function GiftFinder() {
         <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr_1fr_auto] gap-3 items-end">
           {/* Occasion Filter */}
           <div>
-            <label className="text-[10px] font-bold text-charcoal/60 uppercase tracking-wider block mb-1">
+            <label className="text-[11px] font-bold text-charcoal/60 uppercase tracking-wider block mb-1">
               Select Occasion
             </label>
             <select
@@ -59,7 +59,7 @@ export default function GiftFinder() {
 
           {/* Recipient Filter */}
           <div>
-            <label className="text-[10px] font-bold text-charcoal/60 uppercase tracking-wider block mb-1">
+            <label className="text-[11px] font-bold text-charcoal/60 uppercase tracking-wider block mb-1">
               Gifting For
             </label>
             <select
@@ -76,7 +76,7 @@ export default function GiftFinder() {
 
           {/* Price Range Filter */}
           <div>
-            <label className="text-[10px] font-bold text-charcoal/60 uppercase tracking-wider block mb-1">
+            <label className="text-[11px] font-bold text-charcoal/60 uppercase tracking-wider block mb-1">
               Budget Range
             </label>
             <select
@@ -94,7 +94,7 @@ export default function GiftFinder() {
 
           <button
             onClick={findGifts}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-botanical text-ivory text-xs font-bold hover:bg-botanical-light transition-colors whitespace-nowrap"
+            className="w-full sm:w-auto min-h-11 px-6 py-2.5 rounded-xl bg-botanical text-ivory text-xs font-bold hover:bg-botanical-light transition-colors whitespace-nowrap"
           >
             Find Gifts
           </button>

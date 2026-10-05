@@ -6,8 +6,10 @@ import { useWishlist } from './WishlistContext';
 export default function WishlistButton({ id, className = '', size = 'sm' }: { id: string; className?: string; size?: 'sm' | 'lg' }) {
   const { has, toggle } = useWishlist();
   const saved = has(id);
-  const box = size === 'lg' ? 'w-11 h-11' : 'w-8 h-8';
+  const box = size === 'lg' ? 'w-11 h-11' : 'w-9 h-9';
   const icon = size === 'lg' ? 'w-5 h-5' : 'w-4 h-4';
+  // Card hearts sit on photos (always absolutely positioned): give them a 48px tap area without making them look bigger
+  const hitArea = size === 'lg' ? '' : "before:absolute before:-inset-1.5 before:content-['']";
 
   return (
     <button
@@ -20,7 +22,7 @@ export default function WishlistButton({ id, className = '', size = 'sm' }: { id
       aria-pressed={saved}
       aria-label={saved ? 'Remove from wishlist' : 'Add to wishlist'}
       title={saved ? 'Remove from wishlist' : 'Add to wishlist'}
-      className={`${box} rounded-full flex items-center justify-center bg-white/95 border border-rose-light/40 shadow-xs hover:scale-105 transition-transform ${className}`}
+      className={`${box} ${hitArea} rounded-full flex items-center justify-center bg-white/95 border border-rose-light/40 shadow-xs hover:scale-105 transition-transform ${className}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

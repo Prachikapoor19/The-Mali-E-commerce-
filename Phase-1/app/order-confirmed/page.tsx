@@ -1,5 +1,6 @@
 'use client';
 
+import { sized } from '../../components/imageUrl';
 import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
@@ -89,7 +90,7 @@ function OrderDetails() {
             <div className="space-y-3">
               {order.items.map((item) => (
                 <div key={item.id + (item.customText || '')} className="flex items-center gap-3">
-                  <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover" />
+                  <img loading="lazy" decoding="async" src={sized(item.image, 160)} alt={item.name} className="w-12 h-12 rounded-lg object-cover" />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-botanical line-clamp-1">{item.name}</p>
                     <p className="text-xs text-charcoal/60">Qty {item.quantity}</p>

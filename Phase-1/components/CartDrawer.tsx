@@ -1,5 +1,6 @@
 "use client";
 
+import { sized } from './imageUrl';
 import React, { useEffect, useState } from "react";
 import { couponDiscount, deliveryCharge, formatINR, FREE_DELIVERY_ABOVE } from "./pricing";
 
@@ -67,10 +68,10 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, on
             ) : (
               cartItems.map((item) => (
                 <div key={item.id + (item.customText || "")} className="py-3 flex gap-3 items-center">
-                  <img src={item.image} alt={item.name} className="w-14 h-14 object-cover rounded-xl shrink-0" />
+                  <img loading="lazy" decoding="async" src={sized(item.image, 160)} alt={item.name} className="w-14 h-14 object-cover rounded-xl shrink-0" />
                   <div className="flex-1">
                     <h4 className="font-semibold text-xs text-botanical line-clamp-1">{item.name}</h4>
-                    {item.customText && <p className="text-[10px] text-rose font-medium">Text: "{item.customText}"</p>}
+                    {item.customText && <p className="text-[11px] text-rose font-medium">Text: "{item.customText}"</p>}
                     <span className="font-bold text-xs text-botanical mt-0.5 block">₹{item.price}</span>
                   </div>
                   <div className="flex items-center gap-2 bg-blush/60 px-2 py-1 rounded-lg border border-rose-light/30">
@@ -116,7 +117,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQty, on
                 <span>{delivery === 0 ? "FREE" : formatINR(delivery)}</span>
               </div>
               {delivery > 0 && (
-                <p className="text-[10px] text-charcoal/50">Add {formatINR(FREE_DELIVERY_ABOVE - subtotal)} more for free delivery</p>
+                <p className="text-[11px] text-charcoal/50">Add {formatINR(FREE_DELIVERY_ABOVE - subtotal)} more for free delivery</p>
               )}
               <div className="flex justify-between font-bold text-sm text-botanical pt-2 border-t border-rose-light/20">
                 <span>Total Amount</span>

@@ -125,7 +125,7 @@ export default function GiftsForEveryone() {
               {/* Fixed square box + absolutely placed photo = a perfect circle whatever the photo size */}
               <div className="relative w-full aspect-square rounded-full p-1.5 bg-gradient-to-br from-gold/40 via-petal to-blush shadow-xs group-hover/card:shadow-lg group-hover/card:-translate-y-1 transition-all duration-300">
                 <div className="relative w-full h-full rounded-full overflow-hidden ring-2 ring-white">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={item.image}
                     alt={`Gifts for ${item.label}`}
                     className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500"

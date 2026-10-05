@@ -1,5 +1,6 @@
 'use client';
 
+import { sized } from '../imageUrl';
 import { useCallback, useEffect, useState } from 'react';
 import { PRODUCT_CATEGORIES, discountPercent, type CatalogItem } from '@/components/searchCatalog';
 import { formatINR } from '@/components/pricing';
@@ -213,7 +214,7 @@ export default function ProductsAdmin({ onUnauthorized }: { onUnauthorized: () =
           const off = discountPercent(p);
           return (
             <div key={p.id} className={`flex items-center gap-4 p-3 sm:p-4 ${hidden ? 'opacity-60' : ''}`}>
-              <img src={p.image} alt="" className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover bg-sand shrink-0" />
+              <img loading="lazy" decoding="async" src={sized(p.image, 160)} alt="" className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover bg-sand shrink-0" />
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-botanical truncate">{p.name}</p>
                 <p className="text-xs text-charcoal/55">
@@ -335,7 +336,7 @@ export default function ProductsAdmin({ onUnauthorized }: { onUnauthorized: () =
                 <p className={label}>Preview</p>
                 <div className="rounded-2xl border border-rose-light/30 overflow-hidden bg-white">
                   <div className="aspect-square bg-sand">
-                    {form.image ? <img src={form.image} alt="" className="w-full h-full object-cover" /> : null}
+                    {form.image ? <img loading="lazy" decoding="async" src={form.image} alt="" className="w-full h-full object-cover" /> : null}
                   </div>
                   <div className="p-3">
                     <p className="text-sm font-semibold text-botanical line-clamp-2">{form.name || 'Product name'}</p>
@@ -344,7 +345,7 @@ export default function ProductsAdmin({ onUnauthorized }: { onUnauthorized: () =
                       {previewOff > 0 && (
                         <>
                           <span className="text-xs text-charcoal/40 line-through ml-1.5">{formatINR(Number(form.originalPrice))}</span>
-                          <span className="text-[10px] font-bold text-rose ml-1.5">{previewOff}% OFF</span>
+                          <span className="text-[11px] font-bold text-rose ml-1.5">{previewOff}% OFF</span>
                         </>
                       )}
                     </p>

@@ -36,7 +36,7 @@ export default function PickFavouriteFlower() {
       <div className="m-row grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
         {flowerItems.map((item) => (
           <a key={item.name} href={shopHref("Flowers", item.name)} className="group relative block aspect-[3/4] rounded-3xl overflow-hidden bg-sand shadow-xs hover:shadow-xl transition-shadow">
-            <img
+            <img loading="lazy" decoding="async"
               src={item.image}
               alt={item.name}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"

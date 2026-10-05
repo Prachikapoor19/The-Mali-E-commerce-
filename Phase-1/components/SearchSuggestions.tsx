@@ -1,5 +1,6 @@
 'use client';
 
+import { sized } from './imageUrl';
 import { suggest } from './shopSearch';
 import { useProducts } from './ProductsContext';
 import { formatINR } from './pricing';
@@ -23,7 +24,7 @@ export default function SearchSuggestions({ query, onPick }: { query: string; on
           {items.map((p) => (
             <li key={p.id}>
               <a href={`/product/${p.id}`} onClick={onPick} className="flex items-center gap-3 px-4 py-2.5 hover:bg-blush transition-colors">
-                <img src={p.image} alt="" className="w-10 h-10 rounded-lg object-cover bg-sand shrink-0" />
+                <img loading="lazy" decoding="async" src={sized(p.image, 120)} alt="" className="w-10 h-10 rounded-lg object-cover bg-sand shrink-0" />
                 <span className="flex-1 min-w-0">
                   <span className="block text-xs font-semibold text-botanical truncate">{p.name}</span>
                   <span className="block text-[11px] text-charcoal/50">{p.category}</span>

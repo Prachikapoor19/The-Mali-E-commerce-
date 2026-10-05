@@ -165,7 +165,7 @@ export default function IconStrip() {
             className="flex flex-col items-center group shrink-0 flex-1 min-w-[70px] sm:min-w-[85px] lg:min-w-0 snap-start"
           >
             <IconWrap>{item.icon}</IconWrap>
-            <span className="text-[10px] sm:text-[11px] font-bold text-botanical mt-2 text-center whitespace-nowrap group-hover:text-rose transition-colors">
+            <span className="text-[11px] sm:text-[11px] font-bold text-botanical mt-2 text-center whitespace-nowrap group-hover:text-rose transition-colors">
               {item.label}
             </span>
           </a>

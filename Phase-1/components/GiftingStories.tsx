@@ -19,7 +19,7 @@ export default function GiftingStories() {
         {stories.map((s) => (
           <a key={s.title} href={`/search?q=${encodeURIComponent(s.title)}`} className="shrink-0 w-36 md:w-44 group relative rounded-xl overflow-hidden">
             <div className="aspect-[9/16]">
-              <img
+              <img loading="lazy" decoding="async"
                 src={s.img}
                 alt={s.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

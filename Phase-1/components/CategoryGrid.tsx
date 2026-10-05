@@ -23,7 +23,7 @@ export default function CategoryGrid() {
         <h2 className="section-title">
           Shop by Category
         </h2>
-        <a href="/search?q=all" className="text-xs sm:text-sm font-semibold text-rose hover:text-rose-dark transition-colors">
+        <a href="/search?q=all" className="inline-flex items-center min-h-10 text-xs sm:text-sm font-semibold text-rose hover:text-rose-dark transition-colors">
           View All &rarr;
         </a>
       </div>
@@ -40,7 +40,7 @@ export default function CategoryGrid() {
               </p>
             </div>
             <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0 shadow-sm ring-2 ring-white">
-              <img src={cat.image} alt={cat.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+              <img loading="lazy" decoding="async" src={cat.image} alt={cat.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
             </div>
           </a>
         ))}

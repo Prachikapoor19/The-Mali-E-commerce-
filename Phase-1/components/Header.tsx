@@ -111,13 +111,14 @@ export default function Header() {
           <a href="/" className="flex items-center gap-3 shrink-0 group" aria-label="The Mali home">
             <img
               src="/logo-wide.png"
+              fetchPriority="high"
               alt="The Mali"
               width={720}
               height={488}
               className="h-11 sm:h-12 lg:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
             />
             <div className="hidden 2xl:block border-l border-botanical/15 pl-3 leading-tight">
-              <span className={`block text-[10px] font-bold uppercase tracking-[0.28em] text-gold-dark ${cinzel.className}`}>
+              <span className={`block text-[11px] font-bold uppercase tracking-[0.28em] text-gold-dark ${cinzel.className}`}>
                 Flowers · Cakes · Gifts
               </span>
               <span className="block text-[11px] text-charcoal/60 mt-1">Delivered with love</span>
@@ -127,11 +128,11 @@ export default function Header() {
           {/* Location Pincode Button */}
           <button
             onClick={openPincodeModal}
-            className="flex items-center gap-1.5 sm:gap-2 pl-2.5 pr-2 sm:pl-3 sm:pr-2.5 py-1.5 sm:py-2 rounded-xl bg-white border border-botanical/15 text-botanical hover:border-botanical/40 hover:shadow-xs transition-all shrink-0"
+            className="flex items-center gap-1.5 sm:gap-2 min-h-10 pl-2.5 pr-2 sm:pl-3 sm:pr-2.5 py-1.5 sm:py-2 rounded-xl bg-white border border-botanical/15 text-botanical hover:border-botanical/40 hover:shadow-xs transition-all shrink-0"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-4 h-4 text-rose"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
             <div className="text-left leading-tight hidden sm:block">
-              <span className="text-[10px] text-charcoal/55 block">Deliver to</span>
+              <span className="text-[11px] text-charcoal/55 block">Deliver to</span>
               <strong className="text-xs font-bold text-botanical whitespace-nowrap">
                 {pincode} · {selectedSlot.short}
               </strong>
@@ -183,9 +184,9 @@ export default function Header() {
               aria-label={`Wishlist (${wishlistCount})`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
-              <span className="hidden lg:block text-[10px] font-semibold leading-none">Wishlist</span>
+              <span className="hidden lg:block text-[11px] font-semibold leading-none">Wishlist</span>
               {wishlistCount > 0 && (
-                <span className="absolute top-0.5 right-0.5 lg:right-2 bg-rose text-ivory text-[9px] font-bold rounded-full h-4 min-w-4 px-1 flex items-center justify-center">
+                <span className="absolute top-0.5 right-0.5 lg:right-2 bg-rose text-ivory text-[11px] font-bold rounded-full h-4 min-w-4 px-1 flex items-center justify-center">
                   {wishlistCount}
                 </span>
               )}
@@ -197,7 +198,7 @@ export default function Header() {
               aria-label="Login or register"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><circle cx="12" cy="8" r="4" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
-              <span className="hidden lg:block text-[10px] font-semibold leading-none">Login</span>
+              <span className="hidden lg:block text-[11px] font-semibold leading-none">Login</span>
             </button>
 
             <button
@@ -208,7 +209,7 @@ export default function Header() {
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-4 h-4"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
               <span className="hidden sm:inline">Cart</span>
               {/* key changes with the count, so the badge "bumps" every time something is added */}
-              <span key={itemCount} className="bg-gold text-botanical text-[10px] font-bold rounded-full h-5 min-w-5 px-1 flex items-center justify-center animate-bump">
+              <span key={itemCount} className="bg-gold text-botanical text-[11px] font-bold rounded-full h-5 min-w-5 px-1 flex items-center justify-center animate-bump">
                 {itemCount}
               </span>
             </button>
@@ -232,7 +233,7 @@ export default function Header() {
               placeholder="Search flowers, cakes, gifts..."
               className="w-full h-10 pl-9 pr-3 text-sm rounded-full bg-white border border-botanical/15 focus:outline-none focus:border-botanical/50 focus:ring-4 focus:ring-blush text-charcoal placeholder:text-charcoal/40 shadow-2xs"
             />
-            <button onClick={runSearch} className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-charcoal/40" aria-label="Search">
+            <button onClick={runSearch} className="absolute left-0.5 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center text-xs text-charcoal/40" aria-label="Search">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-3.5 h-3.5"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
             </button>
             {searchFocused && <SearchSuggestions query={searchQuery} onPick={() => setSearchFocused(false)} />}
@@ -286,9 +287,9 @@ export default function Header() {
                       active ? "border-botanical bg-blush" : "border-botanical/15 hover:border-botanical/40"
                     }`}
                   >
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-gold block">{slot.tag}</span>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-gold block">{slot.tag}</span>
                     <span className="text-xs font-bold text-botanical block">{slot.name}</span>
-                    <span className="text-[10px] text-charcoal/60 block">{slot.time}</span>
+                    <span className="text-[11px] text-charcoal/60 block">{slot.time}</span>
                   </button>
                 );
               })}
@@ -381,7 +382,7 @@ export default function Header() {
               </button>
             )}
 
-            <p className="text-[10px] text-charcoal/40 text-center mt-3">
+            <p className="text-[11px] text-charcoal/40 text-center mt-3">
               By continuing, you agree to The Mali&apos;s Terms &amp; Privacy Policy.
             </p>
           </div>

@@ -29,7 +29,7 @@ export default function FlowersCollection() {
 
               {/* White Square Rounded Card */}
               <div className="w-full aspect-square rounded-2xl overflow-hidden bg-white p-3 shadow-xs border border-white/80 mb-3 flex items-center justify-center">
-                <img
+                <img loading="lazy" decoding="async"
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
@@ -38,7 +38,7 @@ export default function FlowersCollection() {
 
               {/* Order Now Pill Button */}
               <span className="px-4 py-1.5 bg-white text-botanical text-xs font-semibold rounded-full shadow-2xs border border-rose-light/30 group-hover:bg-botanical group-hover:text-ivory transition-all flex items-center gap-1">
-                Order Now <span className="text-[10px]">&gt;</span>
+                Order Now <span className="text-[11px]">&gt;</span>
               </span>
             </a>
           ))}

@@ -1,5 +1,7 @@
 'use client';
 
+import { sized } from './imageUrl';
+import { shopHref } from './shopSearch';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from './CartContext';
@@ -39,10 +41,10 @@ export default function ProductView({ product: serverProduct }: { product: Catal
     <>
       <section className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-6 sm:py-10">
         {/* Breadcrumb */}
-        <nav className="text-xs text-charcoal/60 mb-5" aria-label="Breadcrumb">
-          <a href="/" className="hover:text-rose">Home</a>
+        <nav className="text-xs text-charcoal/60 mb-3" aria-label="Breadcrumb">
+          <a href="/" className="inline-block py-2.5 hover:text-rose">Home</a>
           <span className="mx-1.5">/</span>
-          <a href={`/search?q=${encodeURIComponent(product.category)}`} className="hover:text-rose">{product.category}</a>
+          <a href={shopHref(product.category)} className="inline-block py-2.5 hover:text-rose">{product.category}</a>
           <span className="mx-1.5">/</span>
           <span className="text-botanical font-medium">{product.name}</span>
         </nav>
@@ -50,7 +52,7 @@ export default function ProductView({ product: serverProduct }: { product: Catal
         <div data-product-card className="grid md:grid-cols-2 gap-8 lg:gap-14 items-start">
           {/* Image */}
           <div className="relative rounded-3xl overflow-hidden bg-sand aspect-square border border-rose-light/20">
-            <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+            <img src={sized(product.image, 1000)} alt={product.name} className="w-full h-full object-cover" />
             {product.badge && (
               <span className="absolute top-4 left-4 bg-gold text-botanical font-bold text-xs px-3 py-1 rounded-full shadow-xs">
                 {product.badge}
@@ -100,12 +102,12 @@ export default function ProductView({ product: serverProduct }: { product: Catal
             {/* Actions */}
             <div className="mt-8 flex flex-wrap items-center gap-3">
               {!product.isPersonalised && (
-                <div className="flex items-center gap-3 bg-white border border-botanical/20 rounded-full px-2 py-1.5">
-                  <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="w-8 h-8 rounded-full hover:bg-blush font-bold text-botanical" aria-label="Decrease quantity">
+                <div className="flex items-center gap-2 bg-white border border-botanical/20 rounded-full px-1 py-0.5">
+                  <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="w-10 h-10 rounded-full hover:bg-blush font-bold text-botanical" aria-label="Decrease quantity">
                     −
                   </button>
                   <span className="w-5 text-center font-semibold">{qty}</span>
-                  <button onClick={() => setQty((q) => Math.min(10, q + 1))} className="w-8 h-8 rounded-full hover:bg-blush font-bold text-botanical" aria-label="Increase quantity">
+                  <button onClick={() => setQty((q) => Math.min(10, q + 1))} className="w-10 h-10 rounded-full hover:bg-blush font-bold text-botanical" aria-label="Increase quantity">
                     +
                   </button>
                 </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import { sized } from '../../components/imageUrl';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
@@ -363,10 +364,10 @@ export default function CheckoutPage() {
             <div className="divide-y divide-rose-light/20 max-h-72 overflow-y-auto pr-1">
               {items.map((item) => (
                 <div key={item.id + (item.customText || '')} className="py-3 flex gap-3 items-center">
-                  <img src={item.image} alt={item.name} className="w-14 h-14 object-cover rounded-xl shrink-0" />
+                  <img loading="lazy" decoding="async" src={sized(item.image, 160)} alt={item.name} className="w-14 h-14 object-cover rounded-xl shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-semibold text-botanical line-clamp-1">{item.name}</p>
-                    {item.customText && <p className="text-[10px] text-rose line-clamp-1">Text: &quot;{item.customText}&quot;</p>}
+                    {item.customText && <p className="text-[11px] text-rose line-clamp-1">Text: &quot;{item.customText}&quot;</p>}
                     <p className="text-xs font-bold text-botanical mt-0.5">{formatINR(item.price * item.quantity)}</p>
                   </div>
                   <div className="flex items-center gap-2 bg-blush px-2 py-1 rounded-lg">

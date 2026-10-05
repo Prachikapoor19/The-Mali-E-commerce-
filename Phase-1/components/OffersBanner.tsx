@@ -25,7 +25,7 @@ export default function OffersBanner() {
           return (
             <div key={offer.provider} className={`p-4 rounded-xl border ${offer.border} ${offer.bg} flex justify-between items-center shadow-2xs`}>
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal/60">{offer.provider}</span>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-charcoal/60">{offer.provider}</span>
                 <h3 className="font-bold text-sm text-botanical mt-0.5">{offer.title}</h3>
                 <p className="text-xs text-charcoal/70 mt-1">{offer.desc}</p>
                 {offer.code !== null && justApplied === offer.code && (
@@ -39,12 +39,12 @@ export default function OffersBanner() {
                     setJustApplied(offer.code);
                   }}
                   disabled={applied}
-                  className="px-3 py-1.5 bg-botanical text-ivory text-xs font-semibold rounded-lg hover:bg-botanical-light transition-colors whitespace-nowrap disabled:bg-rose disabled:cursor-default"
+                  className="min-h-10 px-4 py-2 bg-botanical text-ivory text-xs font-semibold rounded-lg hover:bg-botanical-light transition-colors whitespace-nowrap disabled:bg-rose disabled:cursor-default"
                 >
                   {applied ? "Applied ✓" : "Claim"}
                 </button>
               ) : (
-                <a href="/search?q=all" className="px-3 py-1.5 bg-botanical text-ivory text-xs font-semibold rounded-lg hover:bg-botanical-light transition-colors whitespace-nowrap">
+                <a href="/search?q=all" className="inline-flex items-center min-h-10 px-4 py-2 bg-botanical text-ivory text-xs font-semibold rounded-lg hover:bg-botanical-light transition-colors whitespace-nowrap">
                   Shop Now
                 </a>
               )}

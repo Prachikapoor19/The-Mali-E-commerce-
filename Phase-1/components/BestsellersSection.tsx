@@ -1,5 +1,6 @@
 "use client";
 
+import { sized } from './imageUrl';
 import React, { useState } from "react";
 import { useCart } from "./CartContext";
 import WishlistButton from "./WishlistButton";
@@ -90,17 +91,17 @@ export default function BestsellersSection() {
         </p>
       </div>
 
-      <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto pb-2.5 mb-4 scrollbar-none border-b border-rose-light/20">
+      <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto mb-4 scrollbar-none border-b border-rose-light/20">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveTab(cat)}
-            className={`flex items-center gap-1.5 pb-2 text-xs font-bold whitespace-nowrap border-b-2 transition-all ${
+            className={`flex items-center gap-1.5 py-2.5 text-xs font-bold whitespace-nowrap border-b-2 transition-all ${
               activeTab === cat ? "border-rose text-rose" : "border-transparent text-charcoal/70 hover:text-botanical"
             }`}
           >
             <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden border border-rose-light/40 shrink-0">
-              <img src={tabIcons[cat]} alt={cat} className="w-full h-full object-cover" />
+              <img loading="lazy" decoding="async" src={sized(tabIcons[cat], 72)} alt={cat} className="w-full h-full object-cover" />
             </div>
             <span>{cat}</span>
           </button>
@@ -116,8 +117,8 @@ export default function BestsellersSection() {
           >
             <a href={`/product/${item.id}`} className="block">
               <div className="relative w-full h-52 sm:h-60 md:h-64 bg-sand overflow-hidden flex items-center justify-center p-2">
-                <img
-                  src={item.image}
+                <img loading="lazy" decoding="async"
+                  src={sized(item.image, 500)}
                   alt={item.name}
                   className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
                 />
@@ -130,15 +131,15 @@ export default function BestsellersSection() {
                 </h3>
 
                 {item.badge && (
-                  <span className={`inline-block text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded text-white mt-1 ${item.tagColor || "bg-rose"}`}>
+                  <span className={`inline-block text-[11px] sm:text-[11px] font-bold px-1.5 sm:px-2 py-0.5 rounded text-white mt-1 ${item.tagColor || "bg-rose"}`}>
                     {item.badge}
                   </span>
                 )}
 
                 <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
                   <span className="font-bold text-xs sm:text-sm text-botanical">{item.price}</span>
-                  <span className="text-[10px] sm:text-xs text-charcoal/40 line-through">{item.originalPrice}</span>
-                  <span className="text-[9px] sm:text-[10px] font-bold text-rose">{item.discount}</span>
+                  <span className="text-[11px] sm:text-xs text-charcoal/40 line-through">{item.originalPrice}</span>
+                  <span className="text-[11px] sm:text-[11px] font-bold text-rose">{item.discount}</span>
                 </div>
               </div>
             </a>
@@ -146,7 +147,7 @@ export default function BestsellersSection() {
             <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3">
               <button
                 onClick={(e) => handleAction(item, e.currentTarget)}
-                className={`w-full text-[10px] sm:text-xs font-semibold py-2 rounded-full transition-colors ${
+                className={`w-full min-h-10 text-xs font-semibold py-2 rounded-full transition-colors ${
                   item.isPersonalised
                     ? "bg-botanical text-ivory hover:bg-botanical-light"
                     : "bg-rose text-ivory hover:bg-rose-dark"
@@ -160,7 +161,7 @@ export default function BestsellersSection() {
       </div>
 
       <div className="mt-6 sm:mt-8 text-center">
-        <a href={`/search?q=${encodeURIComponent(activeTab)}`} className="inline-block px-5 sm:px-6 py-2 border border-rose-light/60 text-botanical rounded-full text-xs font-semibold hover:bg-rose hover:text-ivory transition-colors">
+        <a href={`/search?q=${encodeURIComponent(activeTab)}`} className="inline-flex items-center min-h-10 px-5 sm:px-6 py-2 border border-rose-light/60 text-botanical rounded-full text-xs font-semibold hover:bg-rose hover:text-ivory transition-colors">
           View All {activeTab} &gt;
         </a>
       </div>

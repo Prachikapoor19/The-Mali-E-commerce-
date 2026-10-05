@@ -52,7 +52,7 @@ export default function GiftsForFeeling() {
           >
             {/* Image Container */}
             <div className="w-full h-60 sm:h-72 rounded-2xl overflow-hidden flex items-center justify-center">
-              <img
+              <img loading="lazy" decoding="async"
                 src={item.image}
                 alt={item.label}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

@@ -45,10 +45,10 @@ function LinkList({ title, links }: { title: string; links: { label: string; hre
   return (
     <div>
       <h4 className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold mb-4">{title}</h4>
-      <ul className="space-y-2.5 text-sm text-ivory/75">
+      <ul className="space-y-0.5 sm:space-y-1 text-sm text-ivory/75">
         {links.map((l) => (
           <li key={l.href}>
-            <a href={l.href} className="hover:text-ivory transition-colors">
+            <a href={l.href} className="inline-flex items-center min-h-9 sm:min-h-0 sm:py-1 hover:text-ivory transition-colors">
               {l.label}
             </a>
           </li>
@@ -66,7 +66,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-4">
             <a href="/" className="inline-flex items-center gap-3">
-              <img src="/logo.png" alt="" className="h-12 w-12 rounded-full bg-ivory object-contain p-1" />
+              <img loading="lazy" decoding="async" src="/logo.png" alt="" className="h-12 w-12 rounded-full bg-ivory object-contain p-1" />
               <span className="font-display text-2xl font-bold tracking-wide">The Mali</span>
             </a>
             <p className="text-sm text-ivory/70 leading-relaxed mt-4 max-w-sm">
@@ -84,7 +84,7 @@ export default function Footer() {
                   <rect x="3" y="5" width="18" height="14" rx="2" />
                   <path d="m3 7 9 6 9-6" />
                 </svg>
-                <a href="mailto:support@themali.com" className="hover:text-ivory">support@themali.com</a>
+                <a href="mailto:support@themali.com" className="inline-block py-2 hover:text-ivory">support@themali.com</a>
               </p>
             </div>
           </div>

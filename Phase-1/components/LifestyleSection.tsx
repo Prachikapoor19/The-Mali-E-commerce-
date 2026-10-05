@@ -1,5 +1,6 @@
 'use client';
 
+import { sized } from './imageUrl';
 import { useProducts } from './ProductsContext';
 import { LIFESTYLE_CATEGORIES } from './searchCatalog';
 
@@ -45,13 +46,13 @@ export default function LifestyleSection() {
           >
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-sand border border-white shadow-sm lift-on-hover">
               <img
-                src={t.image}
+                src={sized(t.image, 420)}
                 alt={t.category}
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-botanical/70 via-botanical/10 to-transparent" />
-              <span className="absolute top-2 left-2 rounded-full bg-gold text-botanical text-[10px] font-bold px-2 py-0.5 shadow-xs">
+              <span className="absolute top-2 left-2 rounded-full bg-gold text-botanical text-[11px] font-bold px-2 py-0.5 shadow-xs">
                 NEW
               </span>
               <div className="absolute bottom-0 inset-x-0 p-3 text-ivory">

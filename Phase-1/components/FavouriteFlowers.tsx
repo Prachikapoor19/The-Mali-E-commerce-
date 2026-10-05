@@ -19,7 +19,7 @@ export default function FavouriteFlowers() {
         {flowers.map((f) => (
           <a key={f.name} href={`/search?q=${encodeURIComponent(f.name)}`} className="group">
             <div className="aspect-[3/4] rounded-xl overflow-hidden mb-2 bg-blush">
-              <img
+              <img loading="lazy" decoding="async"
                 src={f.img}
                 alt={f.name}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

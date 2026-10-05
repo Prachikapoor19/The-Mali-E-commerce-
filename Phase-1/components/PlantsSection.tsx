@@ -38,7 +38,7 @@ export default function PlantsSection() {
           <a key={plant.title} href={plant.title === "All Plants" ? shopHref("Plants") : shopHref("Plants", plant.title)} className="flex flex-col items-center group">
             {/* Tall Vertical Portrait Card Frame */}
             <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden bg-white/40 shadow-xs border border-black/5 mb-3">
-              <img
+              <img loading="lazy" decoding="async"
                 src={plant.image}
                 alt={plant.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

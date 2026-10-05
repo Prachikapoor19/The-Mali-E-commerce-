@@ -22,7 +22,7 @@ export default function FreshlyBakedCakes() {
           <a key={item.name} href={item.name === "Combos" ? shopHref("Cakes") : shopHref("Cakes", item.name)} className="flex flex-col items-center group">
             {/* Round bakery-style frame */}
             <div className="relative w-full aspect-square rounded-full overflow-hidden bg-white ring-4 ring-white shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300 mb-4">
-              <img
+              <img loading="lazy" decoding="async"
                 src={item.image}
                 alt={item.name}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

@@ -32,7 +32,7 @@ function Badge({ n }: { n: number }) {
   return (
     <span
       key={n}
-      className="absolute -top-1 left-1/2 ml-1.5 bg-rose text-ivory text-[10px] font-bold rounded-full h-[18px] min-w-[18px] px-1 flex items-center justify-center animate-bump"
+      className="absolute -top-1 left-1/2 ml-1.5 bg-rose text-ivory text-[11px] font-bold rounded-full h-[18px] min-w-[18px] px-1 flex items-center justify-center animate-bump"
     >
       {n > 99 ? '99+' : n}
     </span>

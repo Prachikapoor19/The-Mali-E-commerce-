@@ -163,7 +163,7 @@ export default function OccasionStrip() {
                   currentSlideIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"
                 }`}
               >
-                <img
+                <img loading="lazy" decoding="async"
                   src={slide.image}
                   alt={slide.title}
                   className="w-full h-full object-cover transform group-hover/first:scale-105 transition-transform duration-500"
@@ -173,13 +173,13 @@ export default function OccasionStrip() {
 
                 <div className="absolute inset-0 p-4 flex flex-col justify-between text-white z-20">
                   <div className="flex justify-between items-start">
-                    <span className="text-[9px] font-extrabold bg-botanical/90 text-white backdrop-blur-xs px-2 py-0.5 rounded-md uppercase tracking-wider border border-white/20">
+                    <span className="text-[11px] font-extrabold bg-botanical/90 text-white backdrop-blur-xs px-2 py-0.5 rounded-md uppercase tracking-wider border border-white/20">
                       {slide.badge}
                     </span>
                   </div>
 
                   <div>
-                    <span className="text-[9px] font-bold text-gold uppercase tracking-widest block mb-0.5">
+                    <span className="text-[11px] font-bold text-gold uppercase tracking-widest block mb-0.5">
                       {slide.subTag}
                     </span>
                     <h3 className="font-display font-bold text-base sm:text-lg leading-tight flex items-center justify-between text-white">
@@ -214,21 +214,21 @@ export default function OccasionStrip() {
                     {item.title} <span className="text-xs">❯</span>
                   </h3>
                   {item.subTag && (
-                    <span className="text-[9px] font-bold text-botanical/60 uppercase tracking-wider block mt-1">
+                    <span className="text-[11px] font-bold text-botanical/60 uppercase tracking-wider block mt-1">
                       {item.subTag}
                     </span>
                   )}
                 </div>
 
                 {item.tag && (
-                  <span className="inline-block self-start text-[9px] font-extrabold bg-white/80 backdrop-blur-xs text-botanical px-2 py-0.5 rounded-md border border-black/5">
+                  <span className="inline-block self-start text-[11px] font-extrabold bg-white/80 backdrop-blur-xs text-botanical px-2 py-0.5 rounded-md border border-black/5">
                     {item.tag}
                   </span>
                 )}
               </div>
 
               <div className="w-28 h-28 self-end rounded-xl overflow-hidden bg-white/40 p-1">
-                <img
+                <img loading="lazy" decoding="async"
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover rounded-lg group-hover/card:scale-105 transition-transform duration-300"
