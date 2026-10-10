@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { formatINR } from '@/components/pricing';
 import ProductsAdmin from '@/components/admin/ProductsAdmin';
+import MessagesAdmin from '@/components/admin/MessagesAdmin';
 
 type Status = 'placed' | 'preparing' | 'out_for_delivery' | 'delivered' | 'cancelled';
 
@@ -55,7 +56,8 @@ export default function AdminPage() {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [busyId, setBusyId] = useState<string | null>(null);
-  const [tab, setTab] = useState<'orders' | 'products'>('orders');
+  const [tab, setTab] = useState<'orders' | 'products' | 'messages'>('orders');
+  const [newMessages, setNewMessages] = useState(0);
   const toLogin = useCallback(() => setState('login'), []);
 
   const load = useCallback(async () => {
@@ -67,6 +69,11 @@ export default function AdminPage() {
       const data = await res.json();
       setOrders(data.orders);
       setState('ready');
+      // Count unread Contact Us messages for the tab label
+      fetch('/api/admin/messages', { cache: 'no-store' })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => d && setNewMessages(d.messages.filter((m: { status: string }) => m.status === 'new').length))
+        .catch(() => {});
     } catch {
       setState('error');
     }
@@ -170,18 +177,33 @@ export default function AdminPage() {
     );
 
   const tabs = (
-    <div className="flex gap-1 bg-white border border-rose-light/30 rounded-full p-1 w-fit mb-6">
-      {(['orders', 'products'] as const).map((t) => (
+    <div className="flex gap-1 bg-white border border-rose-light/30 rounded-full p-1 w-fit max-w-full overflow-x-auto mb-6">
+      {(['orders', 'products', 'messages'] as const).map((t) => (
         <button
           key={t}
           onClick={() => setTab(t)}
-          className={`px-5 py-2 rounded-full text-sm font-semibold ${tab === t ? 'bg-botanical text-ivory' : 'text-botanical'}`}
+          className={`px-4 sm:px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap ${tab === t ? 'bg-botanical text-ivory' : 'text-botanical'}`}
         >
-          {t === 'orders' ? `Orders (${orders.length})` : 'Products'}
+          {t === 'orders' ? `Orders (${orders.length})` : t === 'products' ? 'Products' : (
+            <>
+              Messages
+              {newMessages > 0 && (
+                <span className="ml-1.5 inline-flex items-center justify-center min-w-5 h-5 px-1 rounded-full bg-gold text-botanical text-[11px] font-bold">{newMessages}</span>
+              )}
+            </>
+          )}
         </button>
       ))}
     </div>
   );
+
+  if (tab === 'messages')
+    return shell(
+      <div className="px-4 sm:px-8 py-6 max-w-4xl mx-auto">
+        {tabs}
+        <MessagesAdmin onUnauthorized={toLogin} onNewCount={setNewMessages} />
+      </div>
+    );
 
   if (tab === 'products')
     return shell(

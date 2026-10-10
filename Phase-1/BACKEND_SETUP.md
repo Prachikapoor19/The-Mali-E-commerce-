@@ -15,6 +15,8 @@ MongoDB Atlas as the database. It deploys to Vercel together with the site.
 | `GET /api/products` | All visible products for the shop. |
 | `GET/POST /api/admin/products` | Admin: list every product (including hidden) / add a product. |
 | `PATCH/DELETE /api/admin/products/[id]` | Admin: edit, hide/show (`{ "active": false }`) or delete a product. |
+| `POST /api/messages` | Contact Us form. Saves to the `messages` collection (spam-protected: hidden honeypot field + max 3 messages per 10 minutes from one connection). |
+| `GET /api/admin/messages`, `PATCH/DELETE /api/admin/messages/[id]` | Admin → Messages: list, mark read/new, delete. |
 
 ### Products
 Products live in MongoDB (`products` collection). The first time the site talks
@@ -29,6 +31,13 @@ Order statuses: `placed` → `preparing` → `out_for_delivery` → `delivered` 
 
 Until `MONGODB_URI` is set, checkout keeps working in **demo mode** (orders are
 saved only in the customer's browser).
+
+### Contact Us messages
+Messages from the Contact Us form are saved in MongoDB (`messages` collection) and
+shown in **/admin → Messages** (unread count on the tab). If order emails are set
+up (below), each message is also emailed to `ORDER_ALERT_EMAIL`; pressing Reply in
+that email answers the customer directly. Without a database the form falls back
+to opening the visitor's email app.
 
 ### New-order email alerts
 Every new order emails the shop (`lib/orderAlert.ts`) with the items, total to

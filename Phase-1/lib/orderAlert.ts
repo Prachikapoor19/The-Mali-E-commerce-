@@ -159,3 +159,54 @@ export async function sendOrderAlert(order: OrderAlert, siteUrl: string): Promis
 }
 
 export { buildEmail as buildOrderAlertEmail };
+
+// ---------- Contact-form messages ----------
+
+export type MessageAlert = { name: string; email: string; phone?: string; message: string; createdAt?: Date };
+
+/** Emails the shop about a new Contact Us message. "Reply" goes straight to the customer. Never throws. */
+export async function sendMessageAlert(msg: MessageAlert, siteUrl: string): Promise<boolean> {
+  if (!isOrderAlertConfigured()) return false;
+  const to = process.env
+    .ORDER_ALERT_EMAIL!.split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const from = process.env.MAIL_FROM?.trim() || 'The Mali Website <onboarding@resend.dev>';
+  const admin = `${siteUrl.replace(/\/$/, '')}/admin`;
+  const subject = `New message from ${msg.name} · The Mali website`;
+  const html = `<!doctype html><html><body style="margin:0;background:#F6EEE0;font-family:Arial,Helvetica,sans-serif;color:#2B2A20">
+  <div style="max-width:560px;margin:0 auto;padding:24px 16px">
+    <div style="background:#1F2E20;color:#FDFBF2;border-radius:14px 14px 0 0;padding:18px 22px">
+      <div style="font-size:12px;letter-spacing:2px;color:#C9A15A">THE MALI · CONTACT US</div>
+      <div style="font-size:20px;font-weight:700;margin-top:4px">Message from ${esc(msg.name)}</div>
+    </div>
+    <div style="background:#fff;border-radius:0 0 14px 14px;padding:20px 22px;font-size:14px;line-height:1.55">
+      <div style="white-space:pre-wrap;background:#F7ECE8;border-radius:10px;padding:12px 14px">${esc(msg.message)}</div>
+      <p style="margin:16px 0 0"><b>Email:</b> <a href="mailto:${esc(msg.email)}" style="color:#3F6C4C">${esc(msg.email)}</a>${
+        msg.phone ? `<br><b>Phone:</b> <a href="tel:${esc(msg.phone)}" style="color:#3F6C4C">${esc(msg.phone)}</a>` : ''
+      }</p>
+      <p style="color:#777;font-size:12px;margin-top:14px">Press Reply to answer ${esc(msg.name)} directly.</p>
+      <div style="text-align:center;margin-top:18px">
+        <a href="${esc(admin)}" style="display:inline-block;background:#3F6C4C;color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:700">Open admin</a>
+      </div>
+    </div>
+  </div></body></html>`;
+  const text = `New message from ${msg.name} (${msg.email}${msg.phone ? `, ${msg.phone}` : ''})\n\n${msg.message}\n\nAdmin: ${admin}`;
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ from, to, subject, html, text, reply_to: msg.email }),
+      signal: AbortSignal.timeout(10000),
+    });
+    if (!res.ok) {
+      console.error('Message alert email failed', res.status, (await res.text()).slice(0, 300));
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Message alert email failed', err);
+    return false;
+  }
+}
