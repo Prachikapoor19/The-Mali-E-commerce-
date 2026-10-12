@@ -41,6 +41,8 @@ const OrderSchema = new Schema(
     delivery: { type: Number, required: true },
     total: { type: Number, required: true },
     status: { type: String, enum: ORDER_STATUSES, default: 'placed', index: true },
+    // Set when the customer was logged in (shows in their My Orders). Guest orders leave it empty.
+    userId: { type: Schema.Types.ObjectId, default: null, index: true },
   },
   { timestamps: true }
 );

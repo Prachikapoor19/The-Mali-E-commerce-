@@ -8,6 +8,7 @@ import '@fontsource/cinzel/latin-700.css';
 import './globals.css';
 import { CartProvider } from '@/components/CartContext';
 import { WishlistProvider } from '@/components/WishlistContext';
+import { AuthProvider } from '@/components/AuthContext';
 import CartDrawerConnected from '@/components/CartDrawerConnected';
 import PersonalizationModalConnected from '@/components/PersonalizationModalConnected';
 import ImageFallback from '@/components/ImageFallback';
@@ -41,6 +42,7 @@ export default async function RootLayout({
       <body>
         <ProductsProvider initialProducts={products}>
           <CartProvider>
+            <AuthProvider>
             <WishlistProvider>
               {children}
               <MobileTabBar />
@@ -49,6 +51,7 @@ export default async function RootLayout({
               <ImageFallback />
               <ScrollReveal />
             </WishlistProvider>
+            </AuthProvider>
           </CartProvider>
         </ProductsProvider>
       </body>

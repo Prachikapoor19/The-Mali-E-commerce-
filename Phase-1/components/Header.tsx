@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCart } from "./CartContext";
 import { useWishlist } from "./WishlistContext";
 import SearchSuggestions from "./SearchSuggestions";
+import { useAuth } from "./AuthContext";
 
 // Logo font (Cinzel) is bundled via @fontsource in app/layout.tsx
 const cinzel = { className: "font-logo" };
@@ -58,28 +59,9 @@ export default function Header() {
     setIsPincodeModalOpen(false);
   };
 
-  // Auth
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authTab, setAuthTab] = useState<"login" | "register">("login");
-  const [authPhone, setAuthPhone] = useState("");
-  const [authError, setAuthError] = useState("");
-  const [authDone, setAuthDone] = useState(false);
-
-  const openAuth = () => {
-    setAuthError("");
-    setAuthDone(false);
-    setIsAuthModalOpen(true);
-  };
-
-  // Accounts need a backend (OTP SMS). Until then, be honest and point to guest checkout.
-  const submitAuth = () => {
-    if (!/^[6-9]\d{9}$/.test(authPhone)) {
-      setAuthError("Please enter a valid 10-digit mobile number.");
-      return;
-    }
-    setAuthError("");
-    setAuthDone(true);
-  };
+  // Customer login (popup lives in AuthContext)
+  const { user, ready: authReady, openAuth } = useAuth();
+  const firstName = user?.name.split(' ')[0] ?? '';
 
   // Gift Finder → smooth-scroll to the Gift Finder section on the homepage
   const goToGiftFinder = () => {
@@ -192,14 +174,29 @@ export default function Header() {
               )}
             </a>
 
-            <button
-              onClick={openAuth}
-              className="flex flex-col items-center justify-center gap-0.5 min-w-10 lg:min-w-14 h-11 px-1.5 rounded-xl hover:bg-blush transition-colors"
-              aria-label="Login or register"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><circle cx="12" cy="8" r="4" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
-              <span className="hidden lg:block text-[11px] font-semibold leading-none">Login</span>
-            </button>
+            {user ? (
+              <a
+                href="/account"
+                className="flex flex-col items-center justify-center gap-0.5 min-w-10 lg:min-w-14 h-11 px-1.5 rounded-xl hover:bg-blush transition-colors"
+                aria-label={`My account (${user.name})`}
+                title="My account"
+              >
+                <span className="w-6 h-6 rounded-full bg-botanical text-ivory text-[11px] font-bold flex items-center justify-center uppercase">
+                  {firstName.charAt(0) || '•'}
+                </span>
+                <span className="hidden lg:block text-[11px] font-semibold leading-none max-w-16 truncate">Hi, {firstName}</span>
+              </a>
+            ) : (
+              <button
+                onClick={() => openAuth('login')}
+                disabled={!authReady}
+                className="flex flex-col items-center justify-center gap-0.5 min-w-10 lg:min-w-14 h-11 px-1.5 rounded-xl hover:bg-blush transition-colors"
+                aria-label="Log in or register"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="w-5 h-5"><circle cx="12" cy="8" r="4" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
+                <span className="hidden lg:block text-[11px] font-semibold leading-none">Login</span>
+              </button>
+            )}
 
             <button
               onClick={openCart}
@@ -305,89 +302,6 @@ export default function Header() {
         </div>
       )}
 
-      {/* AUTH MODAL */}
-      {isAuthModalOpen && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in"
-          onClick={() => setIsAuthModalOpen(false)}
-        >
-          <div
-            className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative border border-botanical/20 animate-pop-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setIsAuthModalOpen(false)}
-              className="absolute top-4 right-4 text-charcoal"
-              aria-label="Close"
-            >
-              ✕
-            </button>
-
-            <div className="flex gap-4 mb-5 border-b border-botanical/10">
-              <button
-                onClick={() => setAuthTab("login")}
-                className={`pb-2 text-sm font-bold ${authTab === "login" ? "text-botanical border-b-2 border-botanical" : "text-charcoal/40"}`}
-              >
-                Login
-              </button>
-              <button
-                onClick={() => setAuthTab("register")}
-                className={`pb-2 text-sm font-bold ${authTab === "register" ? "text-botanical border-b-2 border-botanical" : "text-charcoal/40"}`}
-              >
-                Register
-              </button>
-            </div>
-
-            {authTab === "register" && (
-              <input type="text" placeholder="Full Name" className="w-full text-xs p-3 rounded-xl border border-botanical/20 mb-3" />
-            )}
-            <input
-              type="tel"
-              inputMode="numeric"
-              maxLength={10}
-              placeholder="Mobile Number"
-              value={authPhone}
-              onChange={(e) => {
-                setAuthPhone(e.target.value.replace(/\D/g, ""));
-                setAuthError("");
-              }}
-              onKeyDown={(e) => e.key === "Enter" && submitAuth()}
-              className="w-full text-xs p-3 rounded-xl border border-botanical/20 mb-3"
-            />
-            {authError && <p className="text-[11px] text-red-600 -mt-2 mb-3">{authError}</p>}
-            {authTab === "register" && (
-              <input type="email" placeholder="Email (optional)" className="w-full text-xs p-3 rounded-xl border border-botanical/20 mb-3" />
-            )}
-
-            {authDone ? (
-              <div className="bg-blush rounded-xl p-4 text-xs text-botanical">
-                <p className="font-bold mb-1">Accounts are launching soon!</p>
-                <p className="text-charcoal/70">
-                  You don&apos;t need an account to order. Checkout as a guest and we&apos;ll send order updates to your mobile.
-                  You can track any order with its Order ID.
-                </p>
-                <button
-                  onClick={() => setIsAuthModalOpen(false)}
-                  className="mt-3 w-full py-2.5 bg-botanical text-ivory font-bold rounded-xl hover:bg-botanical-light transition-colors"
-                >
-                  Continue Shopping
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={submitAuth}
-                className="w-full py-3 bg-botanical text-ivory text-xs font-bold rounded-xl hover:bg-botanical-light transition-colors"
-              >
-                {authTab === "login" ? "Send OTP" : "Create Account"}
-              </button>
-            )}
-
-            <p className="text-[11px] text-charcoal/40 text-center mt-3">
-              By continuing, you agree to The Mali&apos;s Terms &amp; Privacy Policy.
-            </p>
-          </div>
-        </div>
-      )}
     </>
   );
 }

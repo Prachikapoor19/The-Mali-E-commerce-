@@ -17,6 +17,9 @@ MongoDB Atlas as the database. It deploys to Vercel together with the site.
 | `PATCH/DELETE /api/admin/products/[id]` | Admin: edit, hide/show (`{ "active": false }`) or delete a product. |
 | `POST /api/messages` | Contact Us form. Saves to the `messages` collection (spam-protected: hidden honeypot field + max 3 messages per 10 minutes from one connection). |
 | `GET /api/admin/messages`, `PATCH/DELETE /api/admin/messages/[id]` | Admin → Messages: list, mark read/new, delete. |
+| `POST /api/auth/register`, `/login`, `/logout` | Customer accounts (email + password). |
+| `GET/PATCH /api/auth/me` | Who is logged in; update name/phone; change password. |
+| `GET /api/account/orders`, `PUT /api/account/wishlist` | The customer's own orders; wishlist saved to the account. |
 
 ### Products
 Products live in MongoDB (`products` collection). The first time the site talks
@@ -31,6 +34,16 @@ Order statuses: `placed` → `preparing` → `out_for_delivery` → `delivered` 
 
 Until `MONGODB_URI` is set, checkout keeps working in **demo mode** (orders are
 saved only in the customer's browser).
+
+### Customer accounts
+Customers can register and log in with email + password (header → Login, or
+`/account`). Passwords are stored only as scrypt hashes (`users` collection); each
+login creates a row in `sessions` and an httpOnly cookie valid for 30 days. Five
+wrong passwords lock that account for 15 minutes. Orders placed while logged in get
+the customer's `userId` and show in **My Account → My Orders**; the last delivery
+address is offered again at checkout, and the wishlist follows the account across
+devices. Guest checkout works exactly as before. "Forgot password" by email will be
+added once the domain email (Resend) is set up; until then customers use Contact Us.
 
 ### Contact Us messages
 Messages from the Contact Us form are saved in MongoDB (`messages` collection) and

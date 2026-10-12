@@ -1,6 +1,7 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
+import { useAuth } from './AuthContext';
 
 interface WishlistContextType {
   ids: string[];
@@ -38,6 +39,33 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
       // storage blocked — wishlist still works for this visit
     }
   }, [ids, loaded]);
+
+  // Logged-in customers: merge this browser's wishlist with their account once,
+  // then keep the account copy up to date so it follows them to every device.
+  const { user } = useAuth();
+  const syncedFor = useRef<string | null>(null);
+  useEffect(() => {
+    if (!loaded) return;
+    if (!user) {
+      syncedFor.current = null;
+      return;
+    }
+    if (syncedFor.current !== user.email) {
+      syncedFor.current = user.email;
+      setIds((prev) => [...new Set([...prev, ...(user.wishlist ?? [])])]);
+    }
+  }, [user, loaded]);
+  useEffect(() => {
+    if (!loaded || !user || syncedFor.current !== user.email) return;
+    const t = setTimeout(() => {
+      fetch('/api/account/wishlist', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids }),
+      }).catch(() => {});
+    }, 600);
+    return () => clearTimeout(t);
+  }, [ids, user, loaded]);
 
   const toggle = (id: string) =>
     setIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [id, ...prev]));

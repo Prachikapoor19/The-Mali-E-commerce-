@@ -5,6 +5,8 @@ import { listProducts } from '@/lib/products';
 import { couponDiscount, deliveryCharge, DELIVERY_SLOTS } from '@/components/pricing';
 import { after } from 'next/server';
 import { sendOrderAlert } from '@/lib/orderAlert';
+import { currentUser } from '@/lib/userAuth';
+import { UserModel } from '@/lib/userModel';
 
 type IncomingItem = { id?: unknown; quantity?: unknown; customText?: unknown };
 
@@ -87,6 +89,7 @@ export async function POST(request: Request) {
 
   try {
     await connectDB();
+    const user = await currentUser().catch(() => null);
     // Retry a couple of times in the rare case the random ID already exists
     for (let attempt = 0; attempt < 3; attempt++) {
       try {
@@ -105,7 +108,15 @@ export async function POST(request: Request) {
           discount,
           delivery,
           total,
+          userId: user?._id ?? null,
         });
+        if (user) {
+          // Remember these details for the customer's next checkout
+          await UserModel.updateOne(
+            { _id: user._id },
+            { lastRecipient: recipient, ...(user.phone ? {} : { phone: sender.phone }) }
+          ).catch((err) => console.error('Saving last delivery details failed', err));
+        }
         // Email the shop owner after the customer already has their confirmation
         const siteUrl = new URL(request.url).origin;
         const alert = {

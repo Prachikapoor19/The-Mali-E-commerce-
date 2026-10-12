@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { useCart } from './CartContext';
 import { useWishlist } from './WishlistContext';
+import { useAuth } from './AuthContext';
 
 // App-style bottom bar, phones only. Hidden on checkout (it has its own button)
 // and admin. A spacer of the same height keeps the footer from hiding behind it.
@@ -43,6 +44,7 @@ export default function MobileTabBar() {
   const pathname = usePathname() || '/';
   const { itemCount, openCart, isCartOpen } = useCart();
   const { count: wishCount } = useWishlist();
+  const { user } = useAuth();
 
   if (HIDDEN_ON.some((p) => pathname.startsWith(p))) return null;
 
@@ -57,7 +59,7 @@ export default function MobileTabBar() {
     { href: '/', label: 'Home', icon: ICONS.home, active: pathname === '/' },
     { href: '/search?q=all', label: 'Shop', icon: ICONS.shop, active: pathname.startsWith('/search') || pathname.startsWith('/product') },
     { href: '/wishlist', label: 'Wishlist', icon: ICONS.wishlist, active: pathname.startsWith('/wishlist'), badge: wishCount },
-    { href: '/track-order', label: 'Orders', icon: ICONS.orders, active: pathname.startsWith('/track-order') || pathname.startsWith('/order-confirmed') },
+    { href: user ? '/account' : '/track-order', label: 'Orders', icon: ICONS.orders, active: pathname.startsWith('/track-order') || pathname.startsWith('/order-confirmed') || pathname.startsWith('/account') },
   ];
 
   return (

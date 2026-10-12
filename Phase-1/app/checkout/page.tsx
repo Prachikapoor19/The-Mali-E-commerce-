@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useCart } from '@/components/CartContext';
+import { useAuth } from '@/components/AuthContext';
 import { couponDiscount, deliveryCharge, DELIVERY_SLOTS, formatINR, FREE_DELIVERY_ABOVE } from '@/components/pricing';
 import { makeOrderId, saveOrder, type Order } from '@/components/orders';
 
@@ -54,6 +55,31 @@ export default function CheckoutPage() {
   const [couponMsg, setCouponMsg] = useState('');
   const [placing, setPlacing] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const { user, openAuth } = useAuth();
+
+  // Logged-in customers: fill "Your details" from their account (only empty fields)
+  useEffect(() => {
+    if (!user) return;
+    setForm((f) => ({
+      ...f,
+      senderName: f.senderName || user.name,
+      senderPhone: f.senderPhone || user.phone,
+    }));
+  }, [user]);
+
+  const applySavedAddress = () => {
+    const r = user?.lastRecipient;
+    if (!r) return;
+    setForm((f) => ({
+      ...f,
+      recipientName: r.name,
+      recipientPhone: r.phone,
+      address: r.address,
+      city: r.city,
+      pincode: r.pincode,
+    }));
+    setErrors({});
+  };
 
   // Dates are set after mount so they use the visitor's clock
   useEffect(() => {
@@ -231,7 +257,26 @@ export default function CheckoutPage() {
           <div className="space-y-6">
             {/* Recipient */}
             <div className="bg-white rounded-2xl border border-rose-light/30 p-5 sm:p-6">
-              <h2 className="font-display text-lg font-bold text-botanical mb-4">1. Delivery Address</h2>
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <h2 className="font-display text-lg font-bold text-botanical">1. Delivery Address</h2>
+                {user?.lastRecipient?.address ? (
+                  <button
+                    type="button"
+                    onClick={applySavedAddress}
+                    className="inline-flex items-center min-h-10 px-4 rounded-full bg-blush text-rose-dark text-xs font-semibold hover:bg-rose hover:text-ivory transition-colors"
+                  >
+                    Use last address ({user.lastRecipient.name}, {user.lastRecipient.city})
+                  </button>
+                ) : !user ? (
+                  <button
+                    type="button"
+                    onClick={() => openAuth('login')}
+                    className="inline-flex items-center min-h-10 px-1 text-xs font-semibold text-rose hover:underline"
+                  >
+                    Have an account? Log in for faster checkout
+                  </button>
+                ) : null}
+              </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-semibold text-charcoal/70 mb-1 block">Recipient&apos;s name</label>
