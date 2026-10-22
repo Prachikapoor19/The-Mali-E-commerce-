@@ -94,7 +94,7 @@ function TrackOrder() {
 
         {notFound && (
           <div className="mt-6 bg-sand rounded-2xl p-5 text-left text-sm text-charcoal/80">
-            We couldn&apos;t find that order ID. Please check it, or contact us at +91 1800-MALI-CARE.
+            We couldn&apos;t find that order ID. Please check it, or contact us at +91 84000 91811.
           </div>
         )}
 

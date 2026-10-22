@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const SUPPORT_EMAIL = 'support@themali.com';
+const SUPPORT_EMAIL = 'orders@themali.in';
 const inputClass =
   'w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-rose focus:ring-4 focus:ring-blush bg-white';
 

@@ -83,7 +83,8 @@ export default function Header() {
             <span className="truncate">
               🌿 Free Express Delivery on Orders Above ₹999 <span className="text-ivory/50 mx-1">|</span> Code: <strong className="text-gold">MALI15</strong>
             </span>
-            <span className="hidden md:inline text-ivory/80">📞 24/7 Gifting Help: +91 1800-MALI-CARE</span>
+
+                        <a href="tel:+918400091811" className="hidden md:inline text-ivory/80 hover:text-ivory">📞 Call / WhatsApp: +91 84000 91811</a>
           </div>
         </div>
 
