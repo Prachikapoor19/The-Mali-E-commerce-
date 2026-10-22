@@ -18,7 +18,8 @@ export default function ContactUsPage() {
           <div className="grid sm:grid-cols-2 gap-6 mb-10">
             <div className="bg-blush rounded-2xl p-5">
               <h3 className="font-semibold text-botanical mb-1">Call Us</h3>
-              <p className="text-sm text-charcoal/70">+91 98765 43210</p>
+                 <a href="tel:+918400091811" className="block text-sm text-charcoal/70 hover:text-rose">+91 84000 91811</a>
+                 <a href="https://wa.me/918400091811" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold text-rose hover:underline">Chat on WhatsApp →</a>
               <p className="text-xs text-charcoal/50 mt-1">Mon–Sun, 9 AM – 9 PM</p>
             </div>
             <div className="bg-blush rounded-2xl p-5">
