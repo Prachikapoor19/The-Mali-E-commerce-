@@ -23,7 +23,7 @@ export default function ContactUsPage() {
             </div>
             <div className="bg-blush rounded-2xl p-5">
               <h3 className="font-semibold text-botanical mb-1">Email Us</h3>
-              <p className="text-sm text-charcoal/70">support@themali.com</p>
+              <p className="text-sm text-charcoal/70">orders@themali.in</p>
               <p className="text-xs text-charcoal/50 mt-1">We reply within 24 hours</p>
             </div>
           </div>
