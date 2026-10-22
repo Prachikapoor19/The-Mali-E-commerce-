@@ -106,7 +106,7 @@ export default function Footer() {
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-ivory/50 gap-3">
           <p>© {new Date().getFullYear()} The Mali. All rights reserved.</p>
-          <p>Made with love in Lucknow</p>
+           <p>Made with love in Lucknow · Designed &amp; developed by <a href="https://prachi-kapoor-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer" className="text-ivory/80 font-semibold underline underline-offset-2 hover:text-gold">Prachi Kapoor</a></p>
         </div>
       </div>
     </footer>
