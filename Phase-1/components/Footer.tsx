@@ -100,7 +100,7 @@ export default function Footer() {
             <div className="mt-6 rounded-2xl bg-ivory/5 border border-ivory/10 p-4">
               <p className="text-xs font-semibold text-gold">Cash on Delivery available</p>
               <p className="text-xs text-ivory/60 mt-1">Pay by cash or UPI when your gift arrives.</p>
-            </div>
+            </div>  
           </div>
         </div>
 

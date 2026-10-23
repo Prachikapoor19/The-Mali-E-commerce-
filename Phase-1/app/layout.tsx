@@ -18,8 +18,8 @@ import { ProductsProvider } from '@/components/ProductsContext';
 import { listProducts } from '@/lib/products';
 
 export const metadata: Metadata = {
-  title: 'The Mali — Flowers, Cakes & Gifts',
-  description: 'Fresh flowers, cakes, and gifts delivered same-day.',
+  title: 'The Mali — Flowers, Cakes & Gifts Delivery in Lucknow',
+  description: 'The Mali, Lucknow: fresh flowers, cakes, chocolates and gifts with same-day delivery. Order online at themali.in.',
 };
 
 // Phone browser bar in the brand green; content can use the full screen on notched phones
