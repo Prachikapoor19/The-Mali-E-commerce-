@@ -66,7 +66,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-4">
             <a href="/" className="inline-flex items-center gap-3">
-              <img loading="lazy" decoding="async" src="/logo.png" alt="" className="h-12 w-12 rounded-full bg-ivory object-contain p-1" />
+              <img loading="lazy" decoding="async" src="/icon.png" alt="" className="h-12 w-12 rounded-full bg-ivory object-contain p-1" />
               <span className="font-display text-2xl font-bold tracking-wide">The Mali</span>
             </a>
             <p className="text-sm text-ivory/70 leading-relaxed mt-4 max-w-sm">
